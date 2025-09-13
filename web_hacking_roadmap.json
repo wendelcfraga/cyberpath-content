@@ -1,0 +1,34 @@
+{
+  "roadmap": [
+    {
+      "id": 1,
+      "title": "Fundamentos de Web",
+      "description": "HTTP, HTTPS, cabeçalhos e cookies.",
+      "status": "UNLOCKED"
+    },
+    {
+      "id": 2,
+      "title": "OWASP Top 10",
+      "description": "Principais vulnerabilidades da web segundo a OWASP.",
+      "status": "LOCKED"
+    },
+    {
+      "id": 3,
+      "title": "Injeções",
+      "description": "SQL Injection, Command Injection e prevenção.",
+      "status": "LOCKED"
+    },
+    {
+      "id": 4,
+      "title": "XSS (Cross-Site Scripting)",
+      "description": "Tipos de XSS e como mitigar.",
+      "status": "LOCKED"
+    },
+    {
+      "id": 5,
+      "title": "CSRF (Cross-Site Request Forgery)",
+      "description": "Entendendo e prevenindo CSRF.",
+      "status": "LOCKED"
+    }
+  ]
+}
