@@ -1,0 +1,209 @@
+{
+  "quiz": [
+    {
+      "id": 101,
+      "question": "Qual é a porta padrão para o protocolo HTTPS?",
+      "options": [
+        "80",
+        "8080",
+        "443",
+        "21"
+      ],
+      "correctAnswer": "443",
+      "explanation": "A porta 80 é para HTTP, enquanto a porta 443 é a padrão para HTTPS, que adiciona uma camada de segurança (TLS/SSL)."
+    },
+    {
+      "id": 102,
+      "question": "Qual método HTTP é mais apropriado para enviar dados de um formulário de login?",
+      "options": [
+        "GET",
+        "POST",
+        "DELETE",
+        "PUT"
+      ],
+      "correctAnswer": "POST",
+      "explanation": "O método POST envia os dados no corpo da requisição, o que é mais seguro do que o GET, que os envia na URL."
+    },
+    {
+      "id": 103,
+      "question": "O que é um 'Cookie' no contexto da web?",
+      "options": [
+        "Um arquivo de texto que armazena senhas",
+        "Um pequeno arquivo de dados armazenado no navegador para lembrar informações sobre o usuário",
+        "Um tipo de vírus de navegador",
+        "Um script para rastrear a localização do usuário"
+      ],
+      "correctAnswer": "Um pequeno arquivo de dados armazenado no navegador para lembrar informações sobre o usuário",
+      "explanation": "Cookies são usados para gerenciar sessões, salvar preferências de usuário e rastrear o comportamento de navegação."
+    },
+    {
+      "id": 104,
+      "question": "Um código de status HTTP na faixa '5xx' (ex: 500, 503) geralmente indica um erro em qual lado?",
+      "options": [
+        "Do lado do cliente (navegador)",
+        "Do lado do servidor",
+        "Na conexão de rede",
+        "Nenhum, é um redirecionamento"
+      ],
+      "correctAnswer": "Do lado do servidor",
+      "explanation": "Códigos 5xx indicam que o servidor encontrou um erro e não conseguiu completar a requisição. Códigos 4xx indicam erros do lado do cliente."
+    },
+    {
+      "id": 105,
+      "question": "Qual é a principal função de um servidor DNS (Domain Name System)?",
+      "options": [
+        "Criptografar a comunicação",
+        "Traduzir nomes de domínio (ex: google.com) para endereços IP",
+        "Armazenar os arquivos de um site",
+        "Filtrar spam de e-mails"
+      ],
+      "correctAnswer": "Traduzir nomes de domínio (ex: google.com) para endereços IP",
+      "explanation": "O DNS funciona como a 'lista telefônica' da internet, permitindo que os navegadores encontrem os servidores corretos a partir de nomes de domínio fáceis de lembrar."
+    },
+    {
+      "id": 106,
+      "question": "Qual cabeçalho (header) HTTP normalmente informa ao servidor o tipo de navegador que o cliente está usando?",
+      "options": [
+        "Host",
+        "Accept-Language",
+        "User-Agent",
+        "Authorization"
+      ],
+      "correctAnswer": "User-Agent",
+      "explanation": "O cabeçalho User-Agent contém uma string que identifica o navegador, seu motor de renderização e o sistema operacional, permitindo que o servidor adapte o conteúdo."
+    },
+    {
+      "id": 107,
+      "question": "Na URL 'https://app.exemplo.com/user?id=123', o que 'app' representa?",
+      "options": [
+        "O protocolo",
+        "O caminho (path)",
+        "O subdomínio",
+        "A query string"
+      ],
+      "correctAnswer": "O subdomínio",
+      "explanation": "Em uma URL, partes antes do domínio principal (exemplo.com) são chamadas de subdomínios, usadas para organizar diferentes seções de um site ou aplicação."
+    },
+    {
+      "id": 108,
+      "question": "Qual método HTTP é idempotente, significando que múltiplas requisições idênticas têm o mesmo efeito que uma única requisição?",
+      "options": [
+        "POST",
+        "PUT",
+        "PATCH",
+        "GET"
+      ],
+      "correctAnswer": "PUT",
+      "explanation": "PUT é idempotente; ele substitui completamente o recurso de destino. Múltiplas chamadas POST, por outro lado, podem criar múltiplos recursos."
+    },
+    {
+      "id": 109,
+      "question": "O que o cabeçalho de resposta HTTP `Access-Control-Allow-Origin` controla?",
+      "options": [
+        "O tipo de conteúdo permitido",
+        "Quais origens (domínios) podem acessar o recurso",
+        "O cache do navegador",
+        "A autenticação do usuário"
+      ],
+      "correctAnswer": "Quais origens (domínios) podem acessar o recurso",
+      "explanation": "Este cabeçalho é uma parte central do CORS (Cross-Origin Resource Sharing), que permite que um servidor especifique quais outros domínios têm permissão para acessar seus recursos."
+    },
+    {
+      "id": 110,
+      "question": "Qual código de status HTTP indica que uma requisição foi bem-sucedida, mas nenhum conteúdo está sendo retornado?",
+      "options": [
+        "200 OK",
+        "201 Created",
+        "204 No Content",
+        "302 Found"
+      ],
+      "correctAnswer": "204 No Content",
+      "explanation": "É comumente usado em respostas a requisições DELETE bem-sucedidas, onde não há necessidade de retornar um corpo de mensagem."
+    },
+    {
+      "id": 111,
+      "question": "O que é JSON?",
+      "options": [
+        "Uma linguagem de programação",
+        "Um formato leve para troca de dados, fácil para humanos lerem e máquinas analisarem",
+        "Um tipo de banco de dados",
+        "Uma biblioteca JavaScript"
+      ],
+      "correctAnswer": "Um formato leve para troca de dados, fácil para humanos lerem e máquinas analisarem",
+      "explanation": "JSON (JavaScript Object Notation) é um padrão aberto baseado em texto, amplamente utilizado para transmitir dados entre um servidor e uma aplicação web."
+    },
+    {
+      "id": 112,
+      "question": "Qual a diferença principal entre um código de status `403 Forbidden` e `401 Unauthorized`?",
+      "options": [
+        "403 significa que o recurso não existe, 401 que a autenticação falhou",
+        "401 requer autenticação, 403 significa que o acesso é negado mesmo com autenticação válida",
+        "São a mesma coisa",
+        "401 é um erro do servidor, 403 é do cliente"
+      ],
+      "correctAnswer": "401 requer autenticação, 403 significa que o acesso é negado mesmo com autenticação válida",
+      "explanation": "401 indica que a requisição não tem credenciais de autenticação válidas. 403 indica que o servidor entendeu a requisição, mas se recusa a autorizá-la, mesmo que a autenticação esteja correta."
+    },
+    {
+      "id": 113,
+      "question": "O que é a Same-Origin Policy (Política de Mesma Origem) em um navegador?",
+      "options": [
+        "Uma política que força todos os sites a usarem o mesmo design",
+        "Uma medida de segurança que impede que scripts de uma origem acessem dados de outra origem",
+        "Uma regra de SEO para melhorar o ranking",
+        "Uma forma de otimizar o carregamento de imagens"
+      ],
+      "correctAnswer": "Uma medida de segurança que impede que scripts de uma origem acessem dados de outra origem",
+      "explanation": "É um mecanismo de segurança fundamental que restringe como um documento ou script carregado de uma origem pode interagir com um recurso de outra origem."
+    },
+    {
+      "id": 114,
+      "question": "Para que serve a Content Security Policy (CSP)?",
+      "options": [
+        "Para garantir que o conteúdo seja para todas as idades",
+        "Para definir as cores e fontes de um site",
+        "Para mitigar ataques como Cross-Site Scripting (XSS) e injeção de dados",
+        "Para compactar o conteúdo do site"
+      ],
+      "correctAnswer": "Para mitigar ataques como Cross-Site Scripting (XSS) e injeção de dados",
+      "explanation": "CSP é uma camada extra de segurança que ajuda a detectar e mitigar certos tipos de ataques, controlando quais recursos o navegador tem permissão para carregar."
+    },
+    {
+      "id": 115,
+      "question": "O que é um JWT (JSON Web Token)?",
+      "options": [
+        "Um novo formato de imagem para a web",
+        "Um padrão aberto para criar tokens de acesso que afirmam algumas declarações",
+        "Uma biblioteca de animação",
+        "Um método de compressão de dados"
+      ],
+      "correctAnswer": "Um padrão aberto para criar tokens de acesso que afirmam algumas declarações",
+      "explanation": "JWTs são usados para transmitir informações de forma segura entre partes como um objeto JSON, comumente para autenticação e autorização em APIs."
+    },
+    {
+      "id": 116,
+      "question": "Qual método HTTP é tipicamente usado para remover um recurso específico em um servidor?",
+      "options": [
+        "GET",
+        "POST",
+        "REMOVE",
+        "DELETE"
+      ],
+      "correctAnswer": "DELETE",
+      "explanation": "O método DELETE remove o recurso especificado. É uma das operações padrão em APIs RESTful para gerenciar o ciclo de vida dos dados."
+    },
+    {
+      "id": 117,
+      "question": "Qual é o propósito do atributo `alt` em uma tag `<img>` de HTML?",
+      "options": [
+        "Definir o alinhamento da imagem",
+        "Fornecer um texto alternativo para a imagem, por acessibilidade e SEO",
+        "Criar um link para a imagem",
+        "Especificar o título que aparece ao passar o mouse"
+      ],
+      "correctAnswer": "Fornecer um texto alternativo para a imagem, por acessibilidade e SEO",
+      "explanation": "O texto alternativo é crucial para leitores de tela usados por pessoas com deficiência visual e também é usado por motores de busca para entender o conteúdo da imagem."
+    }
+  ]
+}
+
