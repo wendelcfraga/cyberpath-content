@@ -4,30 +4,35 @@
       "id": 1,
       "title": "Fundamentos de Web",
       "description": "HTTP, HTTPS, cabeçalhos e cookies.",
+      "contentFile": "web_fundamentals_quiz.json",
       "status": "UNLOCKED"
     },
     {
       "id": 2,
       "title": "OWASP Top 10",
       "description": "Principais vulnerabilidades da web segundo a OWASP.",
+      "contentFile": "owasp_quiz.json",
       "status": "LOCKED"
     },
     {
       "id": 3,
       "title": "Injeções",
       "description": "SQL Injection, Command Injection e prevenção.",
+      "contentFile": "",
       "status": "LOCKED"
     },
     {
       "id": 4,
       "title": "XSS (Cross-Site Scripting)",
       "description": "Tipos de XSS e como mitigar.",
+      "contentFile": "",
       "status": "LOCKED"
     },
     {
       "id": 5,
       "title": "CSRF (Cross-Site Request Forgery)",
       "description": "Entendendo e prevenindo CSRF.",
+      "contentFile": "",
       "status": "LOCKED"
     }
   ]
