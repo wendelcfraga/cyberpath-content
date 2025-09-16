@@ -1,0 +1,144 @@
+{
+  "quiz": [
+    {
+      "id": 101,
+      "question": "Qual vulnerabilidade do OWASP Top 10 ocorre quando um usuário pode acessar recursos de outro usuário apenas alterando um ID na URL (ex: /user/123 para /user/124)?",
+      "options": ["A02: Falhas Criptográficas", "A01: Quebra de Controle de Acesso", "A10: Falsificação de Solicitação do Lado do Servidor (SSRF)", "A03: Injeção"],
+      "correctAnswer": "A01: Quebra de Controle de Acesso",
+      "explanation": "Isso é um exemplo clássico de IDOR (Insecure Direct Object Reference), um tipo de Quebra de Controle de Acesso."
+    },
+    {
+      "id": 102,
+      "question": "Armazenar senhas em um banco de dados usando o algoritmo de hash MD5 é um exemplo de qual categoria do OWASP?",
+      "options": ["A04: Design Inseguro", "A01: Quebra de Controle de Acesso", "A02: Falhas Criptográficas", "A05: Má Configuração de Segurança"],
+      "correctAnswer": "A02: Falhas Criptográficas",
+      "explanation": "MD5 é um algoritmo de hash obsoleto e vulnerável a colisões e ataques de rainbow table, sendo uma falha criptográfica."
+    },
+    {
+      "id": 103,
+      "question": "Usar uma biblioteca JavaScript com uma vulnerabilidade de Cross-Site Scripting (XSS) conhecida (CVE) em sua aplicação web se enquadra em qual categoria?",
+      "options": ["A06: Componentes Vulneráveis e Desatualizados", "A04: Design Inseguro", "A08: Falhas de Integridade de Software e Dados", "A09: Falhas de Registro e Monitoramento"],
+      "correctAnswer": "A06: Componentes Vulneráveis e Desatualizados",
+      "explanation": "Utilizar dependências com vulnerabilidades conhecidas é o foco principal desta categoria."
+    },
+    {
+      "id": 104,
+      "question": "Um atacante força um servidor web a fazer uma requisição para um serviço interno na rede da empresa (ex: http://192.168.1.10/admin). Que tipo de ataque é este?",
+      "options": ["Cross-Site Request Forgery (CSRF)", "Cross-Site Scripting (XSS)", "Server-Side Request Forgery (SSRF)", "SQL Injection"],
+      "correctAnswer": "Server-Side Request Forgery (SSRF)",
+      "explanation": "SSRF (A10 no OWASP Top 10) explora a funcionalidade do servidor para fazer requisições a recursos restritos."
+    },
+    {
+      "id": 105,
+      "question": "Qual é a melhor prática para mitigar ataques de SQL Injection?",
+      "options": ["Filtrar as palavras 'SELECT' e 'FROM'", "Usar Prepared Statements (Queries Parametrizadas)", "Codificar a entrada do usuário em Base64", "Limitar o comprimento da entrada"],
+      "correctAnswer": "Usar Prepared Statements (Queries Parametrizadas)",
+      "explanation": "Prepared statements separam os dados da consulta, impedindo que a entrada do usuário seja interpretada como código SQL."
+    },
+    {
+      "id": 106,
+      "question": "Deixar um painel de administração acessível publicamente com as credenciais padrão 'admin/admin' é um exemplo de:",
+      "options": ["A07: Falhas de Identificação e Autenticação", "A05: Má Configuração de Segurança", "A01: Quebra de Controle de Acesso", "A04: Design Inseguro"],
+      "correctAnswer": "A05: Má Configuração de Segurança",
+      "explanation": "Credenciais padrão, diretórios abertos e falta de hardening são exemplos clássicos de Má Configuração de Segurança."
+    },
+    {
+      "id": 107,
+      "question": "Permitir que um usuário se cadastre com uma senha '123456' sem exigir complexidade mínima é uma falha de qual categoria?",
+      "options": ["A02: Falhas Criptográficas", "A07: Falhas de Identificação e Autenticação", "A05: Má Configuração de Segurança", "A04: Design Inseguro"],
+      "correctAnswer": "A07: Falhas de Identificação e Autenticação",
+      "explanation": "Permitir senhas fracas e não proteger contra ataques de força bruta são falhas de autenticação."
+    },
+    {
+      "id": 108,
+      "question": "O que é 'desserialização insegura', relacionada à categoria A08: Falhas de Integridade de Software e Dados?",
+      "options": ["Um erro ao converter JSON para um objeto", "Um ataque que explora a lógica de negócio da aplicação", "Processar dados serializados de fontes não confiáveis, podendo levar à execução de código", "Um erro de criptografia ao salvar dados"],
+      "correctAnswer": "Processar dados serializados de fontes não confiáveis, podendo levar à execução de código",
+      "explanation": "A desserialização insegura pode permitir que um atacante crie objetos maliciosos que resultam em execução remota de código."
+    },
+    {
+      "id": 109,
+      "question": "Uma aplicação sofre um ataque, mas os administradores não conseguem determinar a origem ou o impacto por falta de registros de eventos. Isso se refere a:",
+      "options": ["A04: Design Inseguro", "A09: Falhas de Registro e Monitoramento de Segurança", "A01: Quebra de Controle de Acesso", "A05: Má Configuração de Segurança"],
+      "correctAnswer": "A09: Falhas de Registro e Monitoramento de Segurança",
+      "explanation": "A falta de logs adequados impede a detecção, o alerta e a análise forense de incidentes de segurança."
+    },
+    {
+      "id": 110,
+      "question": "A diferença principal entre 'Design Inseguro' (A04) e uma falha de implementação comum é que:",
+      "options": ["Design Inseguro é sempre mais fácil de corrigir.", "Design Inseguro representa uma falha na arquitetura e lógica de negócio, antes mesmo do código ser escrito.", "Não há diferença, são a mesma coisa.", "Design Inseguro só se aplica a hardware."],
+      "correctAnswer": "Design Inseguro representa uma falha na arquitetura e lógica de negócio, antes mesmo do código ser escrito.",
+      "explanation": "A categoria A04 foca em riscos que poderiam ser evitados com um bom planejamento e modelagem de ameaças durante a fase de design."
+    },
+    {
+      "id": 111,
+      "question": "Qual das seguintes ações NÃO ajuda a prevenir a Quebra de Controle de Acesso (A01)?",
+      "options": ["Verificar permissões em cada requisição do lado do servidor", "Usar referências indiretas a objetos (ex: GUIDs)", "Minimizar o CORS (Cross-Origin Resource Sharing)", "Implementar o princípio do menor privilégio"],
+      "correctAnswer": "Minimizar o CORS (Cross-Origin Resource Sharing)",
+      "explanation": "CORS é uma política de segurança para requisições entre diferentes origens no navegador, não diretamente ligada ao controle de acesso a objetos no servidor."
+    },
+    {
+      "id": 112,
+      "question": "Expor chaves de API diretamente no código JavaScript do lado do cliente é uma violação de qual princípio?",
+      "options": ["A02: Falhas Criptográficas", "A03: Injeção", "A10: SSRF", "A01: Quebra de Controle de Acesso"],
+      "correctAnswer": "A02: Falhas Criptográficas",
+      "explanation": "Expor segredos (chaves, senhas) no lado do cliente é considerado uma falha grave, pois eles podem ser facilmente extraídos."
+    },
+    {
+      "id": 113,
+      "question": "Qual header HTTP é uma defesa poderosa contra ataques de XSS?",
+      "options": ["Access-Control-Allow-Origin", "Strict-Transport-Security", "Content-Security-Policy (CSP)", "X-Frame-Options"],
+      "correctAnswer": "Content-Security-Policy (CSP)",
+      "explanation": "CSP permite que os administradores de sites definam quais fontes de conteúdo são permitidas, mitigando ataques de injeção de scripts."
+    },
+    {
+      "id": 114,
+      "question": "Não validar o tipo de arquivo durante um upload, permitindo que um atacante envie um shell PHP, é uma falha de:",
+      "options": ["A05: Má Configuração de Segurança", "A01: Quebra de Controle de Acesso", "A03: Injeção", "A08: Falhas de Integridade de Software e Dados"],
+      "correctAnswer": "A08: Falhas de Integridade de Software e Dados",
+      "explanation": "Permitir o upload de arquivos maliciosos que comprometem o sistema é uma falha na integridade do software."
+    },
+    {
+      "id": 115,
+      "question": "Um sistema de autenticação que não bloqueia um usuário após múltiplas tentativas de login falhas está vulnerável a:",
+      "options": ["Ataques de Força Bruta", "SQL Injection", "SSRF", "Desserialização Insegura"],
+      "correctAnswer": "Ataques de Força Bruta",
+      "explanation": "Esta é uma falha clássica da categoria A07: Falhas de Identificação e Autenticação."
+    },
+    {
+      "id": 116,
+      "question": "Qual é um exemplo de falha de registro e monitoramento (A09)?",
+      "options": ["Usar uma biblioteca de log desatualizada", "Registrar senhas em texto plano nos logs", "Não gerar alertas para tentativas de login falhas em série", "Logs que ocupam muito espaço em disco"],
+      "correctAnswer": "Não gerar alertas para tentativas de login falhas em série",
+      "explanation": "A falha não está apenas em registrar, mas também em não monitorar e alertar sobre atividades suspeitas."
+    },
+    {
+      "id": 117,
+      "question": "Qual dos itens abaixo representa um risco de 'Componentes Vulneráveis e Desatualizados' (A06)?",
+      "options": ["Um servidor web Apache sem atualizações de segurança há 2 anos", "Um firewall mal configurado", "Código customizado com uma falha de lógica", "Falta de criptografia no tráfego de rede"],
+      "correctAnswer": "Um servidor web Apache sem atualizações de segurança há 2 anos",
+      "explanation": "Softwares de base, como servidores web, frameworks e bibliotecas, devem ser mantidos atualizados para corrigir vulnerabilidades conhecidas."
+    },
+    {
+      "id": 118,
+      "question": "Um design inseguro (A04) poderia ser, por exemplo:",
+      "options": ["Um erro de digitação numa consulta SQL", "Um site que permite ao usuário definir seu próprio nível de permissão (admin/usuário) durante o cadastro", "Um certificado SSL expirado", "Uma porta de firewall aberta desnecessariamente"],
+      "correctAnswer": "Um site que permite ao usuário definir seu próprio nível de permissão (admin/usuário) durante o cadastro",
+      "explanation": "Isso representa uma falha fundamental na lógica de negócio e no design do sistema de permissões, não apenas um bug de codificação."
+    },
+    {
+      "id": 119,
+      "question": "Para explorar uma vulnerabilidade de SSRF (A10), um atacante tipicamente manipula:",
+      "options": ["Um campo de formulário que é refletido numa página HTML", "Uma query string que é usada numa consulta a banco de dados", "Um parâmetro que especifica uma URL para o servidor buscar (ex: um importador de imagens)", "Um cookie de sessão"],
+      "correctAnswer": "Um parâmetro que especifica uma URL para o servidor buscar (ex: um importador de imagens)",
+      "explanation": "O atacante abusa da funcionalidade de busca de URLs do servidor para fazê-lo acessar recursos internos ou externos."
+    },
+    {
+      "id": 120,
+      "question": "Por que a 'Quebra de Controle de Acesso' subiu para a primeira posição no OWASP Top 10 de 2021?",
+      "options": ["Porque novos tipos de injeção foram descobertos", "Porque a incidência de falhas como IDOR, escalonamento de privilégios e path traversal é extremamente alta nos dados coletados", "Porque os ataques de criptografia se tornaram menos comuns", "Porque o Google exigiu"],
+      "correctAnswer": "Porque a incidência de falhas como IDOR, escalonamento de privilégios e path traversal é extremamente alta nos dados coletados",
+      "explanation": "A classificação do OWASP Top 10 é baseada em dados de testes de penetração e recompensas por bugs, e a quebra de controle de acesso foi a categoria mais prevalente."
+    }
+  ]
+}
