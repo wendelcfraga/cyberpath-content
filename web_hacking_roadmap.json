@@ -34,6 +34,42 @@
       "description": "Entendendo e prevenindo CSRF.",
       "contentFile": "",
       "status": "LOCKED"
+    },
+    {
+      "id": 6,
+      "title": "Quebra de Autenticação",
+      "description": "Gerenciamento de sessão, senhas fracas e MFA.",
+      "contentFile": "",
+      "status": "LOCKED"
+    },
+    {
+      "id": 7,
+      "title": "Exposição de Dados Sensíveis",
+      "description": "Criptografia em trânsito e em repouso.",
+      "contentFile": "",
+      "status": "LOCKED"
+    },
+    {
+      "id": 8,
+      "title": "Má Configuração de Segurança",
+      "description": "Servidores, frameworks e headers de segurança.",
+      "contentFile": "",
+      "status": "LOCKED"
+    },
+    {
+      "id": 9,
+      "title": "Criptografia na Prática",
+      "description": "TLS, hashing de senhas e JWT.",
+      "contentFile": "",
+      "status": "LOCKED"
+    },
+    {
+      "id": 10,
+      "title": "Ferramentas do Hacker Ético",
+      "description": "Introdução a Burp Suite, Nmap e Metasploit.",
+      "contentFile": "",
+      "status": "LOCKED"
     }
   ]
 }
+
