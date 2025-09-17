@@ -1,0 +1,74 @@
+{
+  "labs": [
+    {
+      "id": 201,
+      "title": "SQL Injection (SQLi)",
+      "description": "Explore uma falha de autenticação num ecrã de login para obter acesso sem credenciais.",
+      "iconName": "ic_sql_injection",
+      "labFile": "lab_sqli_01.json"
+    },
+    {
+      "id": 202,
+      "title": "Cross-Site Scripting (XSS)",
+      "description": "Injete um script num campo de pesquisa para executar um alerta no navegador simulado.",
+      "iconName": "ic_xss",
+      "labFile": "lab_xss_01.json"
+    },
+    {
+      "id": 203,
+      "title": "Quebra de Controlo de Acesso (IDOR)",
+      "description": "Altere um parâmetro na URL para visualizar informações de um perfil de outro utilizador.",
+      "iconName": "ic_broken_access",
+      "labFile": "lab_idor_01.json"
+    },
+    {
+      "id": 204,
+      "title": "Armazenamento Inseguro (Mobile)",
+      "description": "Analise o armazenamento local da aplicação para encontrar credenciais guardadas em texto simples.",
+      "iconName": "ic_mobile_insecure_storage",
+      "labFile": "lab_insecure_storage_01.json"
+    },
+    {
+      "id": 205,
+      "title": "Má Configuração de Segurança",
+      "description": "Descubra um diretório de administração exposto publicamente no servidor web.",
+      "iconName": "ic_security_misconfiguration",
+      "labFile": ""
+    },
+    {
+      "id": 206,
+      "title": "Componentes Vulneráveis",
+      "description": "Identifique uma biblioteca de terceiros desatualizada com uma vulnerabilidade conhecida (CVE).",
+      "iconName": "ic_vulnerable_components",
+      "labFile": ""
+    },
+    {
+      "id": 207,
+      "title": "Server-Side Request Forgery (SSRF)",
+      "description": "Force a aplicação a fazer uma requisição para um serviço interno da rede.",
+      "iconName": "ic_ssrf",
+      "labFile": ""
+    },
+    {
+      "id": 208,
+      "title": "Credenciais Hardcoded (Mobile)",
+      "description": "Encontre uma chave de API secreta que foi deixada diretamente no código da aplicação.",
+      "iconName": "ic_hardcoded_credentials",
+      "labFile": ""
+    },
+    {
+      "id": 209,
+      "title": "Falta de Certificate Pinning (Mobile)",
+      "description": "Simule uma interceção de tráfego para visualizar dados sensíveis enviados pela rede.",
+      "iconName": "ic_certificate_pinning",
+      "labFile": ""
+    },
+    {
+      "id": 210,
+      "title": "Exposição de Dados Sensíveis",
+      "description": "Analise uma resposta de API para encontrar dados de utilizador que não deveriam estar expostos.",
+      "iconName": "ic_sensitive_data",
+      "labFile": ""
+    }
+  ]
+}
