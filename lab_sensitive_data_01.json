@@ -1,0 +1,49 @@
+{
+  "labTitle": "Laboratório: Exposição de Dados Sensíveis",
+  "introduction": "Bem-vindo ao laboratório sobre Exposição de Dados Sensíveis. Esta vulnerabilidade ocorre quando uma aplicação vaza acidentalmente informações críticas, como credenciais, dados pessoais ou chaves de API, para partes não autorizadas. Frequentemente, isto acontece em respostas de API que retornam mais dados do que a interface do utilizador realmente precisa.",
+  "objective": "O seu objetivo é analisar uma resposta de API simulada de um perfil de utilizador e identificar um campo de dados altamente sensível que nunca deveria ser enviado para o lado do cliente.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: A Requisição da UI",
+      "description": "A nossa aplicação móvel precisa de exibir o nome de utilizador e a foto de perfil. Para isso, ela faz uma requisição para o endpoint `/api/users/me` para obter os dados do utilizador autenticado."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: A Resposta da API",
+      "description": "O desenvolvedor do backend, por conveniência, configurou o endpoint para retornar o objeto de utilizador inteiro, diretamente da base de dados. A resposta JSON que a aplicação recebe é a seguinte:\n\n```json\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{\n  \"id\": 123,\n  \"username\": \"alice\",\n  \"profile_picture_url\": \"[https://cdn.exemplo.com/alice.png](https://cdn.exemplo.com/alice.png)\",\n  \"email\": \"alice@email.com\",\n  \"date_of_birth\": \"1990-05-15\",\n  \"password_hash\": \"a1b2c3d4e5f6a1b2c3d4e5f6...\",\n  \"session_token\": \"SESS_xyzabc123...\"\n}\n```"
+    },
+    {
+      "id": 3,
+      "type": "INFO",
+      "title": "Passo 3: A Falha",
+      "description": "A UI só precisava dos campos `username` e `profile_picture_url`. No entanto, a API expôs dados críticos como `password_hash`, `session_token` e `date_of_birth`. Se um atacante intercetar este tráfego, ele obtém informações valiosas."
+    },
+    {
+      "id": 4,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 4: A Identificação do Risco",
+      "description": "Com base na resposta da API acima, qual campo contém uma representação da senha do utilizador que nunca, em hipótese alguma, deveria ser exposta ao lado do cliente, nem mesmo como um hash?",
+      "placeholder": "Digite o nome do campo",
+      "correctAnswer": "password_hash",
+      "successMessage": "Correto! O `password_hash` nunca deve ser enviado para o cliente. Mesmo sendo um hash, ele pode ser alvo de ataques de força bruta offline se um atacante o capturar. A validação da senha deve ocorrer inteiramente no servidor.",
+      "failureMessage": "Não é essa a resposta. Procure pelo campo que está diretamente relacionado com a senha do utilizador."
+    },
+    {
+      "id": 5,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 5: A Mitigação",
+      "description": "Qual princípio de design de API teria prevenido esta exposição de dados sensíveis?",
+      "options": [
+        "Usar senhas mais longas.",
+        "O princípio de 'Need-to-Know' (Necessidade de Saber), criando DTOs (Data Transfer Objects) específicos que contêm apenas os dados estritamente necessários para a UI.",
+        "Compactar a resposta JSON para a esconder.",
+        "Adicionar mais dados à resposta para ofuscar os dados sensíveis."
+      ],
+      "correctAnswer": "O princípio de 'Need-to-Know' (Necessidade de Saber), criando DTOs (Data Transfer Objects) específicos que contêm apenas os dados estritamente necessários para a UI.",
+      "explanation": "A melhor prática é nunca retornar o objeto inteiro da base de dados. O backend deve mapear os dados para um DTO (Data Transfer Object) de resposta que contenha apenas os campos que o cliente realmente precisa para a sua função (ex: `username` e `profile_picture_url`)."
+    }
+  ]
+}
