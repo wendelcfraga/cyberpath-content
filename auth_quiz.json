@@ -1,0 +1,304 @@
+{
+  "quiz": [
+    {
+      "id": 501,
+      "question": "Qual é a principal causa da vulnerabilidade 'Quebra de Autenticação' (Broken Authentication)?",
+      "options": [
+        "Uso de algoritmos de criptografia fortes.",
+        "Implementação incorreta de funções relacionadas à identidade do usuário e ao gerenciamento de sessão.",
+        "Existência de um Firewall de Aplicação Web (WAF).",
+        "Validação de entrada rigorosa em todos os formulários."
+      ],
+      "correctAnswer": "Implementação incorreta de funções relacionadas à identidade do usuário e ao gerenciamento de sessão.",
+      "explanation": "Falhas de autenticação ocorrem quando os mecanismos que confirmam a identidade de um usuário ou gerenciam sua sessão são falhos, permitindo que atacantes se passem por usuários legítimos."
+    },
+    {
+      "id": 502,
+      "question": "Permitir que um usuário defina a senha '123456' ou 'password' é um exemplo de:",
+      "options": [
+        "Política de senhas fortes.",
+        "Falha no controle de acesso.",
+        "Permissão de senhas fracas, uma subcategoria de Quebra de Autenticação.",
+        "Vulnerabilidade de SQL Injection."
+      ],
+      "correctAnswer": "Permissão de senhas fracas, uma subcategoria de Quebra de Autenticação.",
+      "explanation": "Não impor requisitos mínimos de complexidade para senhas torna as contas extremamente vulneráveis a ataques de adivinhação e força bruta."
+    },
+    {
+      "id": 503,
+      "question": "Um atacante tenta sistematicamente milhares de combinações de nome de usuário e senha em uma tela de login. Que tipo de ataque é este?",
+      "options": [
+        "Cross-Site Scripting (XSS)",
+        "Ataque de Força Bruta (Brute Force)",
+        "Cross-Site Request Forgery (CSRF)",
+        "Man-in-the-Middle (MitM)"
+      ],
+      "correctAnswer": "Ataque de Força Bruta (Brute Force)",
+      "explanation": "Ataques de força bruta automatizam o processo de tentativa e erro para adivinhar credenciais. Uma defesa comum é o bloqueio de conta após múltiplas falhas."
+    },
+    {
+      "id": 504,
+      "question": "O que é um ataque de 'Credential Stuffing'?",
+      "options": [
+        "Um ataque que enche o banco de dados com credenciais falsas.",
+        "Um ataque onde um atacante usa listas de credenciais (usuário/senha) vazadas de um site para tentar autenticar nos mesmos usuários em outro site.",
+        "Um ataque que tenta adivinhar senhas a partir de uma lista de palavras comuns (dicionário).",
+        "Um ataque que explora o preenchimento automático do navegador."
+      ],
+      "correctAnswer": "Um ataque onde um atacante usa listas de credenciais (usuário/senha) vazadas de um site para tentar autenticar nos mesmos usuários em outro site.",
+      "explanation": "O Credential Stuffing explora a tendência dos usuários de reutilizarem a mesma senha em múltiplos serviços. É um tipo automatizado e eficaz de ataque de força bruta."
+    },
+    {
+      "id": 505,
+      "question": "Armazenar senhas em um banco de dados em texto plano (sem criptografia ou hash) é uma falha grave por quê?",
+      "options": [
+        "Porque ocupa muito espaço no banco de dados.",
+        "Porque se o banco de dados for comprometido, todas as senhas dos usuários são expostas imediatamente.",
+        "Porque torna o processo de login mais lento.",
+        "Porque não é compatível com todos os SGBDs."
+      ],
+      "correctAnswer": "Porque se o banco de dados for comprometido, todas as senhas dos usuários são expostas imediatamente.",
+      "explanation": "Senhas nunca devem ser armazenadas em formato reversível. O padrão de segurança é armazenar um hash criptográfico da senha."
+    },
+    {
+      "id": 506,
+      "question": "Qual dos seguintes algoritmos de hashing é considerado seguro e recomendado para armazenar senhas?",
+      "options": [
+        "MD5",
+        "SHA1",
+        "bcrypt ou Argon2",
+        "Base64"
+      ],
+      "correctAnswer": "bcrypt ou Argon2",
+      "explanation": "Algoritmos como bcrypt e Argon2 são projetados para serem lentos e exigirem muitos recursos computacionais, o que torna os ataques de força bruta contra os hashes muito mais difíceis e caros."
+    },
+    {
+      "id": 507,
+      "question": "O que é um 'salt' no contexto de hashing de senhas?",
+      "options": [
+        "Um tempero adicionado ao data center para melhorar o resfriamento.",
+        "Uma segunda senha que o usuário precisa de fornecer.",
+        "Um valor aleatório único que é combinado com a senha antes de aplicar o hash, para evitar ataques de rainbow table.",
+        "Um algoritmo de criptografia especial."
+      ],
+      "correctAnswer": "Um valor aleatório único que é combinado com a senha antes de aplicar o hash, para evitar ataques de rainbow table.",
+      "explanation": "O 'salt' garante que dois usuários com a mesma senha tenham hashes finais diferentes, tornando ineficazes as tabelas de hashes pré-computados (rainbow tables)."
+    },
+    {
+      "id": 508,
+      "question": "O que acontece se um site não invalidar corretamente o cookie de sessão de um usuário após o logout?",
+      "options": [
+        "O usuário não conseguirá fazer login novamente.",
+        "O cookie de sessão pode ser reutilizado por um atacante para obter acesso à conta, mesmo após o logout (Session Hijacking).",
+        "O navegador do usuário irá exibir uma mensagem de erro.",
+        "O site terá uma performance melhor."
+      ],
+      "correctAnswer": "O cookie de sessão pode ser reutilizado por um atacante para obter acesso à conta, mesmo após o logout (Session Hijacking).",
+      "explanation": "O logout deve sempre invalidar a sessão no lado do servidor, não apenas apagar o cookie no lado do cliente, para garantir que o identificador de sessão não possa ser reaproveitado."
+    },
+    {
+      "id": 509,
+      "question": "Um identificador de sessão (Session ID) que é facilmente previsível (ex: um número sequencial) está vulnerável a qual ataque?",
+      "options": [
+        "Cross-Site Scripting (XSS)",
+        "Ataque de Fixação de Sessão (Session Fixation)",
+        "Adivinhação de Sessão (Session Prediction)",
+        "SQL Injection"
+      ],
+      "correctAnswer": "Adivinhação de Sessão (Session Prediction)",
+      "explanation": "Se um atacante consegue prever um Session ID válido, ele pode forjar um cookie com esse ID e se passar por um usuário legítimo."
+    },
+    {
+      "id": 510,
+      "question": "Em um ataque de 'Session Fixation', o que o atacante faz?",
+      "options": [
+        "Tenta adivinhar o Session ID da vítima.",
+        "Força a vítima a usar um Session ID conhecido pelo atacante antes mesmo de a vítima fazer login.",
+        "Rouba o cookie de sessão da vítima através de XSS.",
+        "Inunda o servidor com pedidos de novas sessões."
+      ],
+      "correctAnswer": "Força a vítima a usar um Session ID conhecido pelo atacante antes mesmo de a vítima fazer login.",
+      "explanation": "O atacante engana a vítima para que ela use um Session ID que ele controla. Quando a vítima faz login, essa sessão é autenticada, e o atacante pode então usá-la."
+    },
+    {
+      "id": 511,
+      "question": "Qual é a principal defesa contra Session Fixation?",
+      "options": [
+        "Usar HTTPS.",
+        "Renovar o Session ID (gerar um novo) imediatamente após uma autenticação bem-sucedida.",
+        "Usar senhas mais longas.",
+        "Bloquear o IP do atacante."
+      ],
+      "correctAnswer": "Renovar o Session ID (gerar um novo) imediatamente após uma autenticação bem-sucedida.",
+      "explanation": "Ao regenerar o Session ID no momento do login, qualquer ID pré-existente que o atacante possa ter fixado torna-se inválido, neutralizando o ataque."
+    },
+    {
+      "id": 512,
+      "question": "A Autenticação Multifator (MFA) melhora a segurança por quê?",
+      "options": [
+        "Porque torna as senhas mais longas.",
+        "Porque exige que o usuário prove sua identidade com múltiplos tipos de evidências (fatores), como algo que ele sabe (senha) e algo que ele tem (telemóvel).",
+        "Porque criptografa a conexão de rede.",
+        "Porque impede ataques de phishing."
+      ],
+      "correctAnswer": "Porque exige que o usuário prove sua identidade com múltiplos tipos de evidências (fatores), como algo que ele sabe (senha) e algo que ele tem (telemóvel).",
+      "explanation": "Mesmo que um atacante roube a senha da vítima, ele ainda precisaria do segundo fator (ex: o código do autenticador) para obter acesso, o que torna o comprometimento muito mais difícil."
+    },
+    {
+      "id": 513,
+      "question": "Um token JWT (JSON Web Token) é composto por três partes separadas por pontos. Quais são elas?",
+      "options": [
+        "Usuário, Senha, Permissões",
+        "Header, Payload, Assinatura",
+        "ID da Sessão, Data de Expiração, Nível de Acesso",
+        "Algoritmo, Chave, Dados"
+      ],
+      "correctAnswer": "Header, Payload, Assinatura",
+      "explanation": "O Header define o algoritmo, a Payload contém os dados (claims), e a Assinatura garante a integridade e autenticidade do token."
+    },
+    {
+      "id": 514,
+      "question": "Qual é a vulnerabilidade mais crítica relacionada a JWTs onde o algoritmo de assinatura é definido como 'none'?",
+      "options": [
+        "O token fica muito grande.",
+        "A aplicação pode ser enganada a aceitar qualquer token, mesmo sem uma assinatura válida, permitindo que um atacante forje tokens com quaisquer dados (ex: 'admin: true').",
+        "O token expira imediatamente.",
+        "O token não pode ser lido por servidores."
+      ],
+      "correctAnswer": "A aplicação pode ser enganada a aceitar qualquer token, mesmo sem uma assinatura válida, permitindo que um atacante forje tokens com quaisquer dados (ex: 'admin: true').",
+      "explanation": "Se uma biblioteca JWT ou a implementação do servidor aceitar o algoritmo 'none', a verificação da assinatura é ignorada, o que representa uma falha de autenticação catastrófica."
+    },
+    {
+      "id": 515,
+      "question": "Por que é perigoso transmitir um Session ID como um parâmetro na URL (ex: `site.com?sessionid=12345`)?",
+      "options": [
+        "Porque torna a URL muito longa.",
+        "Porque o Session ID pode vazar através do histórico do navegador, logs de proxies, ou do header `Referer` quando se clica num link para outro site.",
+        "Porque os navegadores não permitem Session IDs na URL.",
+        "Porque diminui a performance do site."
+      ],
+      "correctAnswer": "Porque o Session ID pode vazar através do histórico do navegador, logs de proxies, ou do header `Referer` quando se clica num link para outro site.",
+      "explanation": "Identificadores de sessão devem ser sempre transmitidos através de mecanismos seguros, como cookies com os flags `Secure` e `HttpOnly`."
+    },
+    {
+      "id": 516,
+      "question": "Qual é uma boa política de bloqueio de contas para se defender de ataques de força bruta?",
+      "options": [
+        "Nunca bloquear as contas, para não incomodar os usuários.",
+        "Bloquear permanentemente a conta após a primeira tentativa de login falhada.",
+        "Implementar um bloqueio temporário (ex: 15 minutos) após um número de tentativas falhadas (ex: 5 tentativas).",
+        "Apenas bloquear contas que tentem usar senhas curtas."
+      ],
+      "correctAnswer": "Implementar um bloqueio temporário (ex: 15 minutos) após um número de tentativas falhadas (ex: 5 tentativas).",
+      "explanation": "O bloqueio temporário (ou exponencial) torna os ataques de força bruta impraticáveis sem causar um transtorno permanente a um usuário legítimo que se esqueceu da sua senha."
+    },
+    {
+      "id": 517,
+      "question": "O que é 'Session Puzzling'?",
+      "options": [
+        "Um jogo de puzzle sobre sessões de usuário.",
+        "Um ataque onde um atacante explora uma aplicação que usa múltiplas variáveis de sessão para determinar o estado de autenticação, manipulando-as para alcançar um estado privilegiado e não previsto.",
+        "Um método para otimizar o gerenciamento de sessões no servidor.",
+        "Uma técnica para adivinhar o Session ID."
+      ],
+      "correctAnswer": "Um ataque onde um atacante explora uma aplicação que usa múltiplas variáveis de sessão para determinar o estado de autenticação, manipulando-as para alcançar um estado privilegiado e não previsto.",
+      "explanation": "Ocorre quando a lógica de autenticação é demasiado complexa e distribuída por várias variáveis, criando brechas que um atacante pode explorar para contornar a autenticação."
+    },
+    {
+      "id": 518,
+      "question": "Qual dos seguintes NÃO é um dos três fatores de autenticação?",
+      "options": [
+        "Algo que você sabe (ex: senha, PIN)",
+        "Algo que você tem (ex: telemóvel, token de hardware)",
+        "Algo que você é (ex: impressão digital, reconhecimento facial)",
+        "Algo que você quer (ex: um nível de acesso específico)"
+      ],
+      "correctAnswer": "Algo que você quer (ex: um nível de acesso específico)",
+      "explanation": "Os três fatores canónicos da autenticação são conhecimento, posse e inerência (biometria). O que o usuário quer aceder é parte da autorização, não da autenticação."
+    },
+    {
+      "id": 519,
+      "question": "Por que a funcionalidade 'Esqueci a minha senha' pode ser um ponto fraco na autenticação?",
+      "options": [
+        "Porque a maioria dos usuários nunca se esquece da senha.",
+        "Se for mal implementada, pode permitir que um atacante redefina a senha de qualquer usuário conhecendo apenas o seu email ou nome de usuário.",
+        "Porque envia a senha antiga para o email do usuário.",
+        "Porque consome muitos recursos do servidor de email."
+      ],
+      "correctAnswer": "Se for mal implementada, pode permitir que um atacante redefina a senha de qualquer usuário conhecendo apenas o seu email ou nome de usuário.",
+      "explanation": "Falhas comuns incluem tokens de redefinição previsíveis, falta de expiração dos tokens e não validar a posse do email de forma segura."
+    },
+    {
+      "id": 520,
+      "question": "O que o flag de cookie `Secure` garante?",
+      "options": [
+        "Que o cookie não pode ser acedido por JavaScript.",
+        "Que o cookie é criptografado no navegador do usuário.",
+        "Que o cookie só será enviado pelo navegador em requisições HTTPS.",
+        "Que o cookie tem uma assinatura digital válida."
+      ],
+      "correctAnswer": "Que o cookie só será enviado pelo navegador em requisições HTTPS.",
+      "explanation": "O flag `Secure` protege o cookie de ser interceptado em trânsito em redes não seguras, prevenindo ataques de 'sniffing'."
+    },
+    {
+      "id": 521,
+      "question": "Qual das seguintes é uma fraqueza de usar perguntas de segurança como método de recuperação de conta?",
+      "options": [
+        "As perguntas são muito difíceis para os usuários lembrarem.",
+        "As respostas são frequentemente informações públicas ou facilmente adivinháveis através de pesquisa ou engenharia social.",
+        "As perguntas não são suportadas pela maioria dos sistemas.",
+        "As respostas ocupam muito espaço no banco de dados."
+      ],
+      "correctAnswer": "As respostas são frequentemente informações públicas ou facilmente adivinháveis através de pesquisa ou engenharia social.",
+      "explanation": "Perguntas como 'Qual o nome de solteira da sua mãe?' ou 'Qual a sua cidade natal?' usam informações que muitas vezes estão disponíveis em redes sociais, tornando-as um mecanismo de recuperação fraco."
+    },
+    {
+      "id": 522,
+      "question": "O que é 'Insecure Direct Object Reference' (IDOR) no contexto de autenticação?",
+      "options": [
+        "É um tipo de Quebra de Controle de Acesso, não de autenticação.",
+        "É quando um atacante se autentica usando um objeto direto.",
+        "É uma falha que permite a um atacante forjar um Session ID.",
+        "É quando um usuário pode aceder a recursos de outro simplesmente por adivinhar o ID, mas isso é um problema de autorização, que acontece APÓS a autenticação."
+      ],
+      "correctAnswer": "É quando um usuário pode aceder a recursos de outro simplesmente por adivinhar o ID, mas isso é um problema de autorização, que acontece APÓS a autenticação.",
+      "explanation": "Embora relacionado, IDOR é classificado como Quebra de Controle de Acesso. A autenticação confirma 'quem você é', enquanto a autorização (onde ocorre o IDOR) determina 'o que você tem permissão para ver/fazer'."
+    },
+    {
+      "id": 523,
+      "question": "Por que expor o Session ID em logs públicos ou mensagens de erro é um risco?",
+      "options": [
+        "Porque polui os logs com informação desnecessária.",
+        "Porque um atacante que obtenha acesso a esses logs pode usar os Session IDs para sequestrar as sessões dos usuários.",
+        "Porque viola as leis de proteção de dados (GDPR).",
+        "Todas as opções acima."
+      ],
+      "correctAnswer": "Todas as opções acima.",
+      "explanation": "Expor identificadores de sessão é uma falha de segurança (permite sequestro de sessão), de privacidade (é um dado pessoal) e de boas práticas (logs devem conter apenas informação não sensível)."
+    },
+    {
+      "id": 524,
+      "question": "Um JWT contém uma 'claim' de expiração (`exp`). O que acontece se a aplicação não validar esta 'claim'?",
+      "options": [
+        "Nada, a validação é opcional.",
+        "Um atacante pode reutilizar um token JWT roubado indefinidamente, mesmo que ele devesse ter expirado.",
+        "O token será automaticamente rejeitado pelo navegador.",
+        "A performance da aplicação melhora."
+      ],
+      "correctAnswer": "Um atacante pode reutilizar um token JWT roubado indefinidamente, mesmo que ele devesse ter expirado.",
+      "explanation": "A validação da expiração é uma parte crucial da segurança dos JWTs. Ignorá-la no lado do servidor torna os tokens roubados permanentemente válidos, o que é uma falha de gerenciamento de sessão."
+    },
+    {
+      "id": 525,
+      "question": "Qual é a melhor maneira de invalidar um JWT (por exemplo, durante o logout)?",
+      "options": [
+        "Modificar o JWT no lado do cliente.",
+        "É impossível invalidar um JWT antes da sua expiração, pois ele é 'stateless'. A solução é usar tempos de expiração curtos e implementar uma 'block-list' de tokens no servidor.",
+        "Apagar o JWT do `localStorage` do navegador.",
+        "Pedir ao servidor para apagar o JWT."
+      ],
+      "correctAnswer": "É impossível invalidar um JWT antes da sua expiração, pois ele é 'stateless'. A solução é usar tempos de expiração curtos e implementar uma 'block-list' de tokens no servidor.",
+      "explanation": "A principal desvantagem dos JWTs é que eles são válidos até expirarem. Para um logout imediato, o servidor precisa de manter uma lista de tokens que foram invalidados antes do tempo."
+    }
+  ]
+}
