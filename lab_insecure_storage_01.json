@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: Armazenamento Inseguro",
+  "introduction": "Bem-vindo ao laboratório sobre armazenamento inseguro de dados em aplicações mobile. Muitas aplicações precisam de guardar informações localmente no dispositivo, mas se isso não for feito de forma segura, dados sensíveis podem ser facilmente extraídos por um atacante com acesso físico ao dispositivo ou através de malware.",
+  "objective": "O seu objetivo é identificar e extrair uma senha que foi guardada em texto plano (sem criptografia) num ficheiro de configurações da aplicação, demonstrando uma das falhas de segurança mobile mais comuns.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Como os Dados são Guardados",
+      "description": "Nesta aplicação de exemplo, um desenvolvedor guardou o nome de utilizador e a senha diretamente no `SharedPreferences`, um mecanismo comum no Android para guardar pares de chave-valor. O código vulnerável seria parecido com isto:\n\n```java\n// CÓDIGO VULNERÁVEL\nSharedPreferences prefs = getSharedPreferences(\"user_prefs\", MODE_PRIVATE);\nprefs.edit()\n     .putString(\"username\", \"alice\")\n     .putString(\"password\", \"P@ssword123\")\n     .apply();\n```"
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: Onde Ficam os Ficheiros",
+      "description": "Em um dispositivo Android, os ficheiros de `SharedPreferences` são guardados como XML na pasta de dados da aplicação (em `/data/data/<nome_do_pacote>/shared_prefs/`). Num dispositivo com 'root', um atacante pode facilmente ler o conteúdo desses ficheiros. O ficheiro `user_prefs.xml` ficaria assim:\n\n```xml\n<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"username\">alice</string>\n    <string name=\"password\">P@ssword123</string>\n</map>\n```"
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Extração",
+      "description": "Com base no conteúdo do ficheiro `user_prefs.xml` mostrado acima, qual é a senha do utilizador 'alice' que foi armazenada de forma insegura?",
+      "placeholder": "Digite a senha encontrada",
+      "correctAnswer": "P@ssword123",
+      "successMessage": "Correto! Você encontrou a senha armazenada em texto plano. Isto demonstra o perigo do armazenamento inseguro e por que credenciais nunca devem ser guardadas desta forma.",
+      "failureMessage": "Não é essa. Olhe novamente para o conteúdo do ficheiro XML e encontre o valor associado à chave 'password'."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Solução Correta",
+      "description": "Qual é a maneira recomendada pelo Android para armazenar segredos, como chaves de API ou credenciais, de forma segura, protegendo-os até mesmo em dispositivos com 'root'?",
+      "options": [
+        "Num ficheiro de texto na pasta de downloads",
+        "No `SharedPreferences` com criptografia usando `EncryptedSharedPreferences`",
+        "Hardcoded (fixo) no código-fonte",
+        "Numa base de dados SQLite sem senha"
+      ],
+      "correctAnswer": "No `SharedPreferences` com criptografia usando `EncryptedSharedPreferences`",
+      "explanation": "A biblioteca `EncryptedSharedPreferences` do AndroidX, que utiliza o Android Keystore System por baixo, é a abordagem recomendada. Ela criptografa automaticamente as chaves e os valores, protegendo os dados em repouso."
+    }
+  ]
+}
