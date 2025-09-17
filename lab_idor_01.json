@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: IDOR",
+  "introduction": "Bem-vindo ao laboratório de Insecure Direct Object Reference (IDOR). Esta é uma das falhas de Quebra de Controlo de Acesso mais comuns e perigosas. Ela ocorre quando uma aplicação expõe uma referência direta a um objeto interno (como um ID de base de dados) e não verifica a autorização do utilizador para aceder a esse objeto.",
+  "objective": "O seu objetivo é aceder aos dados de um utilizador diferente do seu, simplesmente manipulando o identificador do utilizador numa requisição de API simulada.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: O Cenário",
+      "description": "Você está autenticado na aplicação como o utilizador **'alice'**, cujo ID é **123**. Ao aceder ao seu perfil, a aplicação faz uma chamada de API para o seguinte endpoint para buscar os seus dados:\n\n```bash\nGET /api/users/123\n```\n\nO servidor responde com os seus dados:\n\n```json\n{\n  \"id\": 123,\n  \"username\": \"alice\",\n  \"email\": \"alice@email.com\"\n}\n```\nIsto é o comportamento esperado."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: A Vulnerabilidade",
+      "description": "A falha de IDOR acontece quando o servidor recebe a requisição para `/api/users/123` e **não verifica** se o utilizador que fez a requisição é, de facto, o utilizador `123`. Ele simplesmente confia no ID fornecido. O que aconteceria se você alterasse esse ID?"
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Exploração",
+      "description": "Sabemos que existe outro utilizador na plataforma, o **'bob'**, com o ID **124**. Modifique o endpoint da API abaixo para tentar aceder aos dados do 'bob', mesmo estando autenticado como 'alice'.",
+      "placeholder": "/api/users/123",
+      "correctAnswer": "/api/users/124",
+      "successMessage": "Exato! O servidor retornou os dados do 'bob'. Isto prova a vulnerabilidade de IDOR. O servidor não realizou a verificação de autorização necessária.",
+      "failureMessage": "Tente novamente. O objetivo é simplesmente alterar o ID no final do endpoint para o do utilizador que você quer visualizar."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Prevenção",
+      "description": "Agora que você explorou a falha, como ela deveria ser corrigida no lado do servidor?",
+      "options": [
+        "Usar IDs que não sejam sequenciais (UUIDs).",
+        "Em cada requisição, verificar se o ID do utilizador da sessão corresponde ao ID do recurso que está a ser solicitado.",
+        "Bloquear o endereço de IP de quem tenta aceder a outros IDs.",
+        "Limitar o número de requisições que um utilizador pode fazer."
+      ],
+      "correctAnswer": "Em cada requisição, verificar se o ID do utilizador da sessão corresponde ao ID do recurso que está a ser solicitado.",
+      "explanation": "Embora usar IDs não sequenciais (UUIDs) dificulte a adivinhação, a única defesa robusta é a verificação de autorização no backend. Para cada requisição, o servidor deve perguntar: 'O utilizador A, que está logado, tem permissão para ver os dados do utilizador B?'."
+    }
+  ]
+}
