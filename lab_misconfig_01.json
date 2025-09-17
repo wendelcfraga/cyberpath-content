@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: Má Configuração de Segurança",
+  "introduction": "Bem-vindo ao laboratório de Má Configuração de Segurança. Esta é uma das vulnerabilidades mais comuns e abrange uma vasta gama de erros, desde deixar configurações padrão ativas até expor desnecessariamente arquivos e diretórios sensíveis.",
+  "objective": "O seu objetivo é identificar um diretório de administração que foi deixado exposto num servidor web, utilizando a saída de uma ferramenta de enumeração de diretórios para encontrar conteúdo 'escondido'.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Reconhecimento de Conteúdo",
+      "description": "Uma das primeiras coisas que um atacante faz é procurar por diretórios e arquivos que não estão diretamente ligados na página principal. Ferramentas como `Gobuster` ou `Dirb` automatizam isso, testando milhares de nomes comuns a partir de uma lista de palavras (wordlist).\n\nImagine que executamos uma dessas ferramentas contra o nosso alvo, `http://exemplo-lab.com`."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: Análise dos Resultados",
+      "description": "Abaixo está a saída simulada da ferramenta. Ela mostra os diretórios encontrados e o código de status HTTP correspondente. Um status `200 OK` indica que o diretório existe e está acessível, enquanto `403 Forbidden` indica que existe, mas o acesso é negado, e `301 Moved Permanently` é um redirecionamento.\n\n```bash\n>> gobuster dir -u [http://exemplo-lab.com](http://exemplo-lab.com) -w common.txt\n\n/images               (Status: 301)\n/css                  (Status: 301)\n/js                   (Status: 301)\n/admin                (Status: 200) ==> Encontrado!\n/backup               (Status: 403)\n/login.php            (Status: 200)\n```"
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Descoberta",
+      "description": "Com base na saída da ferramenta de enumeração de diretórios acima, qual é o caminho para o painel de administração que foi encontrado e está publicamente acessível?",
+      "placeholder": "Digite o caminho do diretório (ex: /pasta)",
+      "correctAnswer": "/admin",
+      "successMessage": "Exato! Você encontrou o painel de administração exposto. Este tipo de falha é extremamente comum e perigoso, pois muitas vezes estes painéis têm credenciais padrão ou fracas.",
+      "failureMessage": "Não é essa. Olhe novamente para a saída da ferramenta e encontre a linha que indica um diretório administrativo com um status '200 OK'."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Mitigação",
+      "description": "Qual das seguintes ações é a MELHOR e mais robusta maneira de proteger um diretório administrativo como este?",
+      "options": [
+        "Renomear o diretório para um nome muito longo e difícil de adivinhar.",
+        "Restringir o acesso ao diretório com base em endereços de IP (lista branca) e exigir autenticação forte com múltiplos fatores (MFA).",
+        "Remover todos os links para o diretório da página principal do site.",
+        "Usar um arquivo 'robots.txt' para pedir aos motores de busca que não o indexem."
+      ],
+      "correctAnswer": "Restringir o acesso ao diretório com base em endereços de IP (lista branca) e exigir autenticação forte com múltiplos fatores (MFA).",
+      "explanation": "Embora as outras opções possam ajudar (segurança por obscuridade), a única defesa verdadeiramente eficaz é aplicar controles de acesso rigorosos. A segurança nunca deve depender do secretismo da URL."
+    }
+  ]
+}
