@@ -1,0 +1,244 @@
+{
+  "quiz": [
+    {
+      "id": 901,
+      "question": "Para que serve principalmente a ferramenta Nmap (Network Mapper)?",
+      "options": [
+        "Para intercetar e modificar o tráfego web.",
+        "Para descobrir hosts, serviços e portas abertas numa rede.",
+        "Para automatizar a exploração de vulnerabilidades conhecidas.",
+        "Para quebrar hashes de senhas."
+      ],
+      "correctAnswer": "Para descobrir hosts, serviços e portas abertas numa rede.",
+      "explanation": "O Nmap é a ferramenta padrão da indústria para o reconhecimento e mapeamento de redes, permitindo a um pentester entender a topologia e a superfície de ataque de um alvo."
+    },
+    {
+      "id": 902,
+      "question": "Qual ferramenta atua como um 'proxy de interceção', permitindo a um pentester ver e modificar requisições HTTP/S entre o seu navegador e um servidor web?",
+      "options": [
+        "Wireshark",
+        "Metasploit",
+        "Burp Suite",
+        "John the Ripper"
+      ],
+      "correctAnswer": "Burp Suite",
+      "explanation": "A funcionalidade de Proxy do Burp Suite é essencial para a análise de segurança de aplicações web, permitindo a manipulação de requisições para testar vulnerabilidades como SQLi, XSS e IDOR."
+    },
+    {
+      "id": 903,
+      "question": "O Metasploit Framework é mais conhecido por qual funcionalidade?",
+      "options": [
+        "Análise de tráfego de rede em tempo real.",
+        "Ser uma vasta coleção de 'exploits' e 'payloads' para automatizar o processo de exploração de vulnerabilidades.",
+        "Fazer o scan de portas TCP e UDP.",
+        "Quebrar senhas usando ataques de dicionário."
+      ],
+      "correctAnswer": "Ser uma vasta coleção de 'exploits' e 'payloads' para automatizar o processo de exploração de vulnerabilidades.",
+      "explanation": "O Metasploit simplifica a exploração de sistemas, fornecendo um ambiente testado para lançar exploits contra alvos vulneráveis e obter acesso (ex: uma shell)."
+    },
+    {
+      "id": 904,
+      "question": "Um analista de segurança quer inspecionar o conteúdo detalhado dos pacotes de rede trocados entre dois servidores para diagnosticar um problema. Qual ferramenta seria a mais adequada?",
+      "options": [
+        "Nmap",
+        "Hydra",
+        "Nikto",
+        "Wireshark"
+      ],
+      "correctAnswer": "Wireshark",
+      "explanation": "O Wireshark é um analisador de protocolos de rede ('sniffer') que permite a captura e a análise profunda de cada pacote, mostrando os detalhes de protocolos como TCP, IP, HTTP, etc."
+    },
+    {
+      "id": 905,
+      "question": "As ferramentas John the Ripper e Hashcat são especializadas em qual tipo de tarefa?",
+      "options": [
+        "Enumeração de diretórios em servidores web.",
+        "Ataques de negação de serviço (DDoS).",
+        "Quebra de senhas offline a partir de hashes capturados.",
+        "Auditoria de segurança de redes Wi-Fi."
+      ],
+      "correctAnswer": "Quebra de senhas offline a partir de hashes capturados.",
+      "explanation": "Estas ferramentas usam técnicas como ataques de dicionário, força bruta e rainbow tables para tentar descobrir a senha original a partir do seu hash (ex: de um banco de dados vazado)."
+    },
+    {
+      "id": 906,
+      "question": "Qual comando do Nmap é usado para realizar um scan rápido que verifica as 1.000 portas mais comuns?",
+      "options": [
+        "nmap -A [alvo]",
+        "nmap -p- [alvo]",
+        "nmap -F [alvo]",
+        "nmap -sV [alvo]"
+      ],
+      "correctAnswer": "nmap -F [alvo]",
+      "explanation": "A opção `-F` (Fast scan) instrui o Nmap a fazer um scan mais rápido, verificando apenas as portas mais populares, em vez de todas as 65.535 portas."
+    },
+    {
+      "id": 907,
+      "question": "No Burp Suite, qual ferramenta é usada para automatizar o envio de múltiplas requisições com payloads variadas, ideal para ataques de força bruta ou fuzzing?",
+      "options": [
+        "Proxy",
+        "Repeater",
+        "Intruder",
+        "Decoder"
+      ],
+      "correctAnswer": "Intruder",
+      "explanation": "O Intruder permite configurar posições de payload numa requisição e testar milhares de valores diferentes (ex: de uma lista de senhas) de forma automatizada."
+    },
+    {
+      "id": 908,
+      "question": "O que é um 'payload' no contexto do Metasploit?",
+      "options": [
+        "O código que explora a vulnerabilidade.",
+        "O alvo do ataque.",
+        "O código que é executado no sistema alvo APÓS a exploração bem-sucedida (ex: abrir uma shell, criar um usuário).",
+        "O relatório final do pentest."
+      ],
+      "correctAnswer": "O código que é executado no sistema alvo APÓS a exploração bem-sucedida (ex: abrir uma shell, criar um usuário).",
+      "explanation": "O 'exploit' abre a porta, e o 'payload' é o que o atacante faz depois de entrar. Um payload famoso é o 'meterpreter', que oferece uma shell avançada."
+    },
+    {
+      "id": 909,
+      "question": "Qual ferramenta é projetada especificamente para auditar a segurança de redes sem fios (Wi-Fi), permitindo capturar handshakes WPA/WPA2 e quebrar as senhas?",
+      "options": [
+        "SQLMap",
+        "Aircrack-ng",
+        "Gobuster",
+        "Nessus"
+      ],
+      "correctAnswer": "Aircrack-ng",
+      "explanation": "O Aircrack-ng é um conjunto de ferramentas para análise de redes Wi-Fi que inclui um sniffer de pacotes, um injetor de pacotes e uma ferramenta para quebrar chaves WEP e WPA/WPA2-PSK."
+    },
+    {
+      "id": 910,
+      "question": "A ferramenta Hydra é usada para qual finalidade?",
+      "options": [
+        "Fazer o scan de vulnerabilidades em servidores web.",
+        "Realizar ataques de força bruta rápidos contra serviços de login (SSH, FTP, HTTP, etc.).",
+        "Analisar a complexidade de senhas.",
+        "Criar backdoors em sistemas comprometidos."
+      ],
+      "correctAnswer": "Realizar ataques de força bruta rápidos contra serviços de login (SSH, FTP, HTTP, etc.).",
+      "explanation": "O Hydra é um 'login cracker' online que suporta múltiplos protocolos, permitindo testar a resistência de formulários de autenticação contra ataques de adivinhação de senhas."
+    },
+    {
+      "id": 911,
+      "question": "Qual é a principal função da ferramenta SQLMap?",
+      "options": [
+        "Ajudar os desenvolvedores a escreverem queries SQL seguras.",
+        "Automatizar o processo de deteção e exploração de vulnerabilidades de SQL Injection.",
+        "Gerir bases de dados SQL de forma visual.",
+        "Fazer o scan de portas de bases de dados."
+      ],
+      "correctAnswer": "Automatizar o processo de deteção e exploração de vulnerabilidades de SQL Injection.",
+      "explanation": "O SQLMap consegue identificar falhas de SQLi, extrair dados, enumerar bases de dados e, em alguns casos, obter uma shell no sistema operacional do servidor."
+    },
+    {
+      "id": 912,
+      "question": "O que faz a opção `-sV` no Nmap?",
+      "options": [
+        "Realiza um scan 'stealth' (furtivo).",
+        "Tenta determinar a versão do serviço que está a ser executado em cada porta aberta.",
+        "Salva os resultados num ficheiro de texto.",
+        "Executa scripts de enumeração."
+      ],
+      "correctAnswer": "Tenta determinar a versão do serviço que está a ser executado em cada porta aberta.",
+      "explanation": "Saber a versão exata de um serviço (ex: Apache 2.4.29) é crucial, pois permite a um atacante procurar por exploits específicos para aquela versão."
+    },
+    {
+      "id": 913,
+      "question": "No Burp Suite, qual ferramenta é usada para manipular e reenviar uma única requisição HTTP manualmente, para testar rapidamente a resposta do servidor a diferentes inputs?",
+      "options": [
+        "Scanner",
+        "Intruder",
+        "Decoder",
+        "Repeater"
+      ],
+      "correctAnswer": "Repeater",
+      "explanation": "O Repeater é ideal para testes manuais e iterativos, onde se pode modificar uma requisição e observar a resposta do servidor em tempo real, sem precisar de a recapturar no navegador."
+    },
+    {
+      "id": 914,
+      "question": "A ferramenta Nikto é um:",
+      "options": [
+        "Analisador de pacotes de rede.",
+        "Scanner de vulnerabilidades de servidores web que procura por ficheiros perigosos, software desatualizado e outros problemas de configuração.",
+        "Framework de exploração.",
+        "Quebrador de senhas."
+      ],
+      "correctAnswer": "Scanner de vulnerabilidades de servidores web que procura por ficheiros perigosos, software desatualizado e outros problemas de configuração.",
+      "explanation": "O Nikto é uma ferramenta de reconhecimento que realiza milhares de testes contra um servidor web para identificar rapidamente falhas de segurança comuns."
+    },
+    {
+      "id": 915,
+      "question": "O que é 'fuzzing' no contexto de segurança de aplicações?",
+      "options": [
+        "Um método para deixar o código mais 'difuso' e difícil de ler.",
+        "Uma técnica de teste automatizada que fornece dados inválidos, inesperados ou aleatórios como entrada para um programa para encontrar bugs e falhas de segurança.",
+        "Um tipo de ataque de negação de serviço.",
+        "Um método de criptografia."
+      ],
+      "correctAnswer": "Uma técnica de teste automatizada que fornece dados inválidos, inesperados ou aleatórios como entrada para um programa para encontrar bugs e falhas de segurança.",
+      "explanation": "Ferramentas como o Burp Intruder podem ser usadas para fazer 'fuzzing' de parâmetros de uma aplicação web, tentando provocar erros que revelem vulnerabilidades."
+    },
+    {
+      "id": 916,
+      "question": "As ferramentas Gobuster e Dirb são usadas para qual tipo de atividade?",
+      "options": [
+        "Análise de malware.",
+        "Força bruta em diretórios e ficheiros de um servidor web para encontrar conteúdo escondido.",
+        "Ataques de phishing.",
+        "Criptografia de disco."
+      ],
+      "correctAnswer": "Força bruta em diretórios e ficheiros de um servidor web para encontrar conteúdo escondido.",
+      "explanation": "Estas ferramentas usam listas de palavras (wordlists) para tentar adivinhar nomes de ficheiros e pastas que não estão diretamente ligados na aplicação, como painéis de administração ou páginas de backup."
+    },
+    {
+      "id": 917,
+      "question": "O que é um 'exploit'?",
+      "options": [
+        "Uma falha de segurança num sistema.",
+        "O código, dado ou sequência de comandos que se aproveita de uma vulnerabilidade para causar um comportamento não intencional.",
+        "O processo de corrigir uma falha de segurança.",
+        "Um relatório de segurança."
+      ],
+      "correctAnswer": "O código, dado ou sequência de comandos que se aproveita de uma vulnerabilidade para causar um comportamento não intencional.",
+      "explanation": "A vulnerabilidade é a fraqueza (a porta aberta), e o exploit é a ferramenta ou técnica usada para passar por essa porta."
+    },
+    {
+      "id": 918,
+      "question": "Para que serve a ferramenta 'netcat' (ou 'nc') num contexto de hacking ético?",
+      "options": [
+        "Apenas para conversar com outros hackers.",
+        "É uma ferramenta de rede versátil, frequentemente chamada de 'canivete suíço', usada para abrir conexões TCP/UDP, ouvir em portas, transferir ficheiros e criar backdoors simples.",
+        "Para editar ficheiros de configuração de rede.",
+        "Para desenhar diagramas de rede."
+      ],
+      "correctAnswer": "É uma ferramenta de rede versátil, frequentemente chamada de 'canivete suíço', usada para abrir conexões TCP/UDP, ouvir em portas, transferir ficheiros e criar backdoors simples.",
+      "explanation": "O Netcat é uma ferramenta fundamental para testes de conectividade e para criar shells reversas (reverse shells) após uma exploração bem-sucedida."
+    },
+    {
+      "id": 919,
+      "question": "Qual é a principal diferença entre um scanner de vulnerabilidades como o Nessus e um framework de exploração como o Metasploit?",
+      "options": [
+        "O Nessus é mais caro.",
+        "O Nessus é projetado para ENCONTRAR e relatar vulnerabilidades, enquanto o Metasploit é projetado para EXPLORAR ativamente essas vulnerabilidades.",
+        "O Metasploit é mais fácil de usar para iniciantes.",
+        "Não há diferença funcional."
+      ],
+      "correctAnswer": "O Nessus é projetado para ENCONTRAR e relatar vulnerabilidades, enquanto o Metasploit é projetado para EXPLORAR ativamente essas vulnerabilidades.",
+      "explanation": "Num pentest, um profissional pode usar o Nessus na fase de reconhecimento para encontrar falhas e, em seguida, usar o Metasploit na fase de exploração para tentar obter acesso."
+    },
+    {
+      "id": 920,
+      "question": "O que é o 'Kali Linux'?",
+      "options": [
+        "Um sistema operativo para servidores web de alta performance.",
+        "Um software de antivírus.",
+        "Uma distribuição de Linux baseada em Debian, projetada para testes de penetração e auditoria de segurança, que vem pré-instalada com centenas de ferramentas de hacking.",
+        "Um browser focado em privacidade."
+      ],
+      "correctAnswer": "Uma distribuição de Linux baseada em Debian, projetada para testes de penetração e auditoria de segurança, que vem pré-instalada com centenas de ferramentas de hacking.",
+      "explanation": "O Kali Linux é o ambiente de trabalho padrão para a maioria dos profissionais de segurança ofensiva, pois reúne as ferramentas mais importantes (Nmap, Metasploit, Burp Suite, etc.) num único sistema pronto a usar."
+    }
+  ]
+}
