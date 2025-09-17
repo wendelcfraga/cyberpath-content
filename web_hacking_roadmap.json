@@ -18,58 +18,57 @@
       "id": 3,
       "title": "Injeções",
       "description": "SQL Injection, Command Injection e prevenção.",
-      "contentFile": "",
+      "contentFile": "injections_quiz.json",
       "status": "LOCKED"
     },
     {
       "id": 4,
       "title": "XSS (Cross-Site Scripting)",
       "description": "Tipos de XSS e como mitigar.",
-      "contentFile": "",
+      "contentFile": "xss_quiz.json",
       "status": "LOCKED"
     },
     {
       "id": 5,
       "title": "CSRF (Cross-Site Request Forgery)",
       "description": "Entendendo e prevenindo CSRF.",
-      "contentFile": "",
+      "contentFile": "csrf_summary.json",
       "status": "LOCKED"
     },
     {
       "id": 6,
       "title": "Quebra de Autenticação",
       "description": "Gerenciamento de sessão, senhas fracas e MFA.",
-      "contentFile": "",
+      "contentFile": "auth_quiz.json",
       "status": "LOCKED"
     },
     {
       "id": 7,
       "title": "Exposição de Dados Sensíveis",
       "description": "Criptografia em trânsito e em repouso.",
-      "contentFile": "",
+      "contentFile": "sensitive_data_summary.json",
       "status": "LOCKED"
     },
     {
       "id": 8,
       "title": "Má Configuração de Segurança",
       "description": "Servidores, frameworks e headers de segurança.",
-      "contentFile": "",
+      "contentFile": "misconfiguration_quiz.json",
       "status": "LOCKED"
     },
     {
       "id": 9,
       "title": "Criptografia na Prática",
       "description": "TLS, hashing de senhas e JWT.",
-      "contentFile": "",
+      "contentFile": "crypto_summary.json",
       "status": "LOCKED"
     },
     {
       "id": 10,
       "title": "Ferramentas do Hacker Ético",
       "description": "Introdução a Burp Suite, Nmap e Metasploit.",
-      "contentFile": "",
+      "contentFile": "tools_summary.json",
       "status": "LOCKED"
     }
   ]
 }
-
