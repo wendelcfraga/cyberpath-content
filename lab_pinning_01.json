@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: Falta de Certificate Pinning",
+  "introduction": "Bem-vindo ao laboratório sobre Certificate Pinning. Por padrão, uma aplicação confia em qualquer certificado emitido por uma Autoridade Certificadora (CA) que esteja na 'trust store' do sistema operativo. Um atacante pode abusar disto para intercetar o tráfego (ataque Man-in-the-Middle). O Certificate Pinning é uma técnica para evitar isso.",
+  "objective": "O seu objetivo é analisar o log de uma ferramenta de interceção de tráfego e extrair credenciais enviadas em texto plano por uma aplicação que não implementa o Certificate Pinning, entendendo como o ataque funciona.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: O Ataque Man-in-the-Middle (MitM)",
+      "description": "Um utilizador está a usar a nossa aplicação numa rede Wi-Fi pública e um atacante está na mesma rede. O atacante usa uma ferramenta como o `mitmproxy` ou `Burp Suite` para se posicionar entre a aplicação e o servidor.\n\nQuando a aplicação tenta conectar-se ao servidor, o atacante apresenta um certificado SSL/TLS falso, mas que foi assinado por uma CA que ele controla e que conseguiu instalar no dispositivo da vítima. A aplicação, por não fazer 'pinning', confia neste certificado falso."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: O Tráfego Intercetado",
+      "description": "Como a aplicação confiou no certificado do atacante, todo o tráfego HTTPS pode agora ser descriptografado. Abaixo está um log simulado da ferramenta do atacante, mostrando a requisição de login da vítima em texto plano:\n\n```bash\n>> mitmproxy log - Intercepting traffic from com.cyberpath.app\n\n[REQUEST] POST /api/login\nHost: api.exemplo-lab.com\nContent-Type: application/json\n\n{\n  \"username\": \"alice\",\n  \"password\": \"SuperSecretPassword123\"\n}\n\n[RESPONSE] 200 OK\n{\n  \"status\": \"success\", \n  \"session_token\": \"xyz...\"\n}\n```"
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Captura dos Dados",
+      "description": "Com base no log da ferramenta de interceção acima, qual foi a senha do utilizador 'alice' que foi capturada em texto plano durante a requisição de login?",
+      "placeholder": "Digite a senha capturada",
+      "correctAnswer": "SuperSecretPassword123",
+      "successMessage": "Exato! Você capturou a senha. Isto foi possível porque a aplicação não implementou Certificate Pinning e confiou no certificado do atacante, permitindo a descriptografia de todo o tráfego.",
+      "failureMessage": "Não é essa. Olhe novamente para o corpo da requisição POST no log para encontrar a senha."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Defesa com Pinning",
+      "description": "Como o Certificate Pinning teria prevenido este ataque?",
+      "options": [
+        "O Pinning teria forçado o uso de uma senha mais forte.",
+        "O Pinning teria bloqueado o acesso à rede Wi-Fi pública.",
+        "A aplicação teria uma cópia 'fixa' (pinned) do certificado legítimo do servidor e teria rejeitado a ligação ao ver que o certificado do atacante era diferente, mesmo que viesse de uma CA 'confiável'.",
+        "O Pinning teria criptografado a senha uma segunda vez."
+      ],
+      "correctAnswer": "A aplicação teria uma cópia 'fixa' (pinned) do certificado legítimo do servidor e teria rejeitado a ligação ao ver que o certificado do atacante era diferente, mesmo que viesse de uma CA 'confiável'.",
+      "explanation": "O 'pinning' cria uma ligação de confiança direta e exclusiva entre a aplicação e o seu servidor, ignorando a hierarquia de CAs do sistema. Se o certificado apresentado não corresponder ao que está 'pinned' na aplicação, a ligação é imediatamente terminada."
+    }
+  ]
+}
