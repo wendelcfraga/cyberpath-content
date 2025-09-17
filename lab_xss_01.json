@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: Reflected XSS",
+  "introduction": "Bem-vindo ao laboratório de Cross-Site Scripting (XSS). Aqui, você aprenderá como um atacante pode injetar scripts maliciosos em uma página web e como a falta de validação de saída pode levar a sérios riscos de segurança.",
+  "objective": "Seu objetivo é explorar uma barra de pesquisa vulnerável para executar um script que exiba um alerta no navegador simulado, demonstrando uma falha de Reflected XSS.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Entendendo o Cenário",
+      "description": "A página possui uma funcionalidade de pesquisa que reflete o termo pesquisado de volta para o usuário. O código do lado do servidor é perigosamente simples, como pode ver abaixo:\n\n```php\n<?php\n  $searchTerm = $_GET['q'];\n  echo \"<p>Resultados para: \" . $searchTerm . \"</p>\";\n?>\n```\n\nObserve como a variável `$searchTerm` é impressa diretamente no HTML sem qualquer tipo de tratamento ou codificação."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: O Ataque",
+      "description": "Agora é a sua vez. O navegador irá interpretar qualquer tag HTML que você inserir no campo de pesquisa. Para provar a vulnerabilidade, insira uma payload que execute um alerta JavaScript com a mensagem 'XSS'.",
+      "placeholder": "Digite sua payload aqui...",
+      "correctAnswer": "<script>alert('XSS')</script>",
+      "successMessage": "Parabéns! O alerta foi executado. Você explorou com sucesso a falha de Reflected XSS. O navegador interpretou a sua entrada como código em vez de texto.",
+      "failureMessage": "Payload incorreta. Tente usar a tag `<script>` para executar a função `alert()`."
+    },
+    {
+      "id": 3,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 3: Mitigação",
+      "description": "Vimos como a falha acontece. Agora, qual das seguintes técnicas é a defesa primária e mais eficaz contra ataques de XSS como este?",
+      "options": [
+        "Usar um Firewall de Aplicação Web (WAF).",
+        "Limitar o tamanho da entrada do usuário.",
+        "Fazer 'Output Encoding' (codificação de saída) de todos os dados antes de os exibir na página.",
+        "Apenas permitir requisições via POST."
+      ],
+      "correctAnswer": "Fazer 'Output Encoding' (codificação de saída) de todos os dados antes de os exibir na página.",
+      "explanation": "A codificação de saída (ex: transformar `<` em `&lt;`) é a defesa mais robusta. Ela instrui o navegador a tratar a entrada do usuário estritamente como texto, e não como código executável, neutralizando o ataque na sua origem."
+    },
+    {
+      "id": 4,
+      "type": "INFO",
+      "title": "Conclusão",
+      "description": "Você concluiu o laboratório de XSS. Lembre-se, a regra de ouro é: **nunca confie na entrada do usuário**. Sempre valide e, mais importante, codifique qualquer dado antes de o inserir dinamicamente numa página web. Outras defesas em profundidade, como o uso de um `Content-Security-Policy` (CSP), também são altamente recomendadas."
+    }
+  ]
+}
