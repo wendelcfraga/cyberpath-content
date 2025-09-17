@@ -1,0 +1,49 @@
+{
+  "labTitle": "Laboratório: Componentes Vulneráveis",
+  "introduction": "Bem-vindo ao laboratório sobre Componentes Vulneráveis e Desatualizados. As aplicações modernas raramente são escritas do zero; elas dependem de dezenas ou centenas de bibliotecas e frameworks de terceiros. Se um desses componentes tiver uma falha de segurança, a sua aplicação também se torna vulnerável.",
+  "objective": "O seu objetivo é analisar um arquivo de dependências de um projeto Java (`pom.xml`) e, com base numa informação de vulnerabilidade conhecida (CVE), identificar qual componente precisa de ser atualizado urgentemente.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Auditoria de Dependências",
+      "description": "Você está a auditar uma aplicação web e tem acesso ao seu arquivo `pom.xml`, que define as dependências do projeto. No mundo real, ferramentas de Análise de Composição de Software (SCA) como o OWASP Dependency-Check ou o Snyk automatizam a verificação destas dependências contra bancos de dados de vulnerabilidades conhecidas."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: Análise do Ficheiro `pom.xml`",
+      "description": "Abaixo está um trecho do arquivo de dependências da aplicação. Ele define três bibliotecas externas que o projeto utiliza.\n\n```xml\n<dependencies>\n  <dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-web</artifactId>\n    <version>2.6.0</version>\n  </dependency>\n  <dependency>\n    <groupId>org.apache.logging.log4j</groupId>\n    <artifactId>log4j-core</artifactId>\n    <version>2.14.1</version>\n  </dependency>\n  <dependency>\n    <groupId>com.fasterxml.jackson.core</groupId>\n    <artifactId>jackson-databind</artifactId>\n    <version>2.13.0</version>\n  </dependency>\n</dependencies>\n```"
+    },
+    {
+      "id": 3,
+      "type": "INFO",
+      "title": "Passo 3: O Alerta de Vulnerabilidade",
+      "description": "A sua ferramenta de segurança emitiu um alerta crítico para a vulnerabilidade **CVE-2021-44228**, também conhecida como **'Log4Shell'**. O alerta informa que esta falha de Execução Remota de Código (RCE) afeta as versões da biblioteca Apache Log4j entre `2.0` e `2.14.1`."
+    },
+    {
+      "id": 4,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 4: A Identificação",
+      "description": "Com base no arquivo `pom.xml` e na informação da vulnerabilidade Log4Shell, qual é o `artifactId` da biblioteca que está a expor a aplicação a um risco crítico e precisa de ser atualizada imediatamente?",
+      "placeholder": "Digite o artifactId da biblioteca",
+      "correctAnswer": "log4j-core",
+      "successMessage": "Correto! A biblioteca `log4j-core` na versão 2.14.1 é a culpada. O próximo passo seria atualizar a versão no `pom.xml` para a versão mais recente e corrigida (ex: 2.17.0 ou superior).",
+      "failureMessage": "Não é essa. Analise o arquivo `pom.xml`, encontre a dependência do Log4j e verifique se a sua versão está dentro do intervalo vulnerável mencionado no alerta."
+    },
+    {
+      "id": 5,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 5: Gestão Contínua",
+      "description": "Qual é a prática mais eficaz e proativa para gerir o risco de componentes vulneráveis a longo prazo num projeto de software?",
+      "options": [
+        "Nunca mais atualizar nenhuma dependência para evitar quebrar o código.",
+        "Integrar uma ferramenta de Análise de Composição de Software (SCA) no pipeline de CI/CD para detetar e alertar automaticamente sobre dependências vulneráveis a cada 'build'.",
+        "Contratar um hacker para testar a aplicação uma vez por ano.",
+        "Apenas usar bibliotecas que foram criadas pela sua própria empresa."
+      ],
+      "correctAnswer": "Integrar uma ferramenta de Análise de Composição de Software (SCA) no pipeline de CI/CD para detetar e alertar automaticamente sobre dependências vulneráveis a cada 'build'.",
+      "explanation": "A automação com ferramentas SCA (como Snyk, Dependabot do GitHub, ou OWASP Dependency-Check) transforma a gestão de vulnerabilidades de um evento manual e esporádico num processo contínuo e integrado ao desenvolvimento."
+    }
+  ]
+}
