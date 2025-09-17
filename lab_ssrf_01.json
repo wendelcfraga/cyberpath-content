@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: SSRF (Server-Side Request Forgery)",
+  "introduction": "Bem-vindo ao laboratório de Server-Side Request Forgery. SSRF é uma vulnerabilidade que permite a um atacante induzir uma aplicação do lado do servidor a fazer requisições HTTP para um domínio arbitrário à escolha do atacante. Isto pode ser usado para atacar sistemas internos por trás de um firewall, que normalmente seriam inacessíveis.",
+  "objective": "O seu objetivo é explorar uma funcionalidade de 'importação de avatar por URL' para forçar o servidor a fazer uma requisição a si mesmo (`localhost`) e aceder a um painel de administração que só é acessível a partir da rede interna.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: A Funcionalidade Vulnerável",
+      "description": "A nossa aplicação permite que os utilizadores definam um avatar a partir de uma URL. Quando um utilizador submete `http://site-externo.com/imagem.png`, o servidor da nossa aplicação faz uma requisição para essa URL, descarrega a imagem e define-a como o avatar. A requisição que o seu navegador faz parece-se com isto:\n\n```bash\nGET /user/avatar?url=[http://site-externo.com/imagem.png](http://site-externo.com/imagem.png)\n```"
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: A Falha de Validação",
+      "description": "A vulnerabilidade existe porque o servidor **não valida** para onde o parâmetro `url` aponta. Ele confia cegamente na URL fornecida pelo utilizador e tenta conectar-se a ela. Um atacante pode substituir a URL de uma imagem por uma URL que aponta para um endereço de rede interno ou para o próprio servidor (`localhost`)."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Exploração",
+      "description": "A nossa aplicação tem um painel de administração secreto em `http://localhost/admin/` que só é acessível a partir do próprio servidor. Modifique o valor do parâmetro `url` abaixo para forçar o servidor a aceder a este painel administrativo interno.",
+      "placeholder": "http://site-externo.com/imagem.png",
+      "correctAnswer": "http://localhost/admin/",
+      "successMessage": "Perfeito! O servidor fez uma requisição a si mesmo, acedeu ao painel de administração e retornou o seu conteúdo. Isto confirma a vulnerabilidade de SSRF. Você usou o servidor como um 'proxy' para aceder a recursos internos.",
+      "failureMessage": "Tente novamente. O objetivo é substituir a URL externa completa pelo endereço do painel de administração interno que só o servidor consegue alcançar."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Mitigação",
+      "description": "Qual é a defesa mais eficaz e recomendada contra ataques de SSRF?",
+      "options": [
+        "Usar um firewall para bloquear todo o tráfego de saída do servidor.",
+        "Validar a entrada do utilizador para garantir que a URL fornecida pertence a uma lista de permissões ('allow-list') de domínios, IPs e protocolos confiáveis.",
+        "Tentar bloquear URLs que contenham 'localhost' ou '127.0.0.1' (block-list).",
+        "Apenas permitir que utilizadores administradores usem a funcionalidade."
+      ],
+      "correctAnswer": "Validar a entrada do utilizador para garantir que a URL fornecida pertence a uma lista de permissões ('allow-list') de domínios, IPs e protocolos confiáveis.",
+      "explanation": "Uma 'allow-list' é a defesa mais robusta porque define explicitamente o que é permitido. Tentar criar uma 'block-list' de destinos perigosos é propenso a falhas, pois os atacantes podem usar ofuscação (ex: usar `127.1` em vez de `127.0.0.1`) para contornar os filtros."
+    }
+  ]
+}
