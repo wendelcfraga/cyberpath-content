@@ -1,0 +1,43 @@
+{
+  "labTitle": "Laboratório: Credenciais Hardcoded",
+  "introduction": "Bem-vindo ao laboratório sobre credenciais 'hardcoded'. Um dos erros mais perigosos no desenvolvimento mobile é guardar segredos—como chaves de API, senhas ou tokens—diretamente no código-fonte. Estes segredos podem ser facilmente extraídos por atacantes que façam a engenharia reversa da sua aplicação.",
+  "objective": "O seu objetivo é analisar um trecho de código-fonte de uma aplicação Android e encontrar uma chave de API de um serviço de pagamentos que foi deixada 'hardcoded'.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: O Código Vulnerável",
+      "description": "Um desenvolvedor precisava de integrar um serviço de pagamentos e, por conveniência, colocou a chave de API secreta diretamente numa variável no seu código. O código ficou assim:\n\n```java\npublic class PaymentService {\n    // TODO: Mover isto para um local seguro mais tarde\n    private final String API_SECRET_KEY = \"sk_live_aBcDeFgHiJkLmNoPqRsTuVwXyZ123456\";\n\n    public void processPayment(double amount) {\n        // ... usa a chave para fazer uma chamada de API ...\n    }\n}\n```\nIsto é uma prática extremamente insegura."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: Engenharia Reversa",
+      "description": "Um atacante pode descarregar o ficheiro da sua aplicação (`.apk`), usar ferramentas como o `apktool` para o descompilar, e obter um código-fonte legível. Depois, ele pode simplesmente procurar por palavras-chave como `API_KEY`, `secret`, `token` ou por padrões de chaves conhecidas para encontrar os segredos."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Encontre a Chave de API",
+      "description": "Com base no trecho de código vulnerável do `PaymentService` mostrado no primeiro passo, extraia e insira a chave de API secreta (`API_SECRET_KEY`) no campo abaixo.",
+      "placeholder": "sk_live_...",
+      "correctAnswer": "sk_live_aBcDeFgHiJkLmNoPqRsTuVwXyZ123456",
+      "successMessage": "Exato! Você extraiu a chave com sucesso. Imagine o dano que um atacante poderia causar com acesso direto a uma API de pagamentos.",
+      "failureMessage": "Chave incorreta. Copie e cole exatamente o valor da variável `API_SECRET_KEY` do exemplo de código."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: A Mitigação Correta",
+      "description": "Qual é a abordagem mais segura para gerir chaves de API numa aplicação mobile para evitar que elas sejam 'hardcoded'?",
+      "options": [
+        "Ofuscar a chave no código para que seja mais difícil de ler.",
+        "Guardar a chave num ficheiro de `SharedPreferences`.",
+        "A aplicação mobile deve comunicar com um servidor backend próprio, e é o backend que guarda a chave e faz as chamadas para o serviço de terceiros.",
+        "Dividir a chave em várias partes e espalhá-las pelo código."
+      ],
+      "correctAnswer": "A aplicação mobile deve comunicar com um servidor backend próprio, e é o backend que guarda a chave e faz as chamadas para o serviço de terceiros.",
+      "explanation": "A regra de ouro é: segredos nunca devem estar no lado do cliente. A aplicação mobile deve autenticar-se com o seu backend, e o backend, que é um ambiente controlado e seguro, é que deve conter as chaves e comunicar com as APIs externas."
+    }
+  ]
+}
