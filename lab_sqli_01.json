@@ -1,0 +1,37 @@
+{
+  "labTitle": "Laboratório: SQL Injection Básico",
+  "introduction": "Bem-vindo ao laboratório de SQL Injection. O seu objetivo é explorar uma falha de autenticação num ecrã de login de um blog fictício. A aplicação utiliza uma consulta SQL vulnerável para verificar as credenciais do utilizador.",
+  "objective": "Obtenha acesso à área administrativa sem saber o nome de utilizador ou a senha, explorando a consulta SQL.",
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Análise do Cenário",
+      "description": "Abaixo está a consulta SQL que o servidor executa. Observe como as variáveis `username` e `password` são concatenadas diretamente na query, o que abre a porta para injeção.\n\n```sql\nSELECT * FROM users WHERE username = ' ' AND password = ' ';\n```"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "O Ataque",
+      "description": "Para contornar a verificação, você pode injetar uma condição que sempre seja verdadeira. No campo de 'username', insira uma payload que comente o resto da consulta e torne a condição `WHERE` verdadeira.",
+      "placeholder": "Insira a sua payload aqui",
+      "correctAnswer": "' OR '1'='1' --",
+      "successMessage": "Perfeito! A payload `' OR '1'='1' --` tornou a consulta `SELECT * FROM users WHERE username = '' OR '1'='1' --' AND password = '...'`, que é sempre verdadeira. Acesso concedido!",
+      "failureMessage": "Tente novamente. Lembre-se de usar uma condição sempre verdadeira e comentar o resto da linha."
+    },
+    {
+      "id": 3,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Prevenção",
+      "description": "Após explorar a vulnerabilidade, é crucial entender como preveni-la. Qual das seguintes técnicas é a mais eficaz para mitigar ataques de SQL Injection?",
+      "options": [
+        "Filtrar palavras-chave como 'SELECT' e 'DROP'",
+        "Limitar o tamanho dos campos de entrada",
+        "Usar Prepared Statements (Queries Parametrizadas)",
+        "Codificar a entrada do utilizador em HTML"
+      ],
+      "correctAnswer": "Usar Prepared Statements (Queries Parametrizadas)",
+      "explanation": "Prepared Statements separam os dados do comando SQL, garantindo que a entrada do utilizador seja sempre tratada como dados, e nunca como código executável, o que neutraliza a injeção."
+    }
+  ]
+}
