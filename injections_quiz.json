@@ -1,0 +1,364 @@
+{
+  "quiz": [
+    {
+      "id": 201,
+      "question": "Qual é a causa raiz da maioria das vulnerabilidades de injeção?",
+      "options": [
+        "Falta de um firewall de aplicação web (WAF)",
+        "Uso de uma linguagem de programação insegura",
+        "Confiar em dados não validados provenientes de uma fonte não confiável",
+        "Não usar HTTPS para criptografar o tráfego"
+      ],
+      "correctAnswer": "Confiar em dados não validados provenientes de uma fonte não confiável",
+      "explanation": "Ataques de injeção ocorrem quando dados fornecidos pelo usuário são interpretados como parte de um comando ou consulta, o que só é possível se os dados não forem devidamente validados e sanitizados."
+    },
+    {
+      "id": 202,
+      "question": "Qual payload de SQL Injection é comumente usado para tentar contornar uma tela de login?",
+      "options": [
+        "1; DROP TABLE users;",
+        "' OR '1'='1' --",
+        "<script>alert('xss')</script>",
+        "../../etc/passwd"
+      ],
+      "correctAnswer": "' OR '1'='1' --",
+      "explanation": "Esta payload modifica a cláusula WHERE da consulta SQL para que a condição se torne sempre verdadeira (ex: WHERE username = '' OR '1'='1'), e o '--' comenta o resto da query."
+    },
+    {
+      "id": 203,
+      "question": "O que são 'Prepared Statements' (ou Queries Parametrizadas) e por que são eficazes contra SQL Injection?",
+      "options": [
+        "São stored procedures que validam a entrada.",
+        "São templates de SQL onde os dados do usuário nunca são misturados com o código da query.",
+        "São funções que codificam a entrada do usuário em Base64 antes de a enviarem para o banco de dados.",
+        "São regras de firewall que bloqueiam SQL malicioso."
+      ],
+      "correctAnswer": "São templates de SQL onde os dados do usuário nunca são misturados com o código da query.",
+      "explanation": "Com prepared statements, o SGBD primeiro compila o template da query e depois insere os dados. Isso garante que a entrada do usuário seja sempre tratada como dados, e nunca como código executável."
+    },
+    {
+      "id": 204,
+      "question": "Um atacante usa um ataque de injeção para extrair dados de outras tabelas, combinando os resultados com a consulta original. Que tipo de SQL Injection é este?",
+      "options": [
+        "Error-Based SQL Injection",
+        "Blind SQL Injection",
+        "Union-Based SQL Injection",
+        "Time-Based SQL Injection"
+      ],
+      "correctAnswer": "Union-Based SQL Injection",
+      "explanation": "Este ataque utiliza o operador UNION SQL para adicionar os resultados de uma segunda consulta (maliciosa) aos resultados da consulta original e legítima."
+    },
+    {
+      "id": 205,
+      "question": "Em um ataque de 'Blind SQL Injection', como um atacante normalmente extrai informações?",
+      "options": [
+        "Através de mensagens de erro detalhadas do banco de dados.",
+        "Observando se a resposta da aplicação é verdadeira ou falsa, ou medindo o tempo de resposta.",
+        "Usando o operador UNION para juntar tabelas.",
+        "Explorando uma vulnerabilidade de XSS para roubar os dados."
+      ],
+      "correctAnswer": "Observando se a resposta da aplicação é verdadeira ou falsa, ou medindo o tempo de resposta.",
+      "explanation": "Em ataques 'blind', a aplicação não retorna erros ou dados diretamente. O atacante infere os dados fazendo uma série de perguntas de verdadeiro/falso (Boolean-based) ou medindo o tempo que o servidor leva para responder (Time-based)."
+    },
+    {
+      "id": 206,
+      "question": "Qual das seguintes funções PHP é notoriamente vulnerável a Command Injection se usada com entrada não sanitizada?",
+      "options": [
+        "htmlspecialchars()",
+        "mysqli_prepare()",
+        "system()",
+        "echo"
+      ],
+      "correctAnswer": "system()",
+      "explanation": "Funções como `system()`, `exec()`, `passthru()` e `shell_exec()` executam comandos diretamente no sistema operacional, tornando-as um alvo principal para Command Injection."
+    },
+    {
+      "id": 207,
+      "question": "Um atacante insere `127.0.0.1; ls -la` num campo de um formulário que executa um ping. Que tipo de ataque é este?",
+      "options": [
+        "SQL Injection",
+        "Cross-Site Scripting (XSS)",
+        "Command Injection",
+        "LDAP Injection"
+      ],
+      "correctAnswer": "Command Injection",
+      "explanation": "O ponto e vírgula (;) é usado em muitos shells para separar comandos. O atacante está a injetar um segundo comando (`ls -la`) para ser executado pelo servidor."
+    },
+    {
+      "id": 208,
+      "question": "Qual é a principal diferença entre Code Injection e Command Injection?",
+      "options": [
+        "Não há diferença, são o mesmo ataque.",
+        "Code Injection injeta código na linguagem da aplicação (ex: PHP, Python), enquanto Command Injection injeta comandos do sistema operacional (ex: shell).",
+        "Command Injection é mais perigoso que Code Injection.",
+        "Code Injection só funciona em aplicações web, enquanto Command Injection pode funcionar em qualquer sistema."
+      ],
+      "correctAnswer": "Code Injection injeta código na linguagem da aplicação (ex: PHP, Python), enquanto Command Injection injeta comandos do sistema operacional (ex: shell).",
+      "explanation": "Um exemplo de Code Injection seria usar a função `eval()` com dados do usuário, permitindo a execução de código arbitrário na linguagem da aplicação."
+    },
+    {
+      "id": 209,
+      "question": "Um ataque de LDAP Injection visa qual tipo de serviço?",
+      "options": [
+        "Servidores de banco de dados SQL",
+        "Servidores de email SMTP",
+        "Serviços de diretório que usam o protocolo LDAP, como o Active Directory",
+        "Servidores web Apache"
+      ],
+      "correctAnswer": "Serviços de diretório que usam o protocolo LDAP, como o Active Directory",
+      "explanation": "Ataques de LDAP Injection manipulam as consultas LDAP para contornar a autenticação ou extrair informações de serviços de diretório."
+    },
+    {
+      "id": 210,
+      "question": "Qual técnica de sanitização de entrada é MAIS EFICAZ para prevenir Command Injection?",
+      "options": [
+        "Remover todos os espaços da entrada do usuário.",
+        "Codificar a entrada em URL-encode.",
+        "Usar uma 'allow-list' (lista de permissões) que define exatamente quais caracteres ou valores são permitidos.",
+        "Usar uma 'block-list' (lista de bloqueios) para proibir caracteres perigosos como ';', '|' e '&'."
+      ],
+      "correctAnswer": "Usar uma 'allow-list' (lista de permissões) que define exatamente quais caracteres ou valores são permitidos.",
+      "explanation": "Uma 'allow-list' é mais segura porque rejeita qualquer entrada que não corresponda a um formato estritamente definido, enquanto uma 'block-list' pode ser contornada se o atacante encontrar um caractere perigoso que não foi previsto."
+    },
+    {
+      "id": 211,
+      "question": "Um ataque de XPath Injection explora aplicações que usam qual tecnologia para consultar dados?",
+      "options": [
+        "JSON",
+        "SQL",
+        "XML",
+        "GraphQL"
+      ],
+      "correctAnswer": "XML",
+      "explanation": "XPath é uma linguagem de consulta para selecionar nós de um documento XML. A injeção de XPath manipula estas consultas para aceder a dados não autorizados."
+    },
+    {
+      "id": 212,
+      "question": "Qual das seguintes payloads é característica de um ataque de NoSQL Injection em uma base de dados como MongoDB?",
+      "options": [
+        "' OR 1=1 --",
+        "{ '$ne': null }",
+        "../../etc/hosts",
+        "(&(uid=*)(objectClass=*))"
+      ],
+      "correctAnswer": "{ '$ne': null }",
+      "explanation": "Bancos de dados NoSQL, como o MongoDB, usam consultas baseadas em objetos (JSON/BSON). Um atacante pode injetar operadores como `$ne` (not equal) para manipular a lógica da consulta e contornar restrições."
+    },
+    {
+      "id": 213,
+      "question": "O que é 'Out-of-Band (OOB) SQL Injection'?",
+      "options": [
+        "Um ataque que não usa a banda larga da internet.",
+        "Um tipo de injeção que força o banco de dados a fazer uma conexão de rede para um servidor externo controlado pelo atacante.",
+        "Um ataque que só funciona em bancos de dados desatualizados.",
+        "Um ataque que usa mensagens de erro para extrair dados."
+      ],
+      "correctAnswer": "Um tipo de injeção que força o banco de dados a fazer uma conexão de rede para um servidor externo controlado pelo atacante.",
+      "explanation": "OOB é usado quando não há outro canal para extrair dados. O atacante faz com que o servidor de banco de dados envie os dados para ele através de uma requisição DNS ou HTTP."
+    },
+    {
+      "id": 214,
+      "question": "A injeção de CRLF (Carriage Return Line Feed) permite que um atacante manipule qual componente de uma aplicação web?",
+      "options": [
+        "Consultas a banco de dados",
+        "Cabeçalhos (headers) de resposta HTTP",
+        "Comandos do sistema operacional",
+        "Arquivos XML"
+      ],
+      "correctAnswer": "Cabeçalhos (headers) de resposta HTTP",
+      "explanation": "Ao injetar os caracteres CRLF (%0d%0a), um atacante pode terminar um cabeçalho e adicionar novos cabeçalhos ou até mesmo conteúdo no corpo da resposta, levando a ataques como HTTP Response Splitting."
+    },
+    {
+      "id": 215,
+      "question": "Qual é o objetivo principal do 'escaping' de caracteres como medida de prevenção?",
+      "options": [
+        "Remover completamente os caracteres perigosos da entrada.",
+        "Criptografar a entrada para que o servidor não a entenda.",
+        "Instruir o interpretador (de SQL, HTML, etc.) a tratar um caractere especial como um literal, em vez de um comando.",
+        "Aumentar o tamanho da entrada para quebrar a lógica da aplicação."
+      ],
+      "correctAnswer": "Instruir o interpretador (de SQL, HTML, etc.) a tratar um caractere especial como um literal, em vez de um comando.",
+      "explanation": "Por exemplo, ao fazer o 'escape' de uma aspa simples (') com uma barra invertida (\\'), a query SQL a tratará como parte do texto, e não como o fim de uma string."
+    },
+    {
+      "id": 216,
+      "question": "Uma aplicação permite que o usuário especifique um template para ser renderizado no servidor (ex: /page?template=profile.php). Se não for validado, a que tipo de injeção ela pode estar vulnerável?",
+      "options": [
+        "SQL Injection",
+        "Server-Side Template Injection (SSTI)",
+        "Command Injection",
+        "Cross-Site Scripting (XSS)"
+      ],
+      "correctAnswer": "Server-Side Template Injection (SSTI)",
+      "explanation": "SSTI ocorre quando a entrada do usuário é incorporada num template do lado do servidor de forma insegura, permitindo que o atacante injete código de template e, potencialmente, execute comandos no servidor."
+    },
+    {
+      "id": 217,
+      "question": "Qual a melhor maneira de prevenir LDAP Injection?",
+      "options": [
+        "Usar um firewall para bloquear tráfego LDAP.",
+        "Fazer o 'escape' de todos os metacaracteres especiais do LDAP na entrada do usuário.",
+        "Armazenar todos os dados do diretório em maiúsculas.",
+        "Limitar as consultas LDAP a 10 resultados por vez."
+      ],
+      "correctAnswer": "Fazer o 'escape' de todos os metacaracteres especiais do LDAP na entrada do usuário.",
+      "explanation": "Assim como no SQL, o LDAP tem caracteres especiais como `*`, `(`, `)` e `\\`. Fazer o 'escape' deles garante que sejam tratados como dados e não como parte da sintaxe da consulta LDAP."
+    },
+    {
+      "id": 218,
+      "question": "A ferramenta 'sqlmap' é usada para automatizar a exploração de qual tipo de vulnerabilidade?",
+      "options": [
+        "Command Injection",
+        "Cross-Site Scripting (XSS)",
+        "SQL Injection",
+        "Má Configuração de Segurança"
+      ],
+      "correctAnswer": "SQL Injection",
+      "explanation": "O sqlmap é uma ferramenta de pentest de código aberto que automatiza o processo de detecção e exploração de falhas de SQL Injection e a tomada de controle de servidores de banco de dados."
+    },
+    {
+      "id": 219,
+      "question": "Qual das seguintes NÃO é uma boa prática para prevenir injeções?",
+      "options": [
+        "Validação de entrada do lado do cliente e do servidor.",
+        "Implementar o princípio do menor privilégio para as contas de banco de dados.",
+        "Confiar apenas na validação do lado do cliente (JavaScript).",
+        "Usar frameworks que fornecem proteção automática contra injeções (ex: ORM)."
+      ],
+      "correctAnswer": "Confiar apenas na validação do lado do cliente (JavaScript).",
+      "explanation": "A validação do lado do cliente é facilmente contornável por um atacante que envie uma requisição HTTP diretamente para o servidor. A validação de segurança deve ser sempre feita no lado do servidor."
+    },
+    {
+      "id": 220,
+      "question": "Um ataque de 'Mass SQL Injection' refere-se a:",
+      "options": [
+        "Um ataque que injeta uma quantidade massiva de dados numa única consulta.",
+        "Um ataque automatizado que tenta injetar código malicioso em milhares de sites vulneráveis ao mesmo tempo.",
+        "Um ataque que só funciona em bancos de dados muito grandes (massivos).",
+        "Um ataque que usa múltiplas técnicas de injeção simultaneamente."
+      ],
+      "correctAnswer": "Um ataque automatizado que tenta injetar código malicioso em milhares de sites vulneráveis ao mesmo tempo.",
+      "explanation": "Normalmente, o objetivo de um ataque de Mass SQL Injection é injetar um iframe ou script malicioso nas páginas de muitos sites para redirecionar os seus visitantes para sites de phishing ou malware."
+    },
+    {
+      "id": 221,
+      "question": "Em que cenário um ataque de Command Injection pode ser considerado 'cego' (blind)?",
+      "options": [
+        "Quando o atacante não consegue ver o código-fonte da aplicação.",
+        "Quando o comando injetado não produz nenhuma saída visível na resposta HTTP.",
+        "Quando o ataque é feito durante a noite (às cegas).",
+        "Quando o comando executado não requer privilégios de administrador."
+      ],
+      "correctAnswer": "Quando o comando injetado não produz nenhuma saída visível na resposta HTTP.",
+      "explanation": "Semelhante ao Blind SQLi, um atacante pode usar técnicas baseadas em tempo (ex: `sleep 10`) para confirmar se o comando foi executado, inferindo o sucesso pela demora na resposta."
+    },
+    {
+      "id": 222,
+      "question": "Qual das seguintes declarações sobre NoSQL Injection é VERDADEIRA?",
+      "options": [
+        "É idêntica à SQL Injection, apenas com uma sintaxe diferente.",
+        "Aplicações que usam ORM (Object-Relational Mapping) estão imunes a ela.",
+        "Pode ocorrer porque a estrutura da consulta (ex: JSON) pode ser modificada pela entrada do usuário.",
+        "Só afeta bancos de dados que não usam autenticação."
+      ],
+      "correctAnswer": "Pode ocorrer porque a estrutura da consulta (ex: JSON) pode ser modificada pela entrada do usuário.",
+      "explanation": "Se uma aplicação constrói uma query NoSQL concatenando a entrada do usuário diretamente num objeto JSON, um atacante pode inserir operadores de query para alterar a lógica."
+    },
+    {
+      "id": 223,
+      "question": "O que é 'Second-Order SQL Injection'?",
+      "options": [
+        "Um ataque que requer duas payloads diferentes para funcionar.",
+        "Um ataque onde a payload maliciosa é primeiro armazenada no banco de dados e depois executada quando esses dados são recuperados e usados noutra consulta.",
+        "Um tipo de injeção que só funciona na segunda tentativa.",
+        "Um ataque menos perigoso que o de primeira ordem."
+      ],
+      "correctAnswer": "Um ataque onde a payload maliciosa é primeiro armazenada no banco de dados e depois executada quando esses dados são recuperados e usados noutra consulta.",
+      "explanation": "A aplicação pode sanitizar a entrada ao guardá-la, mas falhar em sanitizá-la ao recuperá-la e usá-la noutro contexto, levando à execução da payload."
+    },
+    {
+      "id": 224,
+      "question": "Qual o principal risco de uma vulnerabilidade de Code Injection bem-sucedida?",
+      "options": [
+        "Apenas a extração de dados da base de dados.",
+        "A capacidade de modificar a aparência do site (defacement).",
+        "Execução Remota de Código (RCE), potencialmente dando ao atacante controlo total do servidor.",
+        "Abrandar a performance da aplicação."
+      ],
+      "correctAnswer": "Execução Remota de Código (RCE), potencialmente dando ao atacante controlo total do servidor.",
+      "explanation": "Code Injection é extremamente perigoso porque permite que o atacante execute código com os mesmos privilégios que a aplicação, o que pode levar a um comprometimento completo do sistema."
+    },
+    {
+      "id": 225,
+      "question": "Qual caractere é frequentemente usado para empilhar consultas (stacking queries) em SQL Injection?",
+      "options": [
+        "#",
+        "'",
+        ";",
+        "&"
+      ],
+      "correctAnswer": ";",
+      "explanation": "O ponto e vírgula (;) é usado para terminar uma instrução SQL. Se a tecnologia do backend suportar múltiplas queries, um atacante pode injetar um ';' seguido de uma nova instrução maliciosa (ex: `DROP TABLE`)."
+    },
+    {
+      "id": 226,
+      "question": "Um atacante insere `user=admin&role=admin` no corpo de uma requisição POST para tentar escalar privilégios. Que tipo de injeção é esta?",
+      "options": [
+        "SQL Injection",
+        "Mass Assignment ou Parameter Tampering",
+        "Command Injection",
+        "XPath Injection"
+      ],
+      "correctAnswer": "Mass Assignment ou Parameter Tampering",
+      "explanation": "Este ataque explora frameworks que associam automaticamente os parâmetros da requisição a variáveis ou objetos. O atacante injeta parâmetros que não deveriam ser modificáveis pelo usuário (como 'role') para alterar o estado de um objeto no backend."
+    },
+    {
+      "id": 227,
+      "question": "Qual das seguintes NÃO é uma função de 'escaping' de SQL?",
+      "options": [
+        "mysqli_real_escape_string() em PHP",
+        "mysql.escape() em Node.js",
+        "base64_encode() em PHP",
+        "dbms_assert.sql_object_name() em Oracle"
+      ],
+      "correctAnswer": "base64_encode() em PHP",
+      "explanation": "Codificar em Base64 não é uma forma de 'escaping' e não previne SQL Injection. É apenas uma codificação de dados que pode ser facilmente revertida."
+    },
+    {
+      "id": 228,
+      "question": "O que um WAF (Web Application Firewall) faz para tentar prevenir ataques de injeção?",
+      "options": [
+        "Criptografa todo o tráfego entre o cliente e o servidor.",
+        "Analisa o tráfego HTTP em busca de padrões e assinaturas de ataques conhecidos (ex: payloads de SQLi) e bloqueia-os.",
+        "Valida e sanitiza o código-fonte da aplicação automaticamente.",
+        "Garante que apenas utilizadores autenticados possam aceder à aplicação."
+      ],
+      "correctAnswer": "Analisa o tráfego HTTP em busca de padrões e assinaturas de ataques conhecidos (ex: payloads de SQLi) e bloqueia-os.",
+      "explanation": "Um WAF atua como uma camada de defesa, mas não deve ser a única proteção, pois pode ser contornado. A correção deve ser feita no código da aplicação."
+    },
+    {
+      "id": 229,
+      "question": "Por que a validação de entrada baseada em tipo de dados (ex: garantir que um ID seja um número inteiro) é uma boa defesa?",
+      "options": [
+        "Porque os atacantes não conseguem inserir números.",
+        "Porque elimina a possibilidade de um atacante injetar caracteres de controle de query (como aspas, ponto e vírgula) num campo que só aceita números.",
+        "Porque melhora a performance do banco de dados.",
+        "Não é uma defesa eficaz."
+      ],
+      "correctAnswer": "Porque elimina a possibilidade de um atacante injetar caracteres de controle de query (como aspas, ponto e vírgula) num campo que só aceita números.",
+      "explanation": "Se a aplicação força a conversão da entrada para um inteiro antes de a usar na query, qualquer tentativa de injetar texto malicioso será descartada ou causará um erro seguro."
+    },
+    {
+      "id": 230,
+      "question": "Qual o objetivo final de uma defesa em profundidade (defense-in-depth) contra ataques de injeção?",
+      "options": [
+        "Encontrar uma única solução perfeita que resolva todos os problemas.",
+        "Usar apenas as ferramentas de segurança mais caras.",
+        "Implementar múltiplas camadas de controle de segurança (validação, 'escaping', WAF, privilégio mínimo) para que, se uma falhar, outra possa conter o ataque.",
+        "Contratar um pentester para encontrar todas as falhas."
+      ],
+      "correctAnswer": "Implementar múltiplas camadas de controle de segurança (validação, 'escaping', WAF, privilégio mínimo) para que, se uma falhar, outra possa conter o ataque.",
+      "explanation": "A defesa em profundidade é um princípio fundamental da segurança, reconhecendo que nenhuma defesa é infalível e que múltiplas barreiras oferecem a melhor proteção."
+    }
+  ]
+}
