@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: S3 Buckets Expostos",
+  "introduction": "Buckets de armazenamento em nuvem (como o AWS S3) são frequentemente usados para hospedar arquivos estáticos. No entanto, configurações incorretas de permissões podem permitir que qualquer pessoa liste ou baixe arquivos sensíveis contendo backups, código-fonte ou segredos.",
+  "objective": "Seu objetivo é explorar um bucket S3 fictício que está com a permissão de listagem aberta e extrair uma flag de um arquivo de configuração.",
+  "xp": 60,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Identificação do Alvo",
+      "description": "Durante um reconhecimento, você descobriu que o app mobile faz requisições para `https://cyberpath-static-assets.s3.amazonaws.com/`. Usando a AWS CLI (simulada aqui), podemos tentar listar o conteúdo desse bucket sem precisar de chaves de acesso."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Listagem de Arquivos",
+      "description": "Qual comando da AWS CLI você usaria para listar todos os arquivos dentro do bucket `s3://cyberpath-static-assets`?",
+      "placeholder": "aws s3 ...",
+      "correctAnswer": "aws s3 ls s3://cyberpath-static-assets",
+      "successMessage": "Sucesso! O comando retornou a lista de arquivos:\n- logo.png\n- main.js\n- config_backup_2024.txt",
+      "failureMessage": "Use o comando 'ls' seguido do protocolo s3:// e o nome do bucket."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Exfiltração da Flag",
+      "description": "Ao abrir o arquivo `config_backup_2024.txt`, você encontra as seguintes linhas:\n\n`DB_PASSWORD=admin123` \n`SECRET_KEY=CP{S3_B0CK3T_EXP0S3D}`\n\nInsira a flag encontrada para concluir o lab.",
+      "placeholder": "CP{...}",
+      "correctAnswer": "CP{S3_B0CK3T_EXP0S3D}",
+      "successMessage": "Parabéns! Você identificou um vazamento de dados em nuvem.",
+      "failureMessage": "A flag está no formato CP{...}."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Remediação",
+      "description": "Para corrigir esta falha na AWS, qual configuração deve ser desabilitada?",
+      "options": [
+        "Server-side Encryption (SSE).",
+        "Block Public Access (BPA).",
+        "Object Lock.",
+        "Transfer Acceleration."
+      ],
+      "correctAnswer": "Block Public Access (BPA).",
+      "explanation": "O recurso 'Block Public Access' (BPA) é uma camada de proteção que ignora qualquer política permissiva que tenha sido colocada no bucket ou nos objetos, garantindo que o acesso público permaneça bloqueado."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu como falhas de configuração em nuvem podem ser catastróficas. Sempre utilize o princípio do privilégio mínimo para buckets S3.",
+      "successMessage": "Laboratório de Cloud Security concluído!"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "quiz": [
+    {
+      "id": 701,
+      "question": "Deixar um painel de administração com as credenciais padrão (ex: 'admin'/'password') é um exemplo clássico de qual vulnerabilidade?",
+      "options": [
+        "Quebra de Controle de Acesso",
+        "Má Configuração de Segurança",
+        "Falha Criptográfica",
+        "Injeção de SQL"
+      ],
+      "correctAnswer": "Má Configuração de Segurança",
+      "explanation": "O uso de credenciais padrão é uma das formas mais comuns e perigosas de má configuração, pois permite acesso administrativo imediato a um atacante."
+    },
+    {
+      "id": 702,
+      "question": "Um servidor web que, ao navegar para uma pasta sem um arquivo de índice, exibe uma lista de todos os arquivos e subpastas, tem qual falha de configuração?",
+      "options": [
+        "Directory Listing (Listagem de Diretórios) ativada",
+        "Cross-Site Scripting (XSS)",
+        "Permissões de arquivo incorretas",
+        "Um bug no servidor web"
+      ],
+      "correctAnswer": "Directory Listing (Listagem de Diretórios) ativada",
+      "explanation": "A listagem de diretórios expõe a estrutura interna da aplicação e pode revelar arquivos sensíveis, como backups, arquivos de configuração ou código-fonte."
+    },
+    {
+      "id": 703,
+      "question": "Por que expor a versão exata do software do servidor (ex: 'Server: Apache/2.4.29 (Ubuntu)') em um header de resposta HTTP é um risco?",
+      "options": [
+        "Não é um risco, é uma prática padrão.",
+        "Porque viola as leis de privacidade.",
+        "Porque permite que um atacante pesquise por vulnerabilidades (CVEs) conhecidas e específicas para aquela versão exata do software.",
+        "Porque torna a resposta HTTP mais lenta."
+      ],
+      "correctAnswer": "Porque permite que um atacante pesquise por vulnerabilidades (CVEs) conhecidas e específicas para aquela versão exata do software.",
+      "explanation": "Esta é uma forma de 'fingerprinting'. Esconder a versão do software (version banner) é uma boa prática de 'hardening' para não dar informações desnecessárias a um atacante."
+    },
+    {
+      "id": 704,
+      "question": "Um administrador de sistemas não aplica uma atualização de segurança crítica a um servidor por meses. Esta negligência é considerada qual tipo de falha?",
+      "options": [
+        "Falha Criptográfica",
+        "Design Inseguro",
+        "Componentes Vulneráveis e Desatualizados (geralmente o resultado da má configuração)",
+        "Injeção de Código"
+      ],
+      "correctAnswer": "Componentes Vulneráveis e Desatualizados (geralmente o resultado da má configuração)",
+      "explanation": "A falha em manter os sistemas atualizados (patch management) é uma má configuração de segurança que leva ao uso de componentes com vulnerabilidades conhecidas."
+    },
+    {
+      "id": 705,
+      "question": "Qual header HTTP instrui o navegador a não renderizar uma página dentro de um `<frame>` ou `<iframe>`, protegendo contra ataques de 'Clickjacking'?",
+      "options": [
+        "Content-Security-Policy",
+        "X-Content-Type-Options",
+        "Strict-Transport-Security",
+        "X-Frame-Options"
+      ],
+      "correctAnswer": "X-Frame-Options",
+      "explanation": "Configurar `X-Frame-Options: DENY` ou `SAMEORIGIN` é uma má configuração comum de ser esquecida e é crucial para prevenir clickjacking."
+    },
+    {
+      "id": 706,
+      "question": "Um bucket de armazenamento em nuvem (como Amazon S3 ou Google Cloud Storage) que permite leitura e escrita pública é um exemplo de:",
+      "options": [
+        "Uma configuração otimizada para performance.",
+        "Uma grave má configuração de segurança na nuvem.",
+        "Um requisito para hospedar sites estáticos.",
+        "Uma falha no provedor de nuvem."
+      ],
+      "correctAnswer": "Uma grave má configuração de segurança na nuvem.",
+      "explanation": "Permissões excessivamente abertas em recursos de nuvem são uma das principais causas de vazamentos de dados massivos."
+    },
+    {
+      "id": 707,
+      "question": "O que significa 'hardening' de um sistema?",
+      "options": [
+        "Aumentar a capacidade de hardware do servidor.",
+        "O processo de proteger um sistema reduzindo sua superfície de ataque, o que envolve desativar serviços desnecessários, remover software padrão e configurar permissões estritas.",
+        "Instalar um antivírus no servidor.",
+        "Fazer backups regulares do sistema."
+      ],
+      "correctAnswer": "O processo de proteger um sistema reduzindo sua superfície de ataque, o que envolve desativar serviços desnecessários, remover software padrão e configurar permissões estritas.",
+      "explanation": "Hardening é o antídoto para a má configuração de segurança. Trata-se de tornar o sistema o mais seguro possível a partir de sua configuração base."
+    },
+    {
+      "id": 708,
+      "question": "Qual o risco de deixar o modo de depuração (debug mode) ativado em um framework web em ambiente de produção?",
+      "options": [
+        "A aplicação pode ficar mais lenta.",
+        "Pode expor informações de configuração sensíveis, variáveis de ambiente e stack traces detalhados em mensagens de erro.",
+        "O código pode não funcionar corretamente.",
+        "Não há risco, apenas ajuda os desenvolvedores."
+      ],
+      "correctAnswer": "Pode expor informações de configuração sensíveis, variáveis de ambiente e stack traces detalhados em mensagens de erro.",
+      "explanation": "O modo de depuração é uma ferramenta de desenvolvimento poderosa que se torna uma grave falha de segurança se deixada ativa em produção."
+    },
+    {
+      "id": 709,
+      "question": "Qual política de CORS (Cross-Origin Resource Sharing) é perigosamente permissiva se configurada num servidor que lida com dados sensíveis?",
+      "options": [
+        "Access-Control-Allow-Origin: https://parceiro.confiavel.com",
+        "Access-Control-Allow-Origin: *",
+        "Access-Control-Allow-Origin: null",
+        "Access-Control-Allow-Methods: GET, POST"
+      ],
+      "correctAnswer": "Access-Control-Allow-Origin: *",
+      "explanation": "O asterisco (*) permite que qualquer site na internet faça requisições para a sua API e leia a resposta, o que pode levar a vazamentos de dados se a API não for pública."
+    },
+    {
+      "id": 710,
+      "question": "Qual das seguintes permissões de arquivo num servidor Linux é a mais perigosa para um arquivo de configuração sensível na raiz de um site?",
+      "options": [
+        "600 (rw-------)",
+        "644 (rw-r--r--)",
+        "755 (rwxr-xr-x)",
+        "777 (rwxrwxrwx)"
+      ],
+      "correctAnswer": "777 (rwxrwxrwx)",
+      "explanation": "A permissão '777' concede permissão de leitura, escrita e execução para todos (dono, grupo e outros), tornando o arquivo publicamente modificável, o que é uma má configuração crítica."
+    },
+    {
+      "id": 711,
+      "question": "Um parser de XML que não desativa o processamento de DTDs (Document Type Definitions) pode estar vulnerável a qual ataque?",
+      "options": [
+        "SQL Injection",
+        "Cross-Site Scripting (XSS)",
+        "XML External Entity (XXE) Injection",
+        "Server-Side Request Forgery (SSRF)"
+      ],
+      "correctAnswer": "XML External Entity (XXE) Injection",
+      "explanation": "A vulnerabilidade de XXE surge de uma má configuração no parser de XML, que por padrão pode permitir a definição de entidades externas, levando à leitura de arquivos locais ou SSRF."
+    },
+    {
+      "id": 712,
+      "question": "Qual é a função do header `X-Content-Type-Options: nosniff`?",
+      "options": [
+        "Impede que o navegador adivinhe (sniff) o tipo MIME de um recurso, diferente do que foi declarado no `Content-Type`.",
+        "Ativa o 'sniffing' de pacotes de rede.",
+        "Bloqueia todo o conteúdo que não seja do tipo 'text/html'.",
+        "É um header obsoleto sem função."
+      ],
+      "correctAnswer": "Impede que o navegador adivinhe (sniff) o tipo MIME de um recurso, diferente do que foi declarado no `Content-Type`.",
+      "explanation": "Isso previne ataques onde um atacante faz o upload de um arquivo que parece uma imagem, mas que o navegador interpreta como um script por causa do 'MIME sniffing'."
+    },
+    {
+      "id": 713,
+      "question": "Um servidor de uma empresa tem as portas 21 (FTP), 22 (SSH), 80 (HTTP) e 443 (HTTPS) abertas para a internet. Se o servidor só hospeda um site, qual serviço é um exemplo de má configuração por ser desnecessário?",
+      "options": [
+        "SSH",
+        "HTTP",
+        "HTTPS",
+        "FTP"
+      ],
+      "correctAnswer": "FTP",
+      "explanation": "O FTP é um protocolo inseguro (transmite dados em texto plano) e geralmente desnecessário para um servidor web moderno. Manter portas e serviços desnecessários abertos aumenta a superfície de ataque."
+    },
+    {
+      "id": 714,
+      "question": "Deixar um arquivo `phpinfo.php` acessível publicamente num servidor é um risco por quê?",
+      "options": [
+        "Pode sobrecarregar o servidor.",
+        "Expõe uma quantidade massiva de informações de configuração do PHP, do servidor e do sistema operacional, que podem ser usadas para encontrar vetores de ataque.",
+        "É um arquivo conhecido por conter vírus.",
+        "Viola a licença do PHP."
+      ],
+      "correctAnswer": "Expõe uma quantidade massiva de informações de configuração do PHP, do servidor e do sistema operacional, que podem ser usadas para encontrar vetores de ataque.",
+      "explanation": "Arquivos de diagnóstico e de instalação padrão nunca devem ser deixados em servidores de produção."
+    },
+    {
+      "id": 715,
+      "question": "Qual é o problema de um cookie de sessão não ter o flag `HttpOnly`?",
+      "options": [
+        "O cookie não será enviado sobre HTTPS.",
+        "O cookie pode ser lido por JavaScript, tornando-o vulnerável a roubo através de um ataque de XSS.",
+        "O cookie não funcionará em todos os navegadores.",
+        "O cookie expirará mais rapidamente."
+      ],
+      "correctAnswer": "O cookie pode ser lido por JavaScript, tornando-o vulnerável a roubo através de um ataque de XSS.",
+      "explanation": "A falta do flag `HttpOnly` é uma má configuração que agrava o impacto de uma vulnerabilidade de XSS."
+    },
+    {
+      "id": 716,
+      "question": "Uma API REST que não implementa 'rate limiting' (limitação de requisições) está mal configurada contra qual tipo de ataque?",
+      "options": [
+        "SQL Injection",
+        "Ataques de força bruta em endpoints de autenticação ou negação de serviço a nível de aplicação.",
+        "Cross-Site Scripting (XSS)",
+        "Exposição de dados sensíveis."
+      ],
+      "correctAnswer": "Ataques de força bruta em endpoints de autenticação ou negação de serviço a nível de aplicação.",
+      "explanation": "A falta de 'rate limiting' permite que um atacante faça milhares de requisições por segundo, seja para adivinhar senhas ou para sobrecarregar a aplicação."
+    },
+    {
+      "id": 717,
+      "question": "O que um 'security misconfiguration scanner' (scanner de má configuração de segurança) normalmente faz?",
+      "options": [
+        "Tenta explorar vulnerabilidades de XSS e SQLi.",
+        "Verifica se a aplicação tem um antivírus instalado.",
+        "Verifica a configuração do servidor em busca de falhas conhecidas, como headers de segurança em falta, portas abertas, software desatualizado e arquivos padrão expostos.",
+        "Analisa o código-fonte em busca de bugs."
+      ],
+      "correctAnswer": "Verifica a configuração do servidor em busca de falhas conhecidas, como headers de segurança em falta, portas abertas, software desatualizado e arquivos padrão expostos.",
+      "explanation": "Ferramentas como o Nikto ou scanners de vulnerabilidade de infraestrutura são especializados em encontrar estas falhas de configuração."
+    },
+    {
+      "id": 718,
+      "question": "Qual é o risco de ter uma política de senhas que não exige a mudança periódica das mesmas?",
+      "options": [
+        "As senhas podem ser esquecidas pelos usuários.",
+        "Se uma senha for comprometida num vazamento de dados, um atacante pode ter acesso indefinido à conta.",
+        "A base de dados de senhas fica muito grande.",
+        "É uma violação do protocolo HTTPS."
+      ],
+      "correctAnswer": "Se uma senha for comprometida num vazamento de dados, um atacante pode ter acesso indefinido à conta.",
+      "explanation": "A rotação de senhas, embora um tópico debatido, é uma política de mitigação para limitar a janela de tempo em que uma credencial roubada pode ser usada."
+    },
+    {
+      "id": 719,
+      "question": "Num ambiente de nuvem como a AWS, conceder a uma função IAM (Identity and Access Management) a permissão 'AdministratorAccess' quando ela só precisa de ler um bucket S3 é um exemplo de:",
+      "options": [
+        "Uma boa prática de segurança.",
+        "Violação do Princípio do Menor Privilégio, uma má configuração crítica.",
+        "Um requisito para a automação de CI/CD.",
+        "Uma forma de otimizar os custos."
+      ],
+      "correctAnswer": "Violação do Princípio do Menor Privilégio, uma má configuração crítica.",
+      "explanation": "As permissões devem ser sempre as mais restritivas possíveis para a função que a identidade precisa de executar, a fim de minimizar o impacto caso a credencial seja comprometida."
+    },
+    {
+      "id": 720,
+      "question": "Por que o uso de 'veracidade' do CAPTCHA em uma tela de login pode falhar como única defesa contra força bruta?",
+      "options": [
+        "Porque os CAPTCHAs podem ser resolvidos por serviços automatizados (CAPTCHA farms).",
+        "Porque os CAPTCHAs abrandam o site.",
+        "Porque os CAPTCHAs não são compatíveis com dispositivos móveis.",
+        "Porque os CAPTCHAs não são uma defesa contra força bruta."
+      ],
+      "correctAnswer": "Porque os CAPTCHAs podem ser resolvidos por serviços automatizados (CAPTCHA farms).",
+      "explanation": "Embora ajudem, confiar apenas em CAPTCHAs é uma má configuração. Uma defesa robusta combina CAPTCHA com bloqueio de conta e 'rate limiting'."
+    }
+  ]
+}

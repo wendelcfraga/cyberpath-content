@@ -1,0 +1,11 @@
+{
+  "id": "active_directory_quiz",
+  "title": "Ataques em Active Directory",
+  "questions": [
+    {
+      "question": "O que é o ataque 'Kerberoasting'?",
+      "options": ["Ataque de força bruta em senhas", "Extração de hashes de serviços para quebra offline", "Negação de serviço no Domain Controller", "Phishing para administradores"],
+      "correctIndex": 1
+    }
+  ]
+}

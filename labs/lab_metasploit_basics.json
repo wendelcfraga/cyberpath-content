@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Exploração com Metasploit",
+  "introduction": "O Metasploit Framework é a plataforma de testes de invasão mais utilizada no mundo. Ele ajuda equipes de segurança a verificar vulnerabilidades e gerenciar avaliações de segurança.",
+  "objective": "Seu objetivo é simular o uso do Metasploit para explorar uma vulnerabilidade conhecida em um servidor Windows e obter uma shell reversa.",
+  "xp": 80,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Iniciando o Console",
+      "description": "O ponto de entrada principal é o `msfconsole`. Uma vez dentro, você pode pesquisar por exploits. Para este laboratório, usaremos o famoso exploit EternalBlue (MS17-010).\n\n```bash\nmsfconsole\nsearch eternalblue\n```"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Seleção do Exploit",
+      "description": "Qual comando você usaria para selecionar o módulo de exploit `exploit/windows/smb/ms17_010_eternalblue`?",
+      "placeholder": "use ...",
+      "correctAnswer": "use exploit/windows/smb/ms17_010_eternalblue",
+      "successMessage": "Módulo selecionado! Agora você precisa configurar os parâmetros.",
+      "failureMessage": "Dica: Use o comando 'use' seguido do caminho do módulo."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Configuração do RHOSTS",
+      "description": "O parâmetro `RHOSTS` define o IP do alvo. Como você configuraria o IP do alvo como `10.0.0.45`?",
+      "placeholder": "set RHOSTS ...",
+      "correctAnswer": "set RHOSTS 10.0.0.45",
+      "successMessage": "Alvo definido com sucesso.",
+      "failureMessage": "Use o comando 'set' seguido do nome do parâmetro e o valor."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: O Payload",
+      "description": "O que é um 'Payload' no contexto do Metasploit?",
+      "options": [
+        "O código que explora a falha no serviço.",
+        "O código que é executado no sistema alvo após a exploração bem-sucedida (ex: uma shell).",
+        "O endereço IP do atacante.",
+        "Um scanner de vulnerabilidades."
+      ],
+      "correctAnswer": "O código que é executado no sistema alvo após a exploração bem-sucedida (ex: uma shell).",
+      "explanation": "Enquanto o 'exploit' abre a porta, o 'payload' é o que você quer fazer lá dentro (obter acesso, extrair dados, etc)."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu o fluxo básico do Metasploit: Pesquisar, Selecionar, Configurar e Explorar. Use este conhecimento com responsabilidade.",
+      "successMessage": "Laboratório de Metasploit concluído!"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Incident Response",
+  "roadmap": [
+    {
+      "id": 91,
+      "title": "SIEM Logging",
+      "description": "Monitorando ataques em tempo real.",
+      "contentFile": "labs/lab_ir_splunk.json",
+      "status": "UNLOCKED",
+      "xp": 100
+    }
+  ]
+}

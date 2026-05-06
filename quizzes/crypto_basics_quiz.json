@@ -1,0 +1,28 @@
+{
+  "quiz": [
+    {
+      "id": 701,
+      "question": "Qual é a principal diferença entre criptografia simétrica e assimétrica?",
+      "options": [
+        "Simétrica usa duas chaves, assimétrica usa uma.",
+        "Simétrica usa a mesma chave para cifrar e decifrar, assimétrica usa um par de chaves (pública e privada).",
+        "Assimétrica é sempre mais rápida que simétrica.",
+        "Simétrica só funciona em arquivos pequenos."
+      ],
+      "correctAnswer": "Simétrica usa a mesma chave para cifrar e decifrar, assimétrica usa um par de chaves (pública e privada).",
+      "explanation": "Na criptografia simétrica, ambos os lados compartilham a mesma chave secreta. Na assimétrica, a chave pública cifra e a privada decifra."
+    },
+    {
+      "id": 702,
+      "question": "O que é um 'Salt' no contexto de hashing de senhas?",
+      "options": [
+        "Um erro no algoritmo de hash.",
+        "Dados aleatórios adicionados à senha antes do hashing para evitar ataques de Rainbow Tables.",
+        "Uma forma de criptografia reversível.",
+        "O nome de um algoritmo de criptografia quântica."
+      ],
+      "correctAnswer": "Dados aleatórios adicionados à senha antes do hashing para evitar ataques de Rainbow Tables.",
+      "explanation": "O salt garante que senhas iguais resultem em hashes diferentes, forçando o atacante a quebrar cada hash individualmente."
+    }
+  ]
+}

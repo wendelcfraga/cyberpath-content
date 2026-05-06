@@ -1,0 +1,85 @@
+{
+  "title": "Operating System Security",
+  "roadmap": [
+    {
+      "id": 21,
+      "title": "Introdução ao Linux",
+      "description": "Permissões, usuários e estrutura de diretórios.",
+      "contentFile": "quizzes/os_security_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 22,
+      "title": "Prática de Permissões",
+      "description": "Laboratório prático de chmod e privilégios.",
+      "contentFile": "labs/lab_linux_perms.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 23,
+      "title": "Segurança em Windows",
+      "description": "Active Directory, PowerShell e UAC.",
+      "contentFile": "summaries/windows_security_summary.json",
+      "status": "LOCKED",
+      "xp": 50
+    },
+    {
+      "id": 24,
+      "title": "Escalação de Privilégios",
+      "description": "Explorando SUID e vulnerabilidades de kernel.",
+      "contentFile": "labs/lab_privesc_linux.json",
+      "status": "LOCKED",
+      "xp": 150
+    },
+    {
+      "id": 25,
+      "title": "Hardening de Sistemas",
+      "description": "Configurações seguras para servidores.",
+      "contentFile": "quizzes/os_hardening_quiz.json",
+      "status": "LOCKED",
+      "xp": 75
+    },
+    {
+      "id": 26,
+      "title": "Persistência em Windows",
+      "description": "Como manter acesso após a reinicialização.",
+      "contentFile": "quizzes/windows_persistence_quiz.json",
+      "status": "LOCKED",
+      "xp": 80
+    },
+    {
+      "id": 27,
+      "title": "Segurança em Containers",
+      "description": "Docker e isolamento de processos.",
+      "contentFile": "labs/lab_docker_security.json",
+      "status": "LOCKED",
+      "xp": 110
+    },
+    {
+      "id": 28,
+      "title": "Scripts PowerShell Seguros",
+      "description": "Automatização e defesa em Windows.",
+      "contentFile": "quizzes/powershell_security_quiz.json",
+      "status": "LOCKED",
+      "xp": 60
+    },
+    {
+      "id": 29,
+      "title": "Ataques em Active Directory",
+      "description": "Explorando domínios Windows.",
+      "contentFile": "quizzes/active_directory_quiz.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 30,
+      "title": "Reverse Shell com Netcat",
+      "description": "Técnicas de acesso remoto.",
+      "contentFile": "labs/lab_reverse_shell.json",
+      "status": "LOCKED",
+      "xp": 120
+    }
+  ]
+}

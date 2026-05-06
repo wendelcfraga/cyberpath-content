@@ -1,0 +1,40 @@
+{
+  "quiz": [
+    {
+      "id": 601,
+      "question": "Qual comando no Linux é usado para alterar as permissões de um arquivo?",
+      "options": [
+        "chown",
+        "chmod",
+        "chperm",
+        "ls -l"
+      ],
+      "correctAnswer": "chmod",
+      "explanation": "O comando 'chmod' (change mode) é utilizado para definir quem pode ler, escrever ou executar um arquivo."
+    },
+    {
+      "id": 602,
+      "question": "O que o princípio do Menor Privilégio defende?",
+      "options": [
+        "Todos os usuários devem ter acesso root para facilitar o trabalho.",
+        "Usuários devem ter apenas as permissões necessárias para realizar suas tarefas.",
+        "Apenas o administrador deve ter senha.",
+        "Arquivos sensíveis devem ser públicos."
+      ],
+      "correctAnswer": "Usuários devem ter apenas as permissões necessárias para realizar suas tarefas.",
+      "explanation": "O Princípio do Menor Privilégio (PoLP) minimiza riscos ao garantir que processos e usuários operem com o mínimo de privilégios necessários."
+    },
+    {
+      "id": 603,
+      "question": "O que é o 'sudo' no Linux?",
+      "options": [
+        "Um editor de texto.",
+        "Um comando que permite executar programas com privilégios de outro usuário (geralmente root).",
+        "Um vírus que apaga o sistema.",
+        "O driver de som do sistema."
+      ],
+      "correctAnswer": "Um comando que permite executar programas com privilégios de outro usuário (geralmente root).",
+      "explanation": "'sudo' (superuser do) permite que usuários autorizados executem comandos como superusuário sem precisar saber a senha do root."
+    }
+  ]
+}

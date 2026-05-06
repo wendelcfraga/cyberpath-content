@@ -1,0 +1,13 @@
+{
+  "title": "Social Engineering",
+  "roadmap": [
+    {
+      "id": 81,
+      "title": "Phishing Techniques",
+      "description": "Como identificar ataques de engenharia social.",
+      "contentFile": "quizzes/social_eng_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    }
+  ]
+}

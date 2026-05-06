@@ -1,0 +1,16 @@
+{
+  "id": "windows_persistence_quiz",
+  "title": "Persistência em Windows",
+  "questions": [
+    {
+      "question": "Qual chave de registro é comumente usada para executar programas ao iniciar o Windows?",
+      "options": ["HKLM\\SOFTWARE\\Run", "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", "HKLM\\SYSTEM\\CurrentControlSet", "HKCU\\Environment"],
+      "correctIndex": 1
+    },
+    {
+      "question": "O que são 'Scheduled Tasks' no contexto de persistência?",
+      "options": ["Lembretes do calendário", "Tarefas agendadas para execução automática de scripts", "Backups do sistema", "Atualizações de drivers"],
+      "correctIndex": 1
+    }
+  ]
+}

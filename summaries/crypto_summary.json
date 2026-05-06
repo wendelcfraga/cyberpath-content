@@ -1,0 +1,484 @@
+{
+  "quiz": [
+    {
+      "id": 801,
+      "question": "Qual é a principal diferença entre criptografia simétrica e assimétrica?",
+      "options": [
+        "A simétrica é mais lenta que a assimétrica.",
+        "A simétrica usa a mesma chave para criptografar e descriptografar, enquanto a assimétrica usa um par de chaves (pública e privada).",
+        "A simétrica só funciona para textos curtos.",
+        "A assimétrica não requer chaves."
+      ],
+      "correctAnswer": "A simétrica usa a mesma chave para criptografar e descriptografar, enquanto a assimétrica usa um par de chaves (pública e privada).",
+      "explanation": "Na criptografia simétrica (ex: AES), uma única chave secreta é partilhada. Na assimétrica (ex: RSA), uma chave pública é usada para criptografar e uma chave privada secreta é usada para descriptografar."
+    },
+    {
+      "id": 802,
+      "question": "Qual algoritmo de criptografia simétrica é o padrão atual recomendado pelo NIST (National Institute of Standards and Technology)?",
+      "options": [
+        "DES (Data Encryption Standard)",
+        "3DES (Triple DES)",
+        "AES (Advanced Encryption Standard)",
+        "RC4"
+      ],
+      "correctAnswer": "AES (Advanced Encryption Standard)",
+      "explanation": "O AES é o padrão global para criptografia simétrica, oferecendo um excelente balanço entre segurança e performance com tamanhos de chave de 128, 192 ou 256 bits."
+    },
+    {
+      "id": 803,
+      "question": "No protocolo TLS/SSL, para que é usada a criptografia assimétrica durante o 'handshake' inicial?",
+      "options": [
+        "Para criptografar todos os dados da comunicação.",
+        "Para partilhar de forma segura a chave de sessão simétrica que será usada para criptografar o resto da comunicação.",
+        "Para comprimir os dados antes de os enviar.",
+        "Para verificar a versão do navegador do cliente."
+      ],
+      "correctAnswer": "Para partilhar de forma segura a chave de sessão simétrica que será usada para criptografar o resto da comunicação.",
+      "explanation": "A criptografia assimétrica é lenta. Por isso, é usada apenas no início para estabelecer um canal seguro e negociar uma chave simétrica rápida que criptografará os dados da sessão."
+    },
+    {
+      "id": 804,
+      "question": "O que garante uma função de hash criptográfica como o SHA-256?",
+      "options": [
+        "Confidencialidade (só o destinatário pode ler)",
+        "Autenticidade (prova quem enviou a mensagem)",
+        "Integridade (prova que a mensagem não foi alterada)",
+        "Disponibilidade (a mensagem está sempre acessível)"
+      ],
+      "correctAnswer": "Integridade (prova que a mensagem não foi alterada)",
+      "explanation": "Um hash é uma impressão digital única dos dados. Se um único bit dos dados for alterado, o hash resultante será completamente diferente, o que permite verificar a integridade."
+    },
+    {
+      "id": 805,
+      "question": "Por que o MD5 e o SHA-1 não são mais considerados seguros para a maioria das aplicações criptográficas, como assinaturas digitais?",
+      "options": [
+        "Porque são muito lentos.",
+        "Porque são vulneráveis a 'colisões', onde um atacante pode criar um arquivo malicioso que tem o mesmo hash de um arquivo legítimo.",
+        "Porque não são de código aberto.",
+        "Porque só suportam chaves de 64 bits."
+      ],
+      "correctAnswer": "Porque são vulneráveis a 'colisões', onde um atacante pode criar um arquivo malicioso que tem o mesmo hash de um arquivo legítimo.",
+      "explanation": "A descoberta de colisões práticas no MD5 e SHA-1 significa que eles já não garantem a integridade de forma fiável para fins de segurança."
+    },
+    {
+      "id": 806,
+      "question": "O que é uma 'assinatura digital'?",
+      "options": [
+        "Uma imagem digitalizada da sua assinatura manuscrita.",
+        "Um hash dos dados que é criptografado com a chave privada do remetente.",
+        "Um carimbo de data/hora que prova quando um documento foi criado.",
+        "O nome do remetente adicionado ao final de um email."
+      ],
+      "correctAnswer": "Um hash dos dados que é criptografado com a chave privada do remetente.",
+      "explanation": "Uma assinatura digital garante autenticidade (só o dono da chave privada a pode ter criado), integridade (o hash prova que os dados não foram alterados) e não-repúdio (o remetente não pode negar que a enviou)."
+    },
+    {
+      "id": 807,
+      "question": "Na Infraestrutura de Chave Pública (PKI), qual é o papel de uma Autoridade Certificadora (CA)?",
+      "options": [
+        "Gerar chaves privadas para todos os utilizadores.",
+        "Monitorizar o tráfego da internet em busca de ataques.",
+        "Verificar a identidade de uma entidade (pessoa ou site) e assinar digitalmente a sua chave pública, criando um certificado digital confiável.",
+        "Armazenar todos os certificados digitais do mundo."
+      ],
+      "correctAnswer": "Verificar a identidade de uma entidade (pessoa ou site) e assinar digitalmente a sua chave pública, criando um certificado digital confiável.",
+      "explanation": "As CAs são a espinha dorsal da confiança na web. Os navegadores confiam num conjunto de CAs raiz, e essa confiança é estendida aos certificados que elas emitem."
+    },
+    {
+      "id": 808,
+      "question": "O que é um ataque 'Man-in-the-Middle' (MitM)?",
+      "options": [
+        "Um ataque de força bruta a uma password.",
+        "Um ataque onde o atacante se posiciona secretamente entre duas partes (ex: cliente e servidor) e interceta, lê e possivelmente modifica a comunicação.",
+        "Um ataque que inunda um servidor com tráfego para o deixar offline.",
+        "Um ataque que explora uma falha de XSS."
+      ],
+      "correctAnswer": "Um ataque onde o atacante se posiciona secretamente entre duas partes (ex: cliente e servidor) e interceta, lê e possivelmente modifica a comunicação.",
+      "explanation": "O uso correto de TLS/HTTPS, com validação de certificados, é a principal defesa contra ataques MitM na web."
+    },
+    {
+      "id": 809,
+      "question": "Para que serve a parte da 'Assinatura' (Signature) num JSON Web Token (JWT)?",
+      "options": [
+        "Para esconder (criptografar) os dados da Payload.",
+        "Para garantir que o Header e a Payload não foram alterados em trânsito (integridade) e para verificar quem emitiu o token (autenticidade).",
+        "Para definir o tempo de vida do token.",
+        "Para comprimir o token e torná-lo mais pequeno."
+      ],
+      "correctAnswer": "Para garantir que o Header e a Payload não foram alterados em trânsito (integridade) e para verificar quem emitiu o token (autenticidade).",
+      "explanation": "A assinatura é a parte de segurança mais crítica de um JWT. Sem a sua validação correta, um atacante pode forjar tokens com quaisquer permissões."
+    },
+    {
+      "id": 810,
+      "question": "O que é 'Perfect Forward Secrecy' (PFS)?",
+      "options": [
+        "Um algoritmo de criptografia que é matematicamente impossível de quebrar.",
+        "Uma propriedade de protocolos de troca de chaves que garante que, se a chave privada de longo prazo de um servidor for comprometida, as chaves de sessão passadas não podem ser descriptografadas.",
+        "Um sistema que apaga automaticamente as chaves após o uso.",
+        "Um tipo de assinatura digital que nunca expira."
+      ],
+      "correctAnswer": "Uma propriedade de protocolos de troca de chaves que garante que, se a chave privada de longo prazo de um servidor for comprometida, as chaves de sessão passadas não podem ser descriptografadas.",
+      "explanation": "O PFS usa chaves de sessão efémeras (temporárias), garantindo que cada sessão tenha uma chave única e independente, o que limita enormemente o impacto do comprometimento de uma chave de longo prazo."
+    },
+    {
+      "id": 811,
+      "question": "Qual é a principal função do 'salt' ao fazer o hash de senhas?",
+      "options": [
+        "Acelerar o processo de hashing.",
+        "Tornar o hash mais curto.",
+        "Garantir que utilizadores com a mesma senha tenham hashes diferentes, mitigando ataques de 'rainbow table'.",
+        "Adicionar uma camada de criptografia ao hash."
+      ],
+      "correctAnswer": "Garantir que utilizadores com a mesma senha tenham hashes diferentes, mitigando ataques de 'rainbow table'.",
+      "explanation": "O 'salt' é um valor aleatório único para cada utilizador. Ao combiná-lo com a senha antes do hashing, ele derrota as tabelas de hashes pré-computados."
+    },
+    {
+      "id": 812,
+      "question": "O que é 'key stretching' (ou 'key derivation functions' como PBKDF2, bcrypt)?",
+      "options": [
+        "Um método para aumentar o tamanho de uma chave criptográfica.",
+        "Um processo que torna o cálculo do hash de uma senha intencionalmente lento, executando o algoritmo de hash milhares de vezes.",
+        "Uma técnica para partilhar chaves de forma segura.",
+        "Um algoritmo para gerar chaves aleatórias."
+      ],
+      "correctAnswer": "Um processo que torna o cálculo do hash de uma senha intencionalmente lento, executando o algoritmo de hash milhares de vezes.",
+      "explanation": "A lentidão do 'key stretching' torna os ataques de força bruta contra os hashes extremamente caros e demorados para um atacante."
+    },
+    {
+      "id": 813,
+      "question": "Qual é o risco de usar um gerador de números aleatórios (RNG) que não é criptograficamente seguro para gerar chaves ou tokens?",
+      "options": [
+        "Pode diminuir a performance da aplicação.",
+        "Os números gerados podem ser previsíveis, permitindo que um atacante adivinhe as chaves, os tokens de sessão ou os tokens de redefinição de senha.",
+        "Pode gerar números repetidos com frequência.",
+        "Não há risco, qualquer RNG é suficiente."
+      ],
+      "correctAnswer": "Os números gerados podem ser previsíveis, permitindo que um atacante adivinhe as chaves, os tokens de sessão ou os tokens de redefinição de senha.",
+      "explanation": "A segurança de muitos sistemas criptográficos depende da imprevisibilidade dos números aleatórios. É crucial usar um 'Cryptographically Secure Pseudorandom Number Generator' (CSPRNG)."
+    },
+    {
+      "id": 814,
+      "question": "Na criptografia assimétrica, o que se pode fazer com a chave pública de alguém?",
+      "options": [
+        "Descriptografar mensagens enviadas por essa pessoa.",
+        "Assinar digitalmente mensagens como se fosse essa pessoa.",
+        "Criptografar uma mensagem que só essa pessoa (com a sua chave privada) pode descriptografar.",
+        "Obter a chave privada dessa pessoa."
+      ],
+      "correctAnswer": "Criptografar uma mensagem que só essa pessoa (com a sua chave privada) pode descriptografar.",
+      "explanation": "A chave pública é usada para cifrar e verificar assinaturas, enquanto a chave privada é usada para decifrar e criar assinaturas."
+    },
+    {
+      "id": 815,
+      "question": "O que é um ataque de 'padding oracle'?",
+      "options": [
+        "Um ataque que adivinha o 'padding' de uma página web.",
+        "Um ataque a um sistema criptográfico que usa as mensagens de erro de 'padding inválido' para, de forma incremental, descriptografar uma mensagem cifrada sem conhecer a chave.",
+        "Um ataque que adiciona 'padding' excessivo para causar uma negação de serviço.",
+        "Um ataque que rouba as chaves de 'padding'."
+      ],
+      "correctAnswer": "Um ataque a um sistema criptográfico que usa as mensagens de erro de 'padding inválido' para, de forma incremental, descriptografar uma mensagem cifrada sem conhecer a chave.",
+      "explanation": "Este ataque explora uma falha de implementação onde o servidor revela se o 'padding' de uma mensagem decifrada está correto ou não, funcionando como um 'oráculo'."
+    },
+    {
+      "id": 816,
+      "question": "Qual é a principal vantagem da Criptografia de Curva Elíptica (ECC) sobre o RSA?",
+      "options": [
+        "É mais antiga e mais testada.",
+        "Oferece o mesmo nível de segurança com chaves significativamente mais pequenas, o que a torna mais eficiente e ideal para dispositivos com menos poder computacional.",
+        "É imune a ataques de computadores quânticos.",
+        "Não requer uma Autoridade Certificadora."
+      ],
+      "correctAnswer": "Oferece o mesmo nível de segurança com chaves significativamente mais pequenas, o que a torna mais eficiente e ideal para dispositivos com menos poder computacional.",
+      "explanation": "Por exemplo, uma chave ECC de 256 bits oferece uma segurança comparável a uma chave RSA de 3072 bits, resultando em menos sobrecarga computacional e de rede."
+    },
+    {
+      "id": 817,
+      "question": "O que é 'End-to-End Encryption' (E2EE)?",
+      "options": [
+        "Criptografia que só protege o 'fim' do cabo de rede.",
+        "Um sistema onde os dados são criptografados no dispositivo do remetente e só podem ser descriptografados no dispositivo do destinatário, e nem mesmo o provedor do serviço consegue aceder ao conteúdo.",
+        "Um sinónimo para HTTPS.",
+        "Um sistema que criptografa os dados apenas no servidor."
+      ],
+      "correctAnswer": "Um sistema onde os dados são criptografados no dispositivo do remetente e só podem ser descriptografados no dispositivo do destinatário, e nem mesmo o provedor do serviço consegue aceder ao conteúdo.",
+      "explanation": "Aplicações de mensagens como o Signal e o WhatsApp usam E2EE para garantir a máxima privacidade e confidencialidade da comunicação."
+    },
+    {
+      "id": 818,
+      "question": "No contexto do TLS, o que é um 'Cipher Suite'?",
+      "options": [
+        "Um software de segurança para encriptação.",
+        "Um conjunto nomeado de algoritmos que define como a comunicação segura será estabelecida, incluindo o algoritmo de troca de chaves, o de criptografia em massa e o de código de autenticação de mensagem (MAC).",
+        "A versão do protocolo TLS.",
+        "Um tipo de certificado digital."
+      ],
+      "correctAnswer": "Um conjunto nomeado de algoritmos que define como a comunicação segura será estabelecida, incluindo o algoritmo de troca de chaves, o de criptografia em massa e o de código de autenticação de mensagem (MAC).",
+      "explanation": "Ex: `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` especifica o uso de ECDHE, RSA, AES-128-GCM e SHA256 para diferentes partes do processo."
+    },
+    {
+      "id": 819,
+      "question": "Qual é o principal risco de uma implementação criptográfica 'caseira' (não usar bibliotecas padrão e testadas)?",
+      "options": [
+        "Pode ser mais rápida que as bibliotecas padrão.",
+        "É quase certo que conterá falhas subtis e catastróficas que não são óbvias, mas que podem ser exploradas por especialistas.",
+        "Pode ser mais difícil de integrar com outros sistemas.",
+        "Não há risco, apenas inovação."
+      ],
+      "correctAnswer": "É quase certo que conterá falhas subtis e catastróficas que não são óbvias, mas que podem ser exploradas por especialistas.",
+      "explanation": "A primeira regra da criptografia é: 'não implemente a sua própria criptografia'. As bibliotecas padrão foram rigorosamente analisadas pela comunidade de segurança."
+    },
+    {
+      "id": 820,
+      "question": "Qual é o propósito de um 'nonce' ou 'IV' (Vetor de Inicialização) em cifras de bloco?",
+      "options": [
+        "É um valor secreto que funciona como uma segunda chave.",
+        "É um número aleatório ou pseudo-aleatório que garante que a criptografia da mesma mensagem de texto plano resulte num texto cifrado diferente a cada vez.",
+        "É um carimbo de data/hora para a mensagem.",
+        "É usado para comprimir a mensagem antes de a criptografar."
+      ],
+      "correctAnswer": "É um número aleatório ou pseudo-aleatório que garante que a criptografia da mesma mensagem de texto plano resulte num texto cifrado diferente a cada vez.",
+      "explanation": "O uso de um 'nonce' ou 'IV' previne que um atacante consiga detetar padrões no texto cifrado, o que poderia levar a ataques de análise de frequência."
+    },
+    {
+      "id": 821,
+      "question": "O que é um ataque de 'replay'?",
+      "options": [
+        "Um ataque que repete uma música indesejada.",
+        "Um ataque onde um atacante interceta uma comunicação válida e a retransmite mais tarde para se passar por um utilizador legítimo ou repetir uma ação.",
+        "Um ataque que força a vítima a repetir a sua password.",
+        "Um ataque que explora a repetição de caracteres numa mensagem."
+      ],
+      "correctAnswer": "Um ataque onde um atacante interceta uma comunicação válida e a retransmite mais tarde para se passar por um utilizador legítimo ou repetir uma ação.",
+      "explanation": "Defesas contra ataques de 'replay' incluem o uso de 'nonces', carimbos de data/hora ou contadores de sequência para garantir que cada mensagem seja única e processada apenas uma vez."
+    },
+    {
+      "id": 822,
+      "question": "A criptografia protege contra qual dos três pilares da segurança da informação (Tríade CIA)?",
+      "options": [
+        "Disponibilidade (Availability)",
+        "Integridade (Integrity)",
+        "Confidencialidade (Confidentiality)",
+        "Todas as opções acima."
+      ],
+      "correctAnswer": "Confidencialidade (Confidentiality)",
+      "explanation": "O principal objetivo da criptografia é garantir a confidencialidade, ou seja, impedir que partes não autorizadas consigam ler a informação. A integridade é geralmente garantida por hashes e assinaturas."
+    },
+    {
+      "id": 823,
+      "question": "Qual é a principal ameaça que a computação quântica representa para a criptografia atual?",
+      "options": [
+        "Nenhuma, a criptografia atual é resistente a computadores quânticos.",
+        "Computadores quânticos podem quebrar os algoritmos de criptografia simétrica (como o AES) instantaneamente.",
+        "Computadores quânticos, usando o algoritmo de Shor, serão capazes de quebrar eficientemente os algoritmos de criptografia assimétrica baseados em fatoração (como o RSA) e logaritmos discretos (ECC).",
+        "A computação quântica só afeta o hashing, não a criptografia."
+      ],
+      "correctAnswer": "Computadores quânticos, usando o algoritmo de Shor, serão capazes de quebrar eficientemente os algoritmos de criptografia assimétrica baseados em fatoração (como o RSA) e logaritmos discretos (ECC).",
+      "explanation": "Este é um dos maiores desafios da criptografia moderna. A comunidade está a trabalhar ativamente em algoritmos 'pós-quânticos' para substituir os atuais."
+    },
+    {
+      "id": 824,
+      "question": "O que é um 'Hardware Security Module' (HSM)?",
+      "options": [
+        "Um software de firewall para hardware.",
+        "Um dispositivo físico especializado que protege e gere chaves digitais para criptografia forte, e que também executa operações criptográficas.",
+        "Um tipo de disco rígido que se auto-destrói.",
+        "Um módulo de segurança para a Estação Espacial Internacional."
+      ],
+      "correctAnswer": "Um dispositivo físico especializado que protege e gere chaves digitais para criptografia forte, e que também executa operações criptográficas.",
+      "explanation": "Os HSMs são projetados para serem invioláveis (tamper-resistant) e garantem que as chaves privadas nunca saiam do dispositivo, oferecendo o mais alto nível de segurança para o gerenciamento de chaves."
+    },
+    {
+      "id": 825,
+      "question": "O que é 'homomorphic encryption' (criptografia homomórfica)?",
+      "options": [
+        "Um tipo de criptografia que se parece com outras cifras.",
+        "Uma forma de criptografia que permite que cálculos computacionais sejam realizados em dados criptografados sem que eles precisem de ser descriptografados primeiro.",
+        "Um algoritmo de criptografia que só funciona em dados homogéneos.",
+        "Um sistema que usa a mesma chave para todos os utilizadores."
+      ],
+      "correctAnswer": "Uma forma de criptografia que permite que cálculos computacionais sejam realizados em dados criptografados sem que eles precisem de ser descriptografados primeiro.",
+      "explanation": "A criptografia homomórfica é uma área de pesquisa muito ativa que pode revolucionar a computação em nuvem segura, permitindo o processamento de dados sensíveis sem nunca os expor."
+    },
+    {
+      "id": 826,
+      "question": "Qual é o objetivo de um HMAC (Hash-based Message Authentication Code)?",
+      "options": [
+        "Apenas garantir a integridade de uma mensagem.",
+        "Garantir tanto a integridade quanto a autenticidade de uma mensagem usando uma chave secreta partilhada.",
+        "Criptografar a mensagem inteira.",
+        "Verificar se a mensagem foi enviada por uma Autoridade Certificadora."
+      ],
+      "correctAnswer": "Garantir tanto a integridade quanto a autenticidade de uma mensagem usando uma chave secreta partilhada.",
+      "explanation": "Ao contrário de um hash simples, um HMAC combina a mensagem com uma chave secreta antes do hashing, o que prova não só que a mensagem não foi alterada, mas também que foi criada por alguém que possui a chave."
+    },
+    {
+      "id": 827,
+      "question": "Por que é importante usar 'Authenticated Encryption' (AEAD - Authenticated Encryption with Associated Data), como o AES-GCM?",
+      "options": [
+        "Porque é o único modo de criptografia que funciona em dispositivos móveis.",
+        "Porque combina a criptografia de dados (confidencialidade) com um código de autenticação (integridade e autenticidade) numa única operação, de forma segura.",
+        "Porque permite que dados não autenticados sejam incluídos na criptografia.",
+        "Porque é mais rápido que outros modos de AES."
+      ],
+      "correctAnswer": "Porque combina a criptografia de dados (confidencialidade) com um código de autenticação (integridade e autenticidade) numa única operação, de forma segura.",
+      "explanation": "Modos AEAD como o AES-GCM são a recomendação padrão para a criptografia simétrica moderna porque previnem erros de implementação comuns onde a criptografia e a autenticação são aplicadas de forma separada e insegura."
+    },
+    {
+      "id": 828,
+      "question": "O que é um 'ataque de canal lateral' (side-channel attack)?",
+      "options": [
+        "Um ataque que explora uma porta de rede secundária.",
+        "Um ataque que não explora uma fraqueza no algoritmo criptográfico em si, mas sim na sua implementação física, como medir o consumo de energia, o tempo de execução ou as emanações eletromagnéticas para inferir a chave secreta.",
+        "Um ataque que usa engenharia social para obter a chave.",
+        "Um ataque que ocorre num canal de comunicação paralelo."
+      ],
+      "correctAnswer": "Um ataque que não explora uma fraqueza no algoritmo criptográfico em si, mas sim na sua implementação física, como medir o consumo de energia, o tempo de execução ou as emanações eletromagnéticas para inferir a chave secreta.",
+      "explanation": "Ataques de canal lateral são uma ameaça séria para dispositivos de hardware como cartões inteligentes e HSMs."
+    },
+    {
+      "id": 829,
+      "question": "No protocolo Diffie-Hellman, o que é que os dois participantes trocam publicamente?",
+      "options": [
+        "A chave de sessão final.",
+        "As suas chaves privadas.",
+        "Valores numéricos derivados das suas chaves privadas e de parâmetros públicos partilhados.",
+        "As suas passwords."
+      ],
+      "correctAnswer": "Valores numéricos derivados das suas chaves privadas e de parâmetros públicos partilhados.",
+      "explanation": "O protocolo Diffie-Hellman permite que duas partes estabeleçam uma chave secreta partilhada através de um canal de comunicação inseguro sem que as suas chaves privadas sejam expostas. É a base do 'Forward Secrecy'."
+    },
+    {
+      "id": 830,
+      "question": "Qual é um risco comum na gestão de segredos em sistemas de CI/CD (Continuous Integration/Continuous Deployment)?",
+      "options": [
+        "Os sistemas de CI/CD não usam segredos.",
+        "Expor segredos (chaves de API, credenciais) em logs de compilação ou guardá-los em texto plano em ficheiros de configuração no repositório de código.",
+        "O processo de CI/CD ser muito rápido.",
+        "Os segredos serem demasiado longos."
+      ],
+      "correctAnswer": "Expor segredos (chaves de API, credenciais) em logs de compilação ou guardá-los em texto plano em ficheiros de configuração no repositório de código.",
+      "explanation": "A gestão segura de segredos em pipelines de CI/CD é um desafio crítico e requer o uso de cofres de segredos (vaults) integrados, como o HashiCorp Vault ou os serviços de gestão de segredos das plataformas de nuvem."
+    },
+    {
+      "id": 831,
+      "question": "O que é um 'ataque de colisão de hash'?",
+      "options": [
+        "Quando dois computadores colidem ao tentar calcular o mesmo hash.",
+        "O ato de encontrar duas entradas diferentes que produzem exatamente a mesma saída de hash.",
+        "Um erro de software que causa um crash na função de hash.",
+        "Um ataque que tenta fazer colisões na rede."
+      ],
+      "correctAnswer": "O ato de encontrar duas entradas diferentes que produzem exatamente a mesma saída de hash.",
+      "explanation": "Se um atacante consegue criar uma colisão, ele pode criar um documento malicioso que tem a mesma assinatura digital de um documento legítimo, quebrando a garantia de integridade."
+    },
+    {
+      "id": 832,
+      "question": "O que é o 'Princípio de Kerckhoffs' em criptografia?",
+      "options": [
+        "A segurança de um sistema deve depender apenas da dificuldade de adivinhar a password.",
+        "Um sistema criptográfico deve ser seguro mesmo que tudo sobre o sistema, exceto a chave, seja de conhecimento público.",
+        "A criptografia só é segura se o algoritmo for mantido em segredo.",
+        "As chaves devem ser sempre o mais longas possível."
+      ],
+      "correctAnswer": "Um sistema criptográfico deve ser seguro mesmo que tudo sobre o sistema, exceto a chave, seja de conhecimento público.",
+      "explanation": "Este princípio, também conhecido como 'segurança por obscuridade é má', é a base da criptografia moderna, onde algoritmos abertos e publicamente analisados são considerados os mais fortes."
+    },
+    {
+      "id": 833,
+      "question": "Qual das seguintes afirmações sobre 'salting' de senhas é a mais correta?",
+      "options": [
+        "Um 'salt' deve ser o mesmo para todos os utilizadores para ser eficiente.",
+        "Um 'salt' deve ser um valor longo, aleatório e único para cada utilizador, e deve ser armazenado junto com o hash da senha.",
+        "O 'salt' deve ser mantido em segredo do utilizador.",
+        "O 'salt' torna o hash reversível."
+      ],
+      "correctAnswer": "Um 'salt' deve ser um valor longo, aleatório e único para cada utilizador, e deve ser armazenado junto com o hash da senha.",
+      "explanation": "O 'salt' não precisa de ser secreto, apenas único. A sua função é garantir que cada hash seja único, mesmo que as senhas sejam iguais."
+    },
+    {
+      "id": 834,
+      "question": "Qual é a principal diferença entre um 'block cipher' (cifra de bloco) como o AES e um 'stream cipher' (cifra de fluxo) como o ChaCha20?",
+      "options": [
+        "As cifras de bloco são mais rápidas.",
+        "As cifras de bloco operam em blocos de dados de tamanho fixo, enquanto as cifras de fluxo operam em unidades mais pequenas de dados, como bits ou bytes, um de cada vez.",
+        "As cifras de fluxo não usam chaves.",
+        "As cifras de bloco são mais seguras."
+      ],
+      "correctAnswer": "As cifras de bloco operam em blocos de dados de tamanho fixo, enquanto as cifras de fluxo operam em unidades mais pequenas de dados, como bits ou bytes, um de cada vez.",
+      "explanation": "As cifras de fluxo são frequentemente mais rápidas e têm menos requisitos de memória, tornando-as adequadas para streaming de dados ou hardware com recursos limitados."
+    },
+    {
+      "id": 835,
+      "question": "Por que é que o modo de operação ECB (Electronic Codebook) para cifras de bloco é considerado inseguro?",
+      "options": [
+        "Porque é muito lento.",
+        "Porque criptografa cada bloco de dados de forma idêntica e independente, o que significa que blocos de texto plano idênticos resultam em blocos de texto cifrado idênticos, revelando padrões.",
+        "Porque requer chaves muito longas.",
+        "Porque não é compatível com AES."
+      ],
+      "correctAnswer": "Porque criptografa cada bloco de dados de forma idêntica e independente, o que significa que blocos de texto plano idênticos resultam em blocos de texto cifrado idênticos, revelando padrões.",
+      "explanation": "Isto é famoso por ser demonstrado com a imagem de um pinguim, onde a silhueta do pinguim permanece visível mesmo após a criptografia. Modos como o CBC ou GCM resolvem este problema."
+    },
+    {
+      "id": 836,
+      "question": "O que é 'data at rest'?",
+      "options": [
+        "Dados que estão em repouso num banco de dados, disco ou outro meio de armazenamento.",
+        "Dados que estão a ser transferidos através de uma rede.",
+        "Dados que estão a ser processados na memória RAM.",
+        "Dados que foram arquivados e não são mais usados."
+      ],
+      "correctAnswer": "Dados que estão em repouso num banco de dados, disco ou outro meio de armazenamento.",
+      "explanation": "A proteção de 'data at rest' é crucial para prevenir vazamentos de dados caso um atacante obtenha acesso físico ou lógico aos sistemas de armazenamento."
+    },
+    {
+      "id": 837,
+      "question": "Qual o propósito de um 'nonce' em criptografia?",
+      "options": [
+        "Um número que só pode ser usado uma vez ('number used once') para garantir que uma mensagem ou sessão é única e para prevenir ataques de 'replay'.",
+        "Um nome de utilizador anónimo.",
+        "Uma forma de comprimir dados criptografados.",
+        "Uma chave de criptografia de uso único."
+      ],
+      "correctAnswer": "Um número que só pode ser usado uma vez ('number used once') para garantir que uma mensagem ou sessão é única e para prevenir ataques de 'replay'.",
+      "explanation": "Ao incluir um 'nonce' numa comunicação, o servidor pode garantir que uma requisição que acabou de receber nunca foi vista antes, derrotando tentativas de retransmitir requisições antigas."
+    },
+    {
+      "id": 838,
+      "question": "O que é um 'ataque de aniversário' (birthday attack) contra funções de hash?",
+      "options": [
+        "Um ataque que só funciona no aniversário do alvo.",
+        "Um ataque baseado na matemática do 'paradoxo do aniversário', que mostra que a probabilidade de encontrar uma colisão de hash é muito maior do que se esperaria por força bruta.",
+        "Um ataque que tenta adivinhar a data de nascimento de alguém a partir do seu hash.",
+        "Um tipo de ataque de engenharia social."
+      ],
+      "correctAnswer": "Um ataque baseado na matemática do 'paradoxo do aniversário', que mostra que a probabilidade de encontrar uma colisão de hash é muito maior do que se esperaria por força bruta.",
+      "explanation": "Este ataque é a razão pela qual os tamanhos de saída de hash (ex: 256 bits) precisam de ser significativamente maiores do que o nível de segurança desejado (ex: 128 bits)."
+    },
+    {
+      "id": 839,
+      "question": "O que é 'Certificate Transparency' (CT)?",
+      "options": [
+        "Uma política que torna o conteúdo de todos os certificados públicos.",
+        "Um sistema de logs públicos, abertos e auditáveis que registam todos os certificados SSL/TLS emitidos por Autoridades Certificadoras.",
+        "Um software que torna os certificados transparentes no ecrã.",
+        "Uma lei que exige que as CAs sejam transparentes sobre os seus lucros."
+      ],
+      "correctAnswer": "Um sistema de logs públicos, abertos e auditáveis que registam todos os certificados SSL/TLS emitidos por Autoridades Certificadoras.",
+      "explanation": "O CT ajuda a detetar certificados emitidos indevidamente ou maliciosamente, tornando o ecossistema de PKI mais seguro e auditável."
+    },
+    {
+      "id": 840,
+      "question": "Qual é a melhor maneira de gerir segredos de aplicação (chaves de API, senhas de banco de dados)?",
+      "options": [
+        "Colocá-los diretamente no código-fonte para fácil acesso.",
+        "Armazená-los num ficheiro de texto na raiz do projeto.",
+        "Usar um serviço de gestão de segredos dedicado (como HashiCorp Vault, AWS Secrets Manager ou Azure Key Vault) e injetá-los na aplicação em tempo de execução.",
+        "Enviá-los por email para a equipa de desenvolvimento."
+      ],
+      "correctAnswer": "Usar um serviço de gestão de segredos dedicado (como HashiCorp Vault, AWS Secrets Manager ou Azure Key Vault) e injetá-los na aplicação em tempo de execução.",
+      "explanation": "A gestão de segredos é um pilar da segurança de aplicações modernas. Manter os segredos fora do código e injetá-los de forma segura é a única prática recomendada."
+    }
+  ]
+}

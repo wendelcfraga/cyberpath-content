@@ -1,0 +1,11 @@
+{
+  "id": "lab_sql_injection_blind",
+  "title": "Blind SQL Injection",
+  "steps": [
+    "Identifique um parâmetro vulnerável que não retorna erro.",
+    "Use condicionais booleanas para testar a resposta (AND 1=1).",
+    "Extraia o nome do banco de dados caractere por caractere.",
+    "Capture a flag da tabela 'secret_admin'."
+  ],
+  "flag": "CP{B1ind_SQLi_M4st3r}"
+}

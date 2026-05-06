@@ -1,0 +1,28 @@
+{
+  "quiz": [
+    {
+      "id": 801,
+      "question": "Qual é a principal função do Android Sandbox?",
+      "options": [
+        "Acelerar o desempenho dos aplicativos.",
+        "Isolar aplicativos uns dos outros para que um não possa acessar dados de outro sem permissão.",
+        "Permitir que o usuário instale apps de fontes desconhecidas.",
+        "Criptografar automaticamente o cartão SD."
+      ],
+      "correctAnswer": "Isolar aplicativos uns dos outros para que um não possa acessar dados de outro sem permissão.",
+      "explanation": "Cada aplicativo Android roda com seu próprio User ID (UID) em um processo separado, criando uma barreira de segurança conhecida como sandbox."
+    },
+    {
+      "id": 802,
+      "question": "O que acontece se um aplicativo tenta acessar a câmera sem declarar a permissão no AndroidManifest.xml?",
+      "options": [
+        "O Android concede a permissão automaticamente.",
+        "O aplicativo trava ou recebe uma exceção de segurança.",
+        "A câmera tira fotos em baixa resolução.",
+        "O usuário é solicitado a conceder a permissão na hora."
+      ],
+      "correctAnswer": "O aplicativo trava ou recebe uma exceção de segurança.",
+      "explanation": "No Android, todas as permissões necessárias devem ser declaradas no manifesto. Se não houver declaração, o sistema nega o acesso por padrão."
+    }
+  ]
+}

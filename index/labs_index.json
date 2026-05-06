@@ -1,0 +1,144 @@
+{
+  "labs": [
+    {
+      "id": 201,
+      "title": "SQL Injection (SQLi)",
+      "description": "Explore uma falha de autenticação num ecrã de login para obter acesso sem credenciais.",
+      "category": "Web",
+      "difficulty": "Médio",
+      "xp": 50,
+      "iconName": "ic_sql_injection",
+      "contentFile": "labs/lab_sqli.json"
+    },
+    {
+      "id": 202,
+      "title": "Cross-Site Scripting (XSS)",
+      "description": "Injete um script num campo de pesquisa para executar um alerta no navegador simulado.",
+      "category": "Web",
+      "difficulty": "Fácil",
+      "xp": 30,
+      "iconName": "ic_xss",
+      "contentFile": "labs/lab_xss.json"
+    },
+    {
+      "id": 203,
+      "title": "Quebra de Controlo de Acesso (IDOR)",
+      "description": "Altere um parâmetro na URL para visualizar informações de um perfil de outro utilizador.",
+      "category": "Web",
+      "difficulty": "Médio",
+      "xp": 50,
+      "iconName": "ic_broken_access",
+      "contentFile": "labs/lab_idor.json"
+    },
+    {
+      "id": 211,
+      "title": "Scanning com Nmap",
+      "description": "Aprenda a identificar portas abertas e serviços em um alvo remoto.",
+      "category": "Network",
+      "difficulty": "Fácil",
+      "xp": 50,
+      "iconName": "ic_network_scan",
+      "contentFile": "labs/lab_nmap.json"
+    },
+    {
+      "id": 204,
+      "title": "Armazenamento Inseguro (Mobile)",
+      "description": "Analise o armazenamento local da aplicação para encontrar credenciais guardadas em texto simples.",
+      "category": "Mobile",
+      "difficulty": "Fácil",
+      "xp": 30,
+      "iconName": "ic_mobile_insecure_storage",
+      "contentFile": "labs/lab_insecure_storage.json"
+    },
+    {
+      "id": 212,
+      "title": "Permissões Linux",
+      "description": "Entenda e manipule permissões rwx e escalação básica de privilégios.",
+      "category": "OS",
+      "difficulty": "Médio",
+      "xp": 50,
+      "iconName": "ic_linux",
+      "contentFile": "labs/lab_linux_perms.json"
+    },
+    {
+      "id": 205,
+      "title": "Má Configuração de Segurança",
+      "description": "Descubra um diretório de administração exposto publicamente no servidor web.",
+      "category": "Web",
+      "difficulty": "Fácil",
+      "xp": 30,
+      "iconName": "ic_security_misconfiguration",
+      "contentFile": "labs/lab_misconfig.json"
+    },
+    {
+      "id": 206,
+      "title": "Componentes Vulneráveis",
+      "description": "Identifique uma biblioteca de terceiros desatualizada com uma vulnerabilidade conhecida (CVE).",
+      "category": "Web",
+      "difficulty": "Difícil",
+      "xp": 100,
+      "iconName": "ic_vulnerable_components",
+      "contentFile": "labs/lab_components.json"
+    },
+    {
+      "id": 207,
+      "title": "Server-Side Request Forgery (SSRF)",
+      "description": "Force a aplicação a fazer uma requisição para um serviço interno da rede.",
+      "category": "Web",
+      "difficulty": "Difícil",
+      "xp": 100,
+      "iconName": "ic_ssrf",
+      "contentFile": "labs/lab_ssrf.json"
+    },
+    {
+      "id": 208,
+      "title": "Credenciais Hardcoded (Mobile)",
+      "description": "Encontre uma chave de API secreta que foi deixada diretamente no código da aplicação.",
+      "category": "Mobile",
+      "difficulty": "Fácil",
+      "xp": 30,
+      "iconName": "ic_hardcoded_credentials",
+      "contentFile": "labs/lab_hardcoded.json"
+    },
+    {
+      "id": 209,
+      "title": "Falta de Certificate Pinning (Mobile)",
+      "description": "Simule uma interceção de tráfego para visualizar dados sensíveis enviados pela rede.",
+      "category": "Mobile",
+      "difficulty": "Médio",
+      "xp": 50,
+      "iconName": "ic_certificate_pinning",
+      "contentFile": "labs/lab_pinning.json"
+    },
+    {
+      "id": 210,
+      "title": "Exposição de Dados Sensíveis",
+      "description": "Analise uma resposta de API para encontrar dados de utilizador que não deveriam estar expostos.",
+      "category": "Web",
+      "difficulty": "Médio",
+      "xp": 50,
+      "iconName": "ic_sensitive_data",
+      "contentFile": "labs/lab_sensitive.json"
+    },
+    {
+      "id": 401,
+      "title": "Exploração de S3 Buckets",
+      "description": "Simule a busca por arquivos sensíveis em um bucket S3 mal configurado.",
+      "category": "Cloud",
+      "difficulty": "Médio",
+      "xp": 100,
+      "iconName": "ic_cloud",
+      "contentFile": "labs/lab_cloud_s3.json"
+    },
+    {
+      "id": 501,
+      "title": "Criptografia Moderna (AES)",
+      "description": "Desvende uma mensagem cifrada com AES-128-CBC sabendo a chave e o IV.",
+      "category": "Cryptography",
+      "difficulty": "Difícil",
+      "xp": 100,
+      "iconName": "ic_lock",
+      "contentFile": "labs/lab_crypto_modern.json"
+    }
+  ]
+}

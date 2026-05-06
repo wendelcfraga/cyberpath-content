@@ -1,0 +1,13 @@
+{
+  "title": "Digital Forensics",
+  "roadmap": [
+    {
+      "id": 71,
+      "title": "Memory Forensics",
+      "description": "Analise o dump de memória RAM.",
+      "contentFile": "labs/lab_forensics_volatility.json",
+      "status": "UNLOCKED",
+      "xp": 100
+    }
+  ]
+}

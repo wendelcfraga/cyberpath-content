@@ -1,0 +1,16 @@
+{
+  "id": "vpn_security_quiz",
+  "title": "Segurança em VPNs",
+  "questions": [
+    {
+      "question": "Qual protocolo de VPN é considerado um dos mais modernos e performáticos atualmente?",
+      "options": ["PPTP", "L2TP/IPsec", "WireGuard", "OpenVPN"],
+      "correctIndex": 2
+    },
+    {
+      "question": "O que o IPsec ESP fornece que o AH não fornece?",
+      "options": ["Autenticação", "Criptografia (Confidencialidade)", "Integridade", "Anti-replay"],
+      "correctIndex": 1
+    }
+  ]
+}

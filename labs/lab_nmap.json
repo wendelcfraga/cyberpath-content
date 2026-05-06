@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Scanning com Nmap",
+  "introduction": "O Nmap (Network Mapper) é a ferramenta padrão da indústria para descoberta de rede e auditoria de segurança. Ele permite identificar hosts ativos, portas abertas, serviços em execução e até o sistema operacional de um alvo.",
+  "objective": "Seu objetivo é simular uma varredura em um servidor alvo para identificar portas críticas e entender como o Nmap interpreta diferentes estados de porta.",
+  "xp": 50,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Tipos de Scan",
+      "description": "Existem vários tipos de varredura. O `TCP Connect Scan` (-sT) completa a conexão, enquanto o `SYN Stealth Scan` (-sS) envia apenas o primeiro pacote do aperto de mão TCP, sendo mais silencioso. Para varreduras agressivas que tentam detectar tudo de uma vez, usamos a flag `-A`."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Varredura Agressiva",
+      "description": "Qual comando Nmap você usaria para realizar uma varredura agressiva (detecção de SO, versão e scripts) no IP alvo `192.168.1.10`?",
+      "placeholder": "nmap ...",
+      "correctAnswer": "nmap -A 192.168.1.10",
+      "successMessage": "Excelente! A flag -A é extremamente útil, embora barulhenta nos logs de segurança.",
+      "failureMessage": "Dica: Use a flag -A para o modo agressivo."
+    },
+    {
+      "id": 3,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 3: Estados de Porta",
+      "description": "Se o Nmap reportar que uma porta está 'Filtered', o que isso geralmente indica?",
+      "options": [
+        "A porta está aberta e respondendo.",
+        "A porta está fechada e rejeitou a conexão.",
+        "Um firewall ou filtro de pacotes está impedindo o Nmap de determinar se a porta está aberta ou fechada.",
+        "O serviço na porta está ocupado demais para responder."
+      ],
+      "correctAnswer": "Um firewall ou filtro de pacotes está impedindo o Nmap de determinar se a porta está aberta ou fechada.",
+      "explanation": "O estado 'Filtered' significa que as sondas foram enviadas, mas nenhuma resposta (como um SYN/ACK ou RST) foi recebida, indicando que algo no caminho descartou o pacote."
+    },
+    {
+      "id": 4,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 4: Verificação de Versão",
+      "description": "Após a varredura, você descobriu que a porta 8080 está aberta. Qual flag específica você usaria para tentar descobrir a versão exata do serviço que está rodando nela?",
+      "placeholder": "-s...",
+      "correctAnswer": "-sV",
+      "successMessage": "Correto! O scan de versão (-sV) interage com a porta aberta para determinar qual software e versão estão ativos.",
+      "failureMessage": "A flag para 'Version detection' começa com -s."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu os fundamentos do scanning de rede. O Nmap é uma ferramenta profunda; dominar suas flags é essencial para qualquer profissional de segurança.",
+      "successMessage": "Laboratório de Nmap concluído!"
+    }
+  ]
+}

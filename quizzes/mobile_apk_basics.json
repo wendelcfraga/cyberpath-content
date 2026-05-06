@@ -1,0 +1,16 @@
+{
+  "id": "mobile_apk_basics",
+  "title": "Anatomia de um APK",
+  "questions": [
+    {
+      "question": "Qual arquivo define as permissões e componentes principais de um app Android?",
+      "options": ["classes.dex", "AndroidManifest.xml", "resources.arsc", "assets"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Onde fica o código Java/Kotlin compilado dentro do APK?",
+      "options": ["lib/", "res/", "classes.dex", "META-INF/"],
+      "correctIndex": 2
+    }
+  ]
+}

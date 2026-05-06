@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Sniffing em Rede Local",
+  "introduction": "O 'Sniffing' de rede envolve a captura de pacotes de dados que trafegam por uma rede local. Em redes Wi-Fi ou Ethernet sem criptografia de camada de aplicação (como HTTP em vez de HTTPS), um atacante pode ler dados sensíveis em texto claro, como senhas e cookies de sessão.",
+  "objective": "Seu objetivo é simular um ataque de sniffing para interceptar credenciais de login enviadas via HTTP por um dispositivo na mesma rede.",
+  "xp": 70,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Modo Promíscuo e ARP Spoofing",
+      "description": "Para capturar tráfego que não é destinado à sua máquina, a placa de rede deve estar em 'modo promíscuo'. Além disso, em redes comutadas (switches), usamos o ARP Spoofing para convencer o alvo de que nossa máquina é o roteador (gateway), fazendo com que o tráfego passe por nós."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Executando o Ataque",
+      "description": "Usando a ferramenta `bettercap`, qual comando iniciaria o módulo de 'spoofing' ARP no alvo `192.168.1.15`?",
+      "placeholder": "set arp.spoof.targets ...",
+      "correctAnswer": "set arp.spoof.targets 192.168.1.15",
+      "successMessage": "Perfeito! O tráfego do alvo agora está sendo redirecionado através da sua máquina.",
+      "failureMessage": "O comando deve definir o alvo (targets) para o IP especificado."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Captura de Credenciais",
+      "description": "O alvo acessou um formulário de login via HTTP. Você interceptou o seguinte pacote POST:\n\n`POST /login.php HTTP/1.1` \n`Host: banco-inseguro.com` \n`user=admin&pass=CP{sniffing_the_wire_2024}`\n\nQual é a flag capturada?",
+      "placeholder": "CP{...}",
+      "correctAnswer": "CP{sniffing_the_wire_2024}",
+      "successMessage": "Sucesso! Você demonstrou como é fácil roubar senhas em sites que não usam HTTPS.",
+      "failureMessage": "A flag está no corpo do pacote interceptado."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Proteção",
+      "description": "Qual é a defesa mais eficaz contra o sniffing de senhas em aplicações web?",
+      "options": [
+        "Usar senhas com símbolos especiais.",
+        "Implementar HTTPS (TLS) em todo o site.",
+        "Mudar o IP do servidor frequentemente.",
+        "Esconder o nome do usuário."
+      ],
+      "correctAnswer": "Implementar HTTPS (TLS) em todo o site.",
+      "explanation": "O HTTPS criptografa os dados entre o navegador e o servidor. Mesmo que um atacante intercepte os pacotes, ele verá apenas dados cifrados, tornando o sniffing de conteúdo ineficaz."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu os perigos de protocolos inseguros e como o tráfego de rede pode ser manipulado. Lembre-se: sempre exija conexões seguras.",
+      "successMessage": "Laboratório de Sniffing concluído!"
+    }
+  ]
+}

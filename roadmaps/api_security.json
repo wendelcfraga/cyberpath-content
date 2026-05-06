@@ -1,0 +1,13 @@
+{
+  "title": "API Security",
+  "roadmap": [
+    {
+      "id": 111,
+      "title": "Broken Auth in APIs",
+      "description": "Explorando falhas de autenticação em APIs REST.",
+      "contentFile": "labs/lab_api_auth.json",
+      "status": "UNLOCKED",
+      "xp": 100
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "labTitle": "Criptografia Moderna (AES)",
+  "introduction": "Neste laboratório, você aprenderá sobre o funcionamento do algoritmo AES e como decifrar mensagens usando ferramentas disponíveis no ambiente mobile.",
+  "objective": "Desvendar uma mensagem cifrada com AES-128-CBC sabendo a chave e o IV.",
+  "xp": 100,
+  "steps": [
+    {
+      "id": 1,
+      "title": "Análise do Ciphertext",
+      "instruction": "A mensagem cifrada em Base64 é 'U2FsdGVkX19v8nJ7...'. Como estamos no celular, usaremos um comando simulado para representar a ação de decriptação.",
+      "hint": "A chave é 'cyberpath_secret_key'.",
+      "validationType": "COMMAND",
+      "expectedValue": "openssl aes-128-cbc -d -in secret.enc -out secret.txt",
+      "successMessage": "Comando correto! O arquivo foi decifrado.",
+      "failureMessage": "Comando incorreto. Verifique os parâmetros do OpenSSL."
+    },
+    {
+      "id": 2,
+      "title": "Recuperação da Flag",
+      "instruction": "Após decifrar, o conteúdo revelado é: 'Parabéns! A flag é CP{AES_M4ST3R_2024}'. Insira a flag abaixo.",
+      "hint": "A flag começa com CP{",
+      "validationType": "FLAG",
+      "expectedValue": "CP{AES_M4ST3R_2024}",
+      "successMessage": "Excelente! Você dominou o básico de AES.",
+      "failureMessage": "Flag incorreta."
+    }
+  ]
+}

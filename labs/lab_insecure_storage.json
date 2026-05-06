@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Armazenamento Inseguro",
+  "introduction": "Aplicativos Android frequentemente salvam dados localmente para melhorar a experiência do usuário. No entanto, o uso incorreto de SharedPreferences, bancos de dados SQLite ou arquivos em texto claro pode expor informações sensíveis a outros aplicativos (em dispositivos com root) ou via backups do ADB.",
+  "objective": "Seu objetivo é explorar as preferências compartilhadas (SharedPreferences) de um aplicativo e extrair um token de sessão que foi armazenado sem criptografia.",
+  "xp": 50,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Entendendo o SharedPreferences",
+      "description": "O SharedPreferences é um framework que permite salvar pares chave-valor de tipos de dados primitivos. Por padrão, esses dados são armazenados em arquivos XML dentro do diretório privado do aplicativo:\n\n`/data/data/com.cyberpath.app/shared_prefs/UserPrefs.xml`"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Lendo o Arquivo de Preferências",
+      "description": "Imagine que você obteve acesso ao shell do dispositivo. Qual comando Linux você usaria para ler o conteúdo do arquivo `UserPrefs.xml` no caminho mencionado acima?",
+      "placeholder": "cat ...",
+      "correctAnswer": "cat /data/data/com.cyberpath.app/shared_prefs/UserPrefs.xml",
+      "successMessage": "Arquivo lido! O conteúdo é:\n\n```xml\n<map>\n  <string name=\"username\">admin</string>\n  <string name=\"session_token\">SUPER_SECRET_TOKEN_123</string>\n</map>\n```",
+      "failureMessage": "Use o comando 'cat' seguido do caminho completo do arquivo."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: A Flag",
+      "description": "Com base na saída XML acima, qual é o valor do `session_token` que foi armazenado de forma insegura?",
+      "placeholder": "Insira o token aqui",
+      "correctAnswer": "SUPER_SECRET_TOKEN_123",
+      "successMessage": "Correto! Armazenar tokens sensíveis em texto claro no SharedPreferences é uma falha grave.",
+      "failureMessage": "O token está dentro da tag <string name=\"session_token\">."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Como Proteger?",
+      "description": "Qual é a maneira recomendada pela Google para armazenar dados sensíveis localmente no Android?",
+      "options": [
+        "Criptografar os dados manualmente usando Base64.",
+        "Usar a biblioteca 'EncryptedSharedPreferences' da Android Jetpack.",
+        "Salvar os dados em uma pasta escondida no cartão SD.",
+        "Mudar a extensão do arquivo de .xml para .dat."
+      ],
+      "correctAnswer": "Usar a biblioteca 'EncryptedSharedPreferences' da Android Jetpack.",
+      "explanation": "A biblioteca Security do Jetpack fornece a classe EncryptedSharedPreferences, que criptografa automaticamente tanto as chaves quanto os valores usando o Android Keystore, garantindo que os dados permaneçam protegidos mesmo em dispositivos comprometidos."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu como dados 'privados' podem ser expostos e a importância de usar criptografia forte para armazenamento local no Android.",
+      "successMessage": "Laboratório de Armazenamento Inseguro concluído!"
+    }
+  ]
+}

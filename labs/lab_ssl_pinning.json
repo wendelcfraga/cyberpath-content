@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Bypass de SSL Pinning",
+  "introduction": "O SSL Pinning é uma medida de segurança que instrui o aplicativo a confiar apenas em um certificado específico ou chave pública, ignorando a lista de autoridades certificadoras (CAs) do sistema. Isso impede ataques de interceptação (MitM), a menos que o atacante consiga desativar essa proteção no código do app.",
+  "objective": "Seu objetivo é simular o uso de ferramentas de instrumentação dinâmica para desativar o SSL Pinning e capturar uma flag em uma requisição interceptada.",
+  "xp": 90,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Identificando o Pinning",
+      "description": "Ao tentar interceptar o tráfego de um aplicativo corporativo com o Burp Suite, você percebe que o app exibe erros de conexão ou 'Certificate Unknown', mesmo tendo instalado o certificado do Burp no sistema. Isso indica que o app utiliza SSL Pinning para validar a conexão."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Instrumentação com Frida",
+      "description": "O Frida é uma ferramenta que permite injetar scripts em processos em execução. Existe um comando do `objection` (que roda sobre o Frida) que automatiza o bypass de SSL Pinning. Qual comando você usaria dentro do ambiente objection para tentar desativar o pinning?",
+      "placeholder": "android sslpinning ...",
+      "correctAnswer": "android sslpinning disable",
+      "successMessage": "Sucesso! O script foi injetado e os métodos de validação de certificado foram 'ganchados' (hooked) para sempre retornar verdadeiro.",
+      "failureMessage": "O comando no objection para isso é 'android sslpinning disable'."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Captura da Flag",
+      "description": "Com o pinning desativado, o tráfego agora flui pelo seu proxy. No cabeçalho de uma requisição para `/api/v1/health`, você encontra o seguinte header customizado:\n\n`X-Flag: CP{ssl_pinnin_by_p4ssed}`\n\nQual é a flag?",
+      "placeholder": "CP{...}",
+      "correctAnswer": "CP{ssl_pinnin_by_p4ssed}",
+      "successMessage": "Incrível! Você contornou uma das proteções mais fortes de aplicativos mobile.",
+      "failureMessage": "A flag está no valor do header X-Flag."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Defesa em Profundidade",
+      "description": "Como um desenvolvedor pode dificultar o uso de ferramentas como Frida e Objection para fazer o bypass de SSL Pinning?",
+      "options": [
+        "Remover o HTTPS.",
+        "Implementar verificações anti-root e anti-frida no código nativo (C/C++) para detectar se o ambiente está sendo manipulado.",
+        "Mudar a cor da interface do aplicativo.",
+        "Aumentar o tempo de expiração do certificado."
+      ],
+      "correctAnswer": "Implementar verificações anti-root e anti-frida no código nativo (C/C++) para detectar se o ambiente está sendo manipulado.",
+      "explanation": "A segurança mobile é um jogo de gato e rato. Ao detectar a presença do Frida ou que o dispositivo tem acesso Root, o app pode se recusar a abrir, tornando muito mais difícil para o atacante injetar scripts de bypass."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu que o SSL Pinning não é infalível, mas ele eleva significativamente a barra de dificuldade para atacantes, exigindo conhecimentos de instrumentação dinâmica.",
+      "successMessage": "Laboratório de SSL Pinning Bypass concluído!"
+    }
+  ]
+}

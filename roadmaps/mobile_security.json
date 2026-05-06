@@ -1,0 +1,69 @@
+{
+  "title": "Mobile Security Fundamentals",
+  "roadmap": [
+    {
+      "id": 31,
+      "title": "Arquitetura Android",
+      "description": "Sandbox, permissões e estrutura do APK.",
+      "contentFile": "quizzes/mobile_fundamentals_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 32,
+      "title": "Armazenamento Inseguro",
+      "description": "Laboratório de análise de SharedPrefs e SQLite.",
+      "contentFile": "labs/lab_insecure_storage.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 33,
+      "title": "Análise Estática (SAST)",
+      "description": "Descompilação e busca por segredos no código.",
+      "contentFile": "labs/lab_hardcoded.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 34,
+      "title": "Explorando APKs",
+      "description": "Quiz sobre a estrutura e segurança de pacotes Android.",
+      "contentFile": "quizzes/mobile_apk_basics.json",
+      "status": "LOCKED",
+      "xp": 50
+    },
+    {
+      "id": 35,
+      "title": "Análise Dinâmica",
+      "description": "Introdução ao Frida e hooks de métodos.",
+      "contentFile": "labs/lab_mobile_frida.json",
+      "status": "LOCKED",
+      "xp": 150
+    },
+    {
+      "id": 36,
+      "title": "Bypass de SSL Pinning",
+      "description": "Interceptando tráfego criptografado.",
+      "contentFile": "labs/lab_ssl_pinning.json",
+      "status": "LOCKED",
+      "xp": 130
+    },
+    {
+      "id": 37,
+      "title": "Exploração via ADB",
+      "description": "Comunicação direta com o dispositivo.",
+      "contentFile": "labs/lab_adb_exploration.json",
+      "status": "LOCKED",
+      "xp": 90
+    },
+    {
+      "id": 38,
+      "title": "Segurança iOS",
+      "description": "Conceitos básicos do ecossistema Apple.",
+      "contentFile": "quizzes/ios_security_basics.json",
+      "status": "LOCKED",
+      "xp": 70
+    }
+  ]
+}

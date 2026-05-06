@@ -1,0 +1,51 @@
+{
+  "labTitle": "Laboratório: Interceptação com Burp Suite",
+  "introduction": "O Burp Suite é a ferramenta líder para testes de segurança em aplicações web. Sua principal funcionalidade é o Proxy Interceptador, que permite capturar, analisar e modificar requisições HTTP entre o navegador e o servidor.",
+  "objective": "Seu objetivo é simular a interceptação de uma requisição de compra para alterar o preço de um produto antes que ele chegue ao servidor.",
+  "xp": 70,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Configuração do Proxy",
+      "description": "Para interceptar o tráfego, o navegador deve ser configurado para enviar todas as requisições para o Burp (geralmente em 127.0.0.1:8080). Com o 'Intercept is ON' na aba Proxy, a requisição fica pausada no Burp, aguardando sua ação."
+    },
+    {
+      "id": 2,
+      "type": "INFO",
+      "title": "Passo 2: Capturando a Requisição",
+      "description": "Você clicou no botão 'Comprar' de um smartphone que custa R$ 5.000,00. No Burp, você vê a seguinte requisição:\n\n```http\nPOST /checkout HTTP/1.1\nHost: loja-vulneravel.com\nContent-Type: application/x-www-form-urlencoded\n\nproduct_id=123&price=5000&quantity=1\n```"
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Manipulação de Dados",
+      "description": "Modifique o corpo da requisição acima para que o preço seja alterado para R$ 1,00 antes de clicar em 'Forward'. Como ficaria a linha de parâmetros?",
+      "placeholder": "product_id=123&price=...",
+      "correctAnswer": "product_id=123&price=1&quantity=1",
+      "successMessage": "Perfeito! Se o servidor não validar o preço no banco de dados e confiar apenas no que vem da requisição, você conseguirá comprar o produto por 1 real.",
+      "failureMessage": "Mantenha o product_id e a quantity, mas altere o valor do price para 1."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Repetibilidade",
+      "description": "Qual aba do Burp Suite você usaria para reenviar essa mesma requisição várias vezes com modificações rápidas, sem precisar interceptá-la novamente no navegador?",
+      "options": [
+        "Scanner",
+        "Intruder",
+        "Repeater",
+        "Decoder"
+      ],
+      "correctAnswer": "Repeater",
+      "explanation": "O 'Repeater' é usado para manipulação manual de requisições individuais. Você pode enviar a requisição, ver a resposta, ajustar um parâmetro e enviar novamente de forma instantânea."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu a base da interceptação web. Lembre-se: nunca confie em parâmetros sensíveis (como preços) vindos diretamente do cliente. O servidor deve sempre ter a verdade absoluta.",
+      "successMessage": "Laboratório de Burp Suite concluído!"
+    }
+  ]
+}

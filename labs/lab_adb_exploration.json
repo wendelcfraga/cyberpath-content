@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Exploração via ADB",
+  "introduction": "O Android Debug Bridge (ADB) é uma ferramenta de linha de comando versátil que permite a comunicação com um dispositivo Android. Se o ADB estiver ativado e exposto via rede ou USB sem proteção, um atacante pode obter controle total sobre o dispositivo.",
+  "objective": "Seu objetivo é simular uma sessão ADB para explorar o sistema de arquivos de um dispositivo e extrair dados confidenciais.",
+  "xp": 50,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Conexão e Enumeração",
+      "description": "Imagine que você encontrou um dispositivo com a porta 5555 aberta na rede. O primeiro passo é conectar-se a ele:\n\n```bash\nadb connect 192.168.1.50:5555\n```\nUma vez conectado, podemos listar os pacotes instalados para identificar alvos interessantes:\n\n```bash\nadb shell pm list packages | grep cyberpath\n```"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Acesso ao Shell",
+      "description": "O comando `adb shell` abre um terminal dentro do dispositivo Android. Qual comando você usaria para visualizar o conteúdo do diretório de dados privados do aplicativo `com.cyberpath.app`? (Considere que você tem permissões de root via adb).",
+      "placeholder": "ls /data/data/...",
+      "correctAnswer": "ls /data/data/com.cyberpath.app",
+      "successMessage": "Excelente! Você agora pode ver os bancos de dados, preferências e arquivos internos do app.",
+      "failureMessage": "O caminho padrão para dados de apps no Android é /data/data/ seguido pelo nome do pacote."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Exfiltração",
+      "description": "Você encontrou um arquivo chamado `credentials.db` dentro da pasta `databases`. Use o comando `adb pull` (simulado) para 'baixar' este arquivo para sua máquina local.",
+      "placeholder": "adb pull ...",
+      "correctAnswer": "adb pull /data/data/com.cyberpath.app/databases/credentials.db",
+      "successMessage": "Arquivo extraído com sucesso! Ao abrir o banco de dados, você encontrou a flag: CP{adb_sh3ll_access_granted}",
+      "failureMessage": "Use 'adb pull' seguido do caminho completo do arquivo no dispositivo."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Segurança",
+      "description": "Qual é a recomendação de segurança mais importante em relação ao ADB em dispositivos de produção?",
+      "options": [
+        "Usar um cabo USB mais curto.",
+        "Desativar as 'Opções de Desenvolvedor' e o 'Depuração USB' quando não estiverem em uso.",
+        "Mudar o nome do pacote do aplicativo.",
+        "Criptografar apenas as fotos do dispositivo."
+      ],
+      "correctAnswer": "Desativar as 'Opções de Desenvolvedor' e o 'Depuração USB' quando não estiverem em uso.",
+      "explanation": "Manter o ADB ativo expõe uma interface de depuração poderosa. Em dispositivos de produção, ele deve estar sempre desativado para prevenir acessos não autorizados via física ou rede."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Parabéns! Você aprendeu como o ADB pode ser uma faca de dois gumes: essencial para desenvolvedores, mas perigoso se deixado exposto.",
+      "successMessage": "Laboratório de ADB concluído!"
+    }
+  ]
+}

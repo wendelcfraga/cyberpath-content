@@ -1,0 +1,21 @@
+{
+  "title": "Cloud Security",
+  "roadmap": [
+    {
+      "id": 41,
+      "title": "Fundamentos de Nuvem",
+      "description": "Segurança em AWS, Azure e GCP.",
+      "contentFile": "quizzes/cloud_fundamentals_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 42,
+      "title": "S3 Bucket Misconfiguration",
+      "description": "Explorando buckets expostos na AWS.",
+      "contentFile": "labs/lab_cloud_s3.json",
+      "status": "LOCKED",
+      "xp": 100
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "powershell_security_quiz",
+  "title": "PowerShell e Segurança",
+  "questions": [
+    {
+      "question": "Qual comando altera a política de execução do PowerShell?",
+      "options": ["Set-ExecutionPolicy", "Change-Policy", "Allow-Scripts", "Run-PowerShell"],
+      "correctIndex": 0
+    }
+  ]
+}

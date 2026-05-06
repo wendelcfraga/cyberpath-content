@@ -1,0 +1,45 @@
+{
+  "labTitle": "Laboratório: Permissões Linux",
+  "introduction": "No Linux, a segurança começa com as permissões de arquivos. Entender o modelo rwx (read, write, execute) é fundamental para evitar vazamento de informações e escalação de privilégios.",
+  "objective": "Altere as permissões de um arquivo sensível para que apenas o dono possa lê-lo e escrevê-lo.",
+  "xp": 50,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "O Comando chmod",
+      "description": "O comando `chmod` aceita representações simbólicas (u+x) ou octais (755). O modo octal é composto por três dígitos: Dono, Grupo e Outros."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Protegendo o arquivo secrets.txt",
+      "description": "Qual comando octal você usaria para dar permissão de leitura e escrita (4+2=6) apenas para o dono, e nenhuma permissão para o grupo e outros, no arquivo `secrets.txt`?",
+      "placeholder": "chmod ... secrets.txt",
+      "correctAnswer": "chmod 600 secrets.txt",
+      "successMessage": "Perfeito! 600 garante que apenas o proprietário tenha acesso.",
+      "failureMessage": "Tente novamente. Dono=6, Grupo=0, Outros=0."
+    },
+    {
+      "id": 3,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Identificando o Root",
+      "description": "Qual é o UID (User ID) padrão do usuário root no Linux?",
+      "options": [
+        "1",
+        "1000",
+        "0",
+        "500"
+      ],
+      "correctAnswer": "0",
+      "explanation": "O UID 0 é reservado para o superusuário (root), que tem controle total sobre o sistema."
+    },
+    {
+      "id": 4,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Agora você entende o básico de permissões e privilégios no Linux.",
+      "successMessage": "Laboratório concluído!"
+    }
+  ]
+}

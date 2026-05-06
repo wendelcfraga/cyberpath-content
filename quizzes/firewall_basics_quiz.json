@@ -1,0 +1,11 @@
+{
+  "id": "firewall_basics_quiz",
+  "title": "Fundamentos de Firewall",
+  "questions": [
+    {
+      "question": "Qual a diferença entre um Firewall Stateless e Stateful?",
+      "options": ["Stateless é mais lento", "Stateful monitora o estado das conexões ativas", "Stateless usa IA", "Stateful não filtra portas"],
+      "correctIndex": 1
+    }
+  ]
+}

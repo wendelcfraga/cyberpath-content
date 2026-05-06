@@ -1,0 +1,13 @@
+{
+  "title": "IoT Security",
+  "roadmap": [
+    {
+      "id": 131,
+      "title": "Firmware Extraction",
+      "description": "Explorando hardware e binários IoT.",
+      "contentFile": "quizzes/iot_basics_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    }
+  ]
+}

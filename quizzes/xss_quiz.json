@@ -1,0 +1,304 @@
+{
+  "quiz": [
+    {
+      "id": 301,
+      "question": "Qual é a definição correta de Cross-Site Scripting (XSS)?",
+      "options": [
+        "Um ataque que rouba cookies de sessão através de consultas SQL.",
+        "Um ataque que força o navegador de uma vítima a executar scripts maliciosos no contexto de um site confiável.",
+        "Um ataque que modifica os registos DNS para redirecionar o tráfego.",
+        "Um ataque que explora falhas no servidor para executar comandos do sistema operacional."
+      ],
+      "correctAnswer": "Um ataque que força o navegador de uma vítima a executar scripts maliciosos no contexto de um site confiável.",
+      "explanation": "XSS é uma vulnerabilidade do lado do cliente que ocorre quando uma aplicação web inclui dados não validados numa página, permitindo a injeção de scripts no navegador da vítima."
+    },
+    {
+      "id": 302,
+      "question": "Um atacante envia um link malicioso para uma vítima (ex: http://site.com/search?q=<script>alert(1)</script>). Quando a vítima clica, o script é executado. Que tipo de XSS é este?",
+      "options": [
+        "Stored XSS (Armazenado)",
+        "DOM-based XSS",
+        "Reflected XSS (Refletido)",
+        "Universal XSS"
+      ],
+      "correctAnswer": "Reflected XSS (Refletido)",
+      "explanation": "No Reflected XSS, a payload maliciosa faz parte da requisição (geralmente na URL) e é 'refletida' de volta pelo servidor na resposta, sendo executada imediatamente."
+    },
+    {
+      "id": 303,
+      "question": "Um atacante publica um comentário num fórum que contém `<script>...`. Sempre que um utilizador visita a página do fórum, o script é executado. Que tipo de XSS é este?",
+      "options": [
+        "Reflected XSS (Refletido)",
+        "Stored XSS (Armazenado)",
+        "Self-XSS",
+        "DOM-based XSS"
+      ],
+      "correctAnswer": "Stored XSS (Armazenado)",
+      "explanation": "No Stored XSS, a payload maliciosa é guardada permanentemente no servidor (ex: numa base de dados) e é servida a todos os utilizadores que acedem à página afetada."
+    },
+    {
+      "id": 304,
+      "question": "Qual é a principal medida de defesa contra XSS?",
+      "options": [
+        "Usar HTTPS em todo o site.",
+        "Fazer 'Output Encoding' (codificação de saída) de todos os dados fornecidos pelo utilizador antes de os inserir no HTML.",
+        "Usar um Firewall de Aplicação Web (WAF).",
+        "Limitar o comprimento dos campos de entrada."
+      ],
+      "correctAnswer": "Fazer 'Output Encoding' (codificação de saída) de todos os dados fornecidos pelo utilizador antes de os inserir no HTML.",
+      "explanation": "A codificação de saída (ex: transformar `<` em `&lt;`) garante que o navegador interprete os dados do utilizador como texto, e não como código HTML/JavaScript executável."
+    },
+    {
+      "id": 305,
+      "question": "DOM-based XSS difere dos outros tipos porque:",
+      "options": [
+        "É mais perigoso.",
+        "A payload maliciosa nunca chega ao servidor; ela é processada e executada inteiramente no lado do cliente (DOM).",
+        "Só funciona no Internet Explorer.",
+        "Só pode ser usado para roubar cookies."
+      ],
+      "correctAnswer": "A payload maliciosa nunca chega ao servidor; ela é processada e executada inteiramente no lado do cliente (DOM).",
+      "explanation": "O DOM-based XSS explora scripts do lado do cliente que manipulam o DOM de forma insegura. A vulnerabilidade está no código JavaScript da página, não na resposta do servidor."
+    },
+    {
+      "id": 306,
+      "question": "Qual dos seguintes 'sinks' (pontos de execução) em JavaScript é comumente explorado em ataques de DOM-based XSS?",
+      "options": [
+        "console.log()",
+        "document.write()",
+        "Math.random()",
+        "window.alert()"
+      ],
+      "correctAnswer": "document.write()",
+      "explanation": "Funções como `document.write()`, `element.innerHTML`, e `eval()` são 'sinks' perigosos porque podem interpretar uma string como HTML ou código executável."
+    },
+    {
+      "id": 307,
+      "question": "O que faz o 'flag' de cookie `HttpOnly`?",
+      "options": [
+        "Força o cookie a ser enviado apenas sobre HTTPS.",
+        "Impede que o cookie seja acedido através de scripts do lado do cliente (JavaScript).",
+        "Faz com que o cookie expire após uma hora.",
+        "Permite que o cookie seja acedido por qualquer subdomínio."
+      ],
+      "correctAnswer": "Impede que o cookie seja acedido através de scripts do lado do cliente (JavaScript).",
+      "explanation": "O `HttpOnly` é uma mitigação crucial contra o roubo de cookies de sessão via XSS, pois torna o `document.cookie` inacessível para JavaScript."
+    },
+    {
+      "id": 308,
+      "question": "Qual header HTTP é uma das defesas mais poderosas contra XSS, permitindo definir políticas sobre quais recursos (scripts, estilos) podem ser carregados?",
+      "options": [
+        "Strict-Transport-Security",
+        "X-Frame-Options",
+        "Content-Security-Policy (CSP)",
+        "Access-Control-Allow-Origin"
+      ],
+      "correctAnswer": "Content-Security-Policy (CSP)",
+      "explanation": "O CSP permite que um administrador de site defina uma 'allow-list' de fontes de conteúdo confiáveis, o que pode bloquear a execução de scripts injetados de fontes não autorizadas."
+    },
+    {
+      "id": 309,
+      "question": "Qual é o objetivo de uma payload de XSS como `<img src=x onerror=alert('XSS')>`?",
+      "options": [
+        "Exibir uma imagem quebrada para confundir o utilizador.",
+        "Executar o JavaScript no atributo `onerror` quando a imagem não consegue ser carregada.",
+        "Testar se o servidor suporta imagens em formato 'x'.",
+        "Carregar uma imagem de um servidor malicioso."
+      ],
+      "correctAnswer": "Executar o JavaScript no atributo `onerror` quando a imagem não consegue ser carregada.",
+      "explanation": "Como o `src` é inválido, o evento `onerror` é acionado, executando o código JavaScript. É uma técnica comum para contornar filtros que bloqueiam a tag `<script>`."
+    },
+    {
+      "id": 310,
+      "question": "O que é 'Self-XSS'?",
+      "options": [
+        "Um ataque de XSS que se espalha automaticamente como um vírus.",
+        "Um ataque onde o atacante engana a vítima para que ela mesma cole e execute o código malicioso no seu próprio navegador (ex: na consola de desenvolvedor).",
+        "Um tipo de XSS que só afeta o próprio atacante.",
+        "Um XSS que funciona em qualquer site."
+      ],
+      "correctAnswer": "Um ataque onde o atacante engana a vítima para que ela mesma cole e execute o código malicioso no seu próprio navegador (ex: na consola de desenvolvedor).",
+      "explanation": "O Self-XSS depende da engenharia social para enganar o utilizador e fazê-lo comprometer a sua própria sessão."
+    },
+    {
+      "id": 311,
+      "question": "A validação de entrada (Input Validation) para prevenir XSS deve ser feita preferencialmente:",
+      "options": [
+        "Apenas no lado do cliente (JavaScript).",
+        "Apenas no lado do servidor.",
+        "Tanto no lado do cliente (para usabilidade) quanto no lado do servidor (para segurança).",
+        "Não é uma defesa eficaz contra XSS."
+      ],
+      "correctAnswer": "Tanto no lado do cliente (para usabilidade) quanto no lado do servidor (para segurança).",
+      "explanation": "A validação no cliente fornece feedback rápido, mas a validação no servidor é a camada de segurança essencial, pois a do cliente pode ser facilmente contornada."
+    },
+    {
+      "id": 312,
+      "question": "Qual das seguintes funções PHP é perigosa se usada para exibir dados do utilizador sem o devido tratamento?",
+      "options": [
+        "strlen()",
+        "echo",
+        "is_numeric()",
+        "date()"
+      ],
+      "correctAnswer": "echo",
+      "explanation": "A função `echo` (ou construções similares) escreve dados diretamente na página. Se esses dados contiverem HTML/JavaScript, eles serão interpretados pelo navegador, a menos que sejam previamente sanitizados com funções como `htmlspecialchars()`."
+    },
+    {
+      "id": 313,
+      "question": "Qual é a principal consequência de um ataque de roubo de cookie de sessão bem-sucedido via XSS?",
+      "options": [
+        "O site fica temporariamente offline.",
+        "O atacante pode assumir a identidade da vítima e aceder à sua conta (sequestro de sessão).",
+        "O atacante recebe todos os cookies do navegador da vítima, de todos os sites.",
+        "A password da vítima é revelada ao atacante."
+      ],
+      "correctAnswer": "O atacante pode assumir a identidade da vítima e aceder à sua conta (sequestro de sessão).",
+      "explanation": "Com o cookie de sessão, o atacante pode fazer requisições para o site como se fosse o utilizador legítimo, sem precisar da sua password."
+    },
+    {
+      "id": 314,
+      "question": "A sanitização de HTML, que permite algumas tags (como `<b>`, `<i>`) mas remove tags e atributos perigosos (como `<script>`, `onerror`), é uma técnica de:",
+      "options": [
+        "Escaping",
+        "Validação de tipo",
+        "Filtragem",
+        "Criptografia"
+      ],
+      "correctAnswer": "Filtragem",
+      "explanation": "A filtragem (ou sanitização) é o processo de limpar a entrada do utilizador, removendo conteúdo potencialmente malicioso enquanto se tenta preservar a intenção original (ex: permitir formatação de texto)."
+    },
+    {
+      "id": 315,
+      "question": "Por que o Stored XSS é geralmente considerado mais perigoso que o Reflected XSS?",
+      "options": [
+        "Porque é mais fácil de executar.",
+        "Porque a payload é armazenada no servidor e pode afetar um grande número de utilizadores sem que eles precisem de clicar num link malicioso.",
+        "Porque os browsers não têm defesas contra Stored XSS.",
+        "Porque sempre resulta em controlo total do servidor."
+      ],
+      "correctAnswer": "Porque a payload é armazenada no servidor e pode afetar um grande número de utilizadores sem que eles precisem de clicar num link malicioso.",
+      "explanation": "O potencial de impacto do Stored XSS é muito maior, pois qualquer pessoa que visite a página vulnerável será atacada, ao contrário do Reflected XSS que requer interação direta da vítima com um link."
+    },
+    {
+      "id": 316,
+      "question": "Qual das seguintes diretivas de CSP ajuda a mitigar XSS?",
+      "options": [
+        "frame-ancestors 'none'",
+        "script-src 'self' https://apis.google.com",
+        "upgrade-insecure-requests",
+        "block-all-mixed-content"
+      ],
+      "correctAnswer": "script-src 'self' https://apis.google.com",
+      "explanation": "A diretiva `script-src` define as fontes permitidas para scripts. Neste exemplo, apenas scripts do próprio domínio (`'self'`) e de `apis.google.com` seriam autorizados a executar."
+    },
+    {
+      "id": 317,
+      "question": "O que é um 'XSS polyglot'?",
+      "options": [
+        "Um ataque de XSS que funciona em múltiplos idiomas.",
+        "Uma payload de XSS que consegue ser executada em diferentes contextos de HTML (dentro de um atributo, num comentário, etc.) para contornar filtros.",
+        "Uma ferramenta para encontrar vulnerabilidades de XSS.",
+        "Um tipo de cookie que não pode ser roubado."
+      ],
+      "correctAnswer": "Uma payload de XSS que consegue ser executada em diferentes contextos de HTML (dentro de um atributo, num comentário, etc.) para contornar filtros.",
+      "explanation": "Polyglots são payloads complexas e engenhosas projetadas para maximizar a chance de execução, independentemente de onde na página o servidor injete a entrada."
+    },
+    {
+      "id": 318,
+      "question": "Qual das seguintes práticas NÃO é uma boa defesa contra DOM-based XSS?",
+      "options": [
+        "Evitar usar 'sinks' perigosos como `innerHTML` com dados do utilizador.",
+        "Usar `textContent` em vez de `innerHTML` para inserir texto no DOM.",
+        "Sanitizar os dados do utilizador antes de os passar para um 'sink'.",
+        "Colocar todo o código JavaScript num ficheiro externo."
+      ],
+      "correctAnswer": "Colocar todo o código JavaScript num ficheiro externo.",
+      "explanation": "Mover o código para um ficheiro externo não muda a sua lógica. Se o código for inseguro, a vulnerabilidade continuará a existir, independentemente de onde o ficheiro está hospedado."
+    },
+    {
+      "id": 319,
+      "question": "Um atacante usa XSS para injetar um formulário de login falso numa página confiável para roubar credenciais. Que tipo de ataque é este?",
+      "options": [
+        "Sequestro de Sessão (Session Hijacking)",
+        "Defacement",
+        "Phishing",
+        "Redirecionamento Malicioso"
+      ],
+      "correctAnswer": "Phishing",
+      "explanation": "Ao injetar um formulário falso num site legítimo, o atacante aproveita-se da confiança do utilizador nesse site para o enganar e fazê-lo inserir as suas credenciais."
+    },
+    {
+      "id": 320,
+      "question": "Qual é a principal diferença entre codificação (encoding) e sanitização (sanitization)?",
+      "options": [
+        "São a mesma coisa.",
+        "A codificação transforma os caracteres para serem exibidos com segurança, enquanto a sanitização remove os caracteres/tags perigosos.",
+        "A sanitização é feita no cliente e a codificação no servidor.",
+        "A codificação é mais segura que a sanitização."
+      ],
+      "correctAnswer": "A codificação transforma os caracteres para serem exibidos com segurança, enquanto a sanitização remove os caracteres/tags perigosos.",
+      "explanation": "Codificar `>` para `&gt;` é um exemplo de 'encoding'. Remover a tag `<script>` inteiramente é um exemplo de 'sanitization'. A codificação de saída é geralmente a defesa preferida."
+    },
+    {
+      "id": 321,
+      "question": "A ferramenta BeEF (Browser Exploitation Framework) é frequentemente usada em conjunto com XSS para:",
+      "options": [
+        "Encontrar falhas de XSS automaticamente.",
+        "Criar um 'hook' no navegador da vítima, permitindo que o atacante controle o navegador remotamente.",
+        "Bloquear ataques de XSS.",
+        "Gerar relatórios de vulnerabilidades."
+      ],
+      "correctAnswer": "Criar um 'hook' no navegador da vítima, permitindo que o atacante controle o navegador remotamente.",
+      "explanation": "Uma vez que a payload de XSS ('hook.js' do BeEF) é executada, o navegador da vítima conecta-se ao servidor do atacante, que pode então enviar comandos como roubar cookies, fazer capturas de ecrã, etc."
+    },
+    {
+      "id": 322,
+      "question": "Se um site usa um framework moderno como React ou Angular, ele está automaticamente imune a XSS?",
+      "options": [
+        "Sim, estes frameworks eliminam completamente o risco de XSS.",
+        "Não, embora eles ofereçam proteção por padrão (como codificação de saída automática), ainda é possível introduzir XSS através do uso inseguro de certas APIs.",
+        "Sim, mas apenas se estiver a usar a versão mais recente.",
+        "Não, na verdade eles são mais vulneráveis a XSS."
+      ],
+      "correctAnswer": "Não, embora eles ofereçam proteção por padrão (como codificação de saída automática), ainda é possível introduzir XSS através do uso inseguro de certas APIs.",
+      "explanation": "Funções como `dangerouslySetInnerHTML` em React ou `[innerHTML]` em Angular podem reintroduzir vulnerabilidades de XSS se usadas com dados não confiáveis."
+    },
+    {
+      "id": 323,
+      "question": "Um ataque de XSS que redireciona o utilizador para um site malicioso usa qual função de JavaScript?",
+      "options": [
+        "window.alert()",
+        "document.cookie",
+        "window.location.href",
+        "console.log()"
+      ],
+      "correctAnswer": "window.location.href",
+      "explanation": "Ao definir `window.location.href = 'http://site-malicioso.com'`, o atacante pode forçar o navegador da vítima a navegar para outro site."
+    },
+    {
+      "id": 324,
+      "question": "O que é 'mXSS' ou 'Mutation XSS'?",
+      "options": [
+        "Um XSS que afeta apenas telemóveis.",
+        "Um tipo de XSS que explora as diferenças na forma como os navegadores interpretam e 'corrigem' HTML malformado.",
+        "Um XSS que se modifica a si mesmo para evitar a deteção.",
+        "Um ataque que usa XSS para modificar dados no servidor."
+      ],
+      "correctAnswer": "Um tipo de XSS que explora as diferenças na forma como os navegadores interpretam e 'corrigem' HTML malformado.",
+      "explanation": "Um atacante pode fornecer uma payload que parece segura para um filtro do lado do servidor, mas que é 'mutada' pelo navegador para uma forma maliciosa ao renderizar o DOM."
+    },
+    {
+      "id": 325,
+      "question": "Qual é o principal objetivo de um atacante ao usar XSS para 'keylogging'?",
+      "options": [
+        "Registar as teclas que o utilizador prime no seu teclado, como passwords e mensagens privadas.",
+        "Descobrir qual é a marca do teclado do utilizador.",
+        "Abrandar o computador da vítima.",
+        "Fazer com que as teclas do utilizador executem ações inesperadas."
+      ],
+      "correctAnswer": "Registar as teclas que o utilizador prime no seu teclado, como passwords e mensagens privadas.",
+      "explanation": "Ao adicionar um 'event listener' para eventos de teclado com JavaScript, um atacante pode capturar tudo o que a vítima digita na página vulnerável e enviar para um servidor externo."
+    }
+  ]
+}

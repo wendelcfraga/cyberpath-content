@@ -1,0 +1,244 @@
+{
+  "quiz": [
+    {
+      "id": 601,
+      "question": "O que significa 'criptografia em trânsito' (in-transit)?",
+      "options": [
+        "Criptografar os dados enquanto eles estão armazenados num disco rígido.",
+        "Criptografar os dados enquanto eles estão a ser transferidos através de uma rede, como a internet.",
+        "Criptografar os dados apenas durante o processamento na memória RAM.",
+        "Usar uma VPN para navegar na internet."
+      ],
+      "correctAnswer": "Criptografar os dados enquanto eles estão a ser transferidos através de uma rede, como a internet.",
+      "explanation": "A criptografia em trânsito, tipicamente implementada com TLS/SSL, protege os dados contra 'sniffing' e ataques Man-in-the-Middle durante a sua transmissão."
+    },
+    {
+      "id": 602,
+      "question": "Qual protocolo é o padrão moderno para garantir a criptografia em trânsito em aplicações web?",
+      "options": [
+        "FTP",
+        "Telnet",
+        "TLS (Transport Layer Security)",
+        "HTTP"
+      ],
+      "correctAnswer": "TLS (Transport Layer Security)",
+      "explanation": "O TLS, sucessor do SSL, é o protocolo criptográfico que fornece a base para o HTTPS, garantindo a confidencialidade e a integridade da comunicação."
+    },
+    {
+      "id": 603,
+      "question": "O que é 'criptografia em repouso' (at-rest)?",
+      "options": [
+        "Criptografar os dados que não estão a ser usados ativamente, como arquivos num banco de dados ou num disco.",
+        "Apenas criptografar os dados quando o servidor está desligado.",
+        "Uma técnica para acelerar a velocidade da rede.",
+        "Criptografar os dados no navegador do cliente."
+      ],
+      "correctAnswer": "Criptografar os dados que não estão a ser usados ativamente, como arquivos num banco de dados ou num disco.",
+      "explanation": "A criptografia em repouso protege os dados contra o acesso não autorizado caso um atacante obtenha acesso físico aos dispositivos de armazenamento."
+    },
+    {
+      "id": 604,
+      "question": "Por que o algoritmo de criptografia DES (Data Encryption Standard) não é mais considerado seguro?",
+      "options": [
+        "Porque é muito lento para os computadores modernos.",
+        "Porque o seu tamanho de chave de 56 bits é muito pequeno e pode ser quebrado por força bruta com hardware moderno.",
+        "Porque nunca foi padronizado.",
+        "Porque só funciona em sistemas de 32 bits."
+      ],
+      "correctAnswer": "Porque o seu tamanho de chave de 56 bits é muito pequeno e pode ser quebrado por força bruta com hardware moderno.",
+      "explanation": "O DES foi suplantado pelo AES (Advanced Encryption Standard), que suporta tamanhos de chave muito maiores (128, 192 e 256 bits), oferecendo uma segurança significativamente maior."
+    },
+    {
+      "id": 605,
+      "question": "Qual é a principal diferença entre criptografia e hashing?",
+      "options": [
+        "Não há diferença.",
+        "A criptografia é um processo de duas vias (pode-se criptografar e descriptografar), enquanto o hashing é um processo de uma via (não pode ser revertido).",
+        "O hashing é mais rápido que a criptografia.",
+        "A criptografia é usada para senhas e o hashing para arquivos."
+      ],
+      "correctAnswer": "A criptografia é um processo de duas vias (pode-se criptografar e descriptografar), enquanto o hashing é um processo de uma via (não pode ser revertido).",
+      "explanation": "Usa-se criptografia para proteger dados que precisam ser lidos mais tarde (ex: número de cartão de crédito) e hashing para verificar a integridade ou armazenar senhas (onde só se compara hashes)."
+    },
+    {
+      "id": 606,
+      "question": "Uma aplicação exibe uma mensagem de erro detalhada que inclui uma stack trace completa e uma query SQL. Que tipo de exposição de dados é esta?",
+      "options": [
+        "Exposição de segredos da aplicação.",
+        "Exposição excessiva de informação através de tratamento de erros.",
+        "Falha de criptografia.",
+        "Vulnerabilidade de XSS."
+      ],
+      "correctAnswer": "Exposição excessiva de informação através de tratamento de erros.",
+      "explanation": "Mensagens de erro detalhadas podem revelar informações sobre a estrutura do banco de dados, versões de software e falhas de código que podem ser usadas por um atacante para planejar ataques mais sofisticados."
+    },
+    {
+      "id": 607,
+      "question": "Qual das seguintes informações NUNCA deve ser armazenada em arquivos de log?",
+      "options": [
+        "Timestamp do evento.",
+        "ID do usuário.",
+        "Senhas, tokens de sessão ou chaves de API.",
+        "Endereço de IP do usuário."
+      ],
+      "correctAnswer": "Senhas, tokens de sessão ou chaves de API.",
+      "explanation": "Logs são frequentemente menos protegidos que os bancos de dados principais. Armazenar dados de autenticação sensíveis em logs cria um risco enorme de comprometimento se os logs forem vazados."
+    },
+    {
+      "id": 608,
+      "question": "O que é 'Data Masking' (mascaramento de dados)?",
+      "options": [
+        "Um tipo de criptografia muito forte.",
+        "Um processo de esconder os dados originais com caracteres fictícios, como exibir um número de cartão de crédito como '************1234'.",
+        "Uma técnica para apagar dados permanentemente.",
+        "Um firewall que protege dados sensíveis."
+      ],
+      "correctAnswer": "Um processo de esconder os dados originais com caracteres fictícios, como exibir um número de cartão de crédito como '************1234'.",
+      "explanation": "O mascaramento é usado para proteger dados sensíveis em ambientes de teste ou para exibição parcial na UI, sem expor o dado completo."
+    },
+    {
+      "id": 609,
+      "question": "Por que é uma má prática 'hardcodar' (escrever diretamente no código) chaves de API ou credenciais de banco de dados no código-fonte de uma aplicação?",
+      "options": [
+        "Porque torna o código mais difícil de ler.",
+        "Porque se o código-fonte for vazado (ex: num repositório público), as credenciais são expostas, permitindo acesso direto aos serviços.",
+        "Porque as chaves de API mudam com muita frequência.",
+        "Porque diminui a performance da aplicação."
+      ],
+      "correctAnswer": "Porque se o código-fonte for vazado (ex: num repositório público), as credenciais são expostas, permitindo acesso direto aos serviços.",
+      "explanation": "Segredos devem ser gerenciados através de variáveis de ambiente, cofres de segredos (vaults) ou outros mecanismos de configuração seguros, nunca diretamente no código."
+    },
+    {
+      "id": 610,
+      "question": "Um desenvolvedor configura um bucket de armazenamento em nuvem (como o Amazon S3) como 'público' para facilitar o acesso. Qual é o risco principal?",
+      "options": [
+        "O custo do armazenamento aumenta.",
+        "Qualquer pessoa na internet pode potencialmente listar e baixar todos os arquivos no bucket, levando a um vazamento massivo de dados se contiver informações sensíveis.",
+        "A velocidade de upload dos arquivos diminui.",
+        "O bucket pode ser infetado com um vírus."
+      ],
+      "correctAnswer": "Qualquer pessoa na internet pode potencialmente listar e baixar todos os arquivos no bucket, levando a um vazamento massivo de dados se contiver informações sensíveis.",
+      "explanation": "A configuração incorreta de permissões em serviços de nuvem é uma das causas mais comuns de grandes vazamentos de dados."
+    },
+    {
+      "id": 611,
+      "question": "O que é 'tokenização' no contexto de proteção de dados?",
+      "options": [
+        "O processo de gerar tokens de sessão para os usuários.",
+        "A substituição de um dado sensível por um equivalente não sensível, chamado 'token', que não tem valor extrínseco ou explorável.",
+        "Um ataque que tenta adivinhar tokens de autenticação.",
+        "O uso de tokens de hardware para MFA."
+      ],
+      "correctAnswer": "A substituição de um dado sensível por um equivalente não sensível, chamado 'token', que não tem valor extrínseco ou explorável.",
+      "explanation": "Por exemplo, um número de cartão de crédito é substituído por um token aleatório. A aplicação usa o token internamente, e apenas um sistema seguro e isolado consegue mapear o token de volta para o número real."
+    },
+    {
+      "id": 612,
+      "question": "Qual é o risco de auto-completar formulários com dados sensíveis (como número de cartão de crédito) no navegador?",
+      "options": [
+        "Não há risco, é uma funcionalidade segura.",
+        "Um script malicioso numa página (via XSS) pode potencialmente ler os dados auto-completados do DOM antes mesmo de o usuário submeter o formulário.",
+        "Isso pode fazer com que o navegador do usuário trave.",
+        "O auto-completar pode inserir os dados no campo errado."
+      ],
+      "correctAnswer": "Um script malicioso numa página (via XSS) pode potencialmente ler os dados auto-completados do DOM antes mesmo de o usuário submeter o formulário.",
+      "explanation": "Para mitigar isso em campos muito sensíveis, os desenvolvedores podem usar o atributo `autocomplete=\"off\"` no campo do formulário."
+    },
+    {
+      "id": 613,
+      "question": "Qual das seguintes versões do protocolo TLS/SSL é considerada obsoleta e insegura?",
+      "options": [
+        "TLS 1.3",
+        "TLS 1.2",
+        "SSL 3.0",
+        "Todas são seguras."
+      ],
+      "correctAnswer": "SSL 3.0",
+      "explanation": "Todas as versões do SSL (e o TLS 1.0/1.1) são consideradas inseguras e vulneráveis a ataques como o POODLE. Apenas o TLS 1.2 e, preferencialmente, o TLS 1.3 devem ser usados."
+    },
+    {
+      "id": 614,
+      "question": "O que é o header HTTP `Strict-Transport-Security` (HSTS)?",
+      "options": [
+        "Um header que informa ao navegador para sempre se conectar ao site usando HTTPS, mesmo que o usuário digite 'http://'.",
+        "Um header que bloqueia todos os scripts de terceiros.",
+        "Um header que define a política de senhas do site.",
+        "Um header que habilita a autenticação de dois fatores."
+      ],
+      "correctAnswer": "Um header que informa ao navegador para sempre se conectar ao site usando HTTPS, mesmo que o usuário digite 'http://'.",
+      "explanation": "O HSTS ajuda a proteger contra ataques de 'SSL stripping', onde um atacante tenta forçar a conexão a voltar para HTTP não criptografado."
+    },
+    {
+      "id": 615,
+      "question": "O que significa 'data minimization' (minimização de dados), um princípio de leis como a GDPR/LGPD?",
+      "options": [
+        "Comprimir os dados para que ocupem menos espaço.",
+        "Coletar e reter apenas os dados que são estritamente necessários para uma finalidade específica e legítima.",
+        "Converter todos os dados para um formato mínimo (binário).",
+        "Exibir os dados na menor fonte possível."
+      ],
+      "correctAnswer": "Coletar e reter apenas os dados que são estritamente necessários para uma finalidade específica e legítima.",
+      "explanation": "Ao minimizar os dados coletados, uma organização reduz o 'raio de explosão' (blast radius) de um potencial vazamento de dados."
+    },
+    {
+      "id": 616,
+      "question": "Qual é um risco de segurança de dados em aplicações mobile que usam `SharedPreferences` (Android) ou `UserDefaults` (iOS) de forma inadequada?",
+      "options": [
+        "Estas APIs são lentas.",
+        "Se dados sensíveis (como tokens ou senhas) forem armazenados sem criptografia, um atacante com acesso ao dispositivo (especialmente se tiver root/jailbreak) pode ler esses arquivos.",
+        "Elas só conseguem armazenar pequenas quantidades de dados.",
+        "Não há riscos, são mecanismos seguros por padrão."
+      ],
+      "correctAnswer": "Se dados sensíveis (como tokens ou senhas) forem armazenados sem criptografia, um atacante com acesso ao dispositivo (especialmente se tiver root/jailbreak) pode ler esses arquivos.",
+      "explanation": "Para dados muito sensíveis, as aplicações devem usar mecanismos de armazenamento seguro como o Keystore (Android) ou o Keychain (iOS)."
+    },
+    {
+      "id": 617,
+      "question": "O que é 'Certificate Pinning' em aplicações mobile?",
+      "options": [
+        "Fixar o certificado SSL na tela principal da aplicação.",
+        "Um mecanismo de segurança onde a aplicação é codificada para confiar apenas num certificado específico ou numa autoridade certificadora específica, em vez de confiar em qualquer uma do sistema.",
+        "O processo de renovar um certificado SSL.",
+        "Uma técnica para acelerar as conexões HTTPS."
+      ],
+      "correctAnswer": "Um mecanismo de segurança onde a aplicação é codificada para confiar apenas num certificado específico ou numa autoridade certificadora específica, em vez de confiar em qualquer uma do sistema.",
+      "explanation": "O 'pinning' ajuda a proteger contra ataques Man-in-the-Middle onde um atacante usa um certificado fraudulento emitido por uma autoridade certificadora comprometida."
+    },
+    {
+      "id": 618,
+      "question": "Por que o cache do navegador pode representar um risco de exposição de dados sensíveis?",
+      "options": [
+        "Porque deixa a navegação mais lenta.",
+        "Se uma página contendo dados sensíveis for armazenada em cache, esses dados podem ser recuperados por alguém com acesso ao computador ou através de outras vulnerabilidades.",
+        "O cache só armazena imagens, não dados.",
+        "O cache é sempre criptografado pelo navegador."
+      ],
+      "correctAnswer": "Se uma página contendo dados sensíveis for armazenada em cache, esses dados podem ser recuperados por alguém com acesso ao computador ou através de outras vulnerabilidades.",
+      "explanation": "Páginas com informações privadas devem ser servidas com headers de controle de cache (como `Cache-Control: no-store`) para instruir o navegador a não as armazenar em disco."
+    },
+    {
+      "id": 619,
+      "question": "Qual das seguintes NÃO é uma boa prática para o gerenciamento de chaves criptográficas?",
+      "options": [
+        "Fazer a rotação (mudança) periódica das chaves.",
+        "Armazenar as chaves de criptografia no mesmo banco de dados que os dados que elas criptografam.",
+        "Usar um Hardware Security Module (HSM) para proteger as chaves mestras.",
+        "Limitar estritamente o acesso às chaves criptográficas."
+      ],
+      "correctAnswer": "Armazenar as chaves de criptografia no mesmo banco de dados que os dados que elas criptografam.",
+      "explanation": "Isso é como guardar a chave do cofre dentro do próprio cofre. Se o banco de dados for comprometido, o atacante terá tanto os dados criptografados quanto a chave para os descriptografar."
+    },
+    {
+      "id": 620,
+      "question": "A criptografia simétrica usa:",
+      "options": [
+        "Duas chaves diferentes: uma pública para criptografar e uma privada para descriptografar.",
+        "A mesma chave para criptografar e descriptografar os dados.",
+        "Nenhuma chave, apenas um algoritmo.",
+        "Uma chave que muda a cada transação."
+      ],
+      "correctAnswer": "A mesma chave para criptografar e descriptografar os dados.",
+      "explanation": "A criptografia simétrica (ex: AES) é muito rápida e ideal para grandes volumes de dados, mas o desafio é a partilha segura da chave única."
+    }
+  ]
+}

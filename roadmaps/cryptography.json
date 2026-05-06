@@ -1,0 +1,21 @@
+{
+  "title": "Cryptography",
+  "roadmap": [
+    {
+      "id": 51,
+      "title": "Cifras Clássicas",
+      "description": "Entenda Cesar e Vigenère.",
+      "contentFile": "quizzes/crypto_classic_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 52,
+      "title": "RSA & AES",
+      "description": "Criptografia Moderna e chaves.",
+      "contentFile": "labs/lab_crypto_modern.json",
+      "status": "LOCKED",
+      "xp": 100
+    }
+  ]
+}

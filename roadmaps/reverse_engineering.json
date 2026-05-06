@@ -1,0 +1,21 @@
+{
+  "title": "Reverse Engineering",
+  "roadmap": [
+    {
+      "id": 61,
+      "title": "Introdução ao x86",
+      "description": "Lendo código Assembly básico.",
+      "contentFile": "quizzes/re_assembly_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 62,
+      "title": "Ghidra Basics",
+      "description": "Desmontando binários reais.",
+      "contentFile": "labs/lab_re_ghidra.json",
+      "status": "LOCKED",
+      "xp": 100
+    }
+  ]
+}

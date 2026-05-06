@@ -1,0 +1,102 @@
+{
+  "roadmaps": [
+    {
+      "id": "web_hacking",
+      "title": "Web Hacking Fundamentals",
+      "description": "Domine o OWASP Top 10 e técnicas de invasão web.",
+      "file": "roadmaps/web_hacking.json",
+      "icon": "ic_web_roadmap"
+    },
+    {
+      "id": "network_security",
+      "title": "Network Security",
+      "description": "Aprenda sobre protocolos, varredura e segurança de redes.",
+      "file": "roadmaps/network_security.json",
+      "icon": "ic_network_roadmap"
+    },
+    {
+      "id": "os_security",
+      "title": "Operating System Security",
+      "description": "Segurança em Linux e Windows, permissões e hardening.",
+      "file": "roadmaps/os_security.json",
+      "icon": "ic_os_roadmap"
+    },
+    {
+      "id": "cloud_security",
+      "title": "Cloud Security",
+      "description": "Segurança em AWS, Azure e GCP.",
+      "file": "roadmaps/cloud_security.json",
+      "icon": "ic_cloud"
+    },
+    {
+      "id": "cryptography",
+      "title": "Cryptography",
+      "description": "Criptografia clássica e moderna.",
+      "file": "roadmaps/cryptography.json",
+      "icon": "ic_lock"
+    },
+    {
+      "id": "reverse_engineering",
+      "title": "Reverse Engineering",
+      "description": "Desmontando binários e analisando Assembly.",
+      "file": "roadmaps/reverse_engineering.json",
+      "icon": "ic_reverse"
+    },
+    {
+      "id": "forensics",
+      "title": "Digital Forensics",
+      "description": "Investigação digital e análise de memória.",
+      "file": "roadmaps/forensics.json",
+      "icon": "ic_search"
+    },
+    {
+      "id": "social_engineering",
+      "title": "Social Engineering",
+      "description": "A psicologia do ataque e manipulação.",
+      "file": "roadmaps/social_engineering.json",
+      "icon": "ic_people"
+    },
+    {
+      "id": "incident_response",
+      "title": "Incident Response",
+      "description": "Monitoramento, SIEM e resposta a ataques.",
+      "file": "roadmaps/incident_response.json",
+      "icon": "ic_warning"
+    },
+    {
+      "id": "malware_analysis",
+      "title": "Malware Analysis",
+      "description": "Análise estática e dinâmica de ameaças.",
+      "file": "roadmaps/malware_analysis.json",
+      "icon": "ic_bug"
+    },
+    {
+      "id": "api_security",
+      "title": "API Security",
+      "description": "Protegendo endpoints e serviços REST.",
+      "file": "roadmaps/api_security.json",
+      "icon": "ic_api"
+    },
+    {
+      "id": "wireless_security",
+      "title": "Wireless Security",
+      "description": "Ataques e defesas em redes sem fio.",
+      "file": "roadmaps/wireless_security.json",
+      "icon": "ic_wifi"
+    },
+    {
+      "id": "iot_security",
+      "title": "IoT Security",
+      "description": "Segurança em dispositivos embarcados.",
+      "file": "roadmaps/iot_security.json",
+      "icon": "ic_iot"
+    },
+    {
+      "id": "mobile_security",
+      "title": "Mobile Security",
+      "description": "Segurança em Android e iOS, análise de apps e pentest mobile.",
+      "file": "roadmaps/mobile_security.json",
+      "icon": "ic_mobile"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "quiz": [
+    {
+      "id": 511,
+      "question": "Qual flag do Nmap é usada para realizar um 'Stealth Scan' (TCP SYN)?",
+      "options": [
+        "-sS",
+        "-sT",
+        "-sU",
+        "-sV"
+      ],
+      "correctAnswer": "-sS",
+      "explanation": "O Stealth Scan (-sS) envia um pacote SYN e aguarda um SYN/ACK, mas não completa o handshake, tornando-o mais difícil de detectar por firewalls simples."
+    },
+    {
+      "id": 512,
+      "question": "O que o comando 'nmap -p 1-65535' faz?",
+      "options": [
+        "Escaneia apenas a porta 1 e a porta 65535.",
+        "Escaneia todas as portas TCP possíveis.",
+        "Escaneia apenas portas UDP.",
+        "Verifica a versão do sistema operacional."
+      ],
+      "correctAnswer": "Escaneia todas as portas TCP possíveis.",
+      "explanation": "Existem 65535 portas TCP possíveis. O argumento -p seguido do range 1-65535 força o Nmap a verificar cada uma delas."
+    }
+  ]
+}

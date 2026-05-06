@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Analisando Tráfego HTTP no Wireshark",
+  "introduction": "O Wireshark é o analisador de protocolo de rede mais importante do mundo. Ele permite ver o que está acontecendo na sua rede a um nível microscópico. Neste laboratório, analisaremos um arquivo de captura (.pcap) para encontrar credenciais expostas.",
+  "objective": "Seu objetivo é analisar um tráfego capturado e extrair o nome de usuário e a senha enviados via HTTP.",
+  "xp": 50,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Filtros de Exibição",
+      "description": "Ao abrir uma captura grande, o uso de filtros é essencial. Para ver apenas o tráfego da web sem criptografia, usamos o filtro `http`. Se quisermos focar em envios de dados, podemos usar `http.request.method == \"POST\"`."
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Localizando o POST de Login",
+      "description": "Na captura simulada, você encontrou uma requisição para `/login.php`. Qual filtro do Wireshark você usaria para mostrar apenas pacotes que contenham a palavra 'login' na URL?",
+      "placeholder": "http.request.uri contains ...",
+      "correctAnswer": "http.request.uri contains login",
+      "successMessage": "Excelente! Filtros de URI são fundamentais para encontrar endpoints específicos rapidamente.",
+      "failureMessage": "Dica: Use 'contains' seguido da palavra procurada."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Extração de Dados",
+      "description": "Ao seguir o fluxo TCP (Follow TCP Stream) do pacote de login, você vê o seguinte conteúdo:\n\n`uname=reaper&pass=CP{cl3ar_t3xt_credentials_exposed}`\n\nQual é a flag encontrada no campo de senha?",
+      "placeholder": "CP{...}",
+      "correctAnswer": "CP{cl3ar_t3xt_credentials_exposed}",
+      "successMessage": "Perfeito! Isso demonstra que o tráfego HTTP é vulnerável à leitura direta se interceptado.",
+      "failureMessage": "A flag começa com CP{ e termina com }"
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Análise de Protocolo",
+      "description": "Qual protocolo o Wireshark mostraria se o site estivesse usando criptografia (HTTPS)?",
+      "options": [
+        "HTTP/2",
+        "TLS (ou SSL)",
+        "UDP",
+        "FTP"
+      ],
+      "correctAnswer": "TLS (ou SSL)",
+      "explanation": "O HTTPS utiliza o protocolo TLS (Transport Layer Security) para criptografar os dados. No Wireshark, você veria pacotes 'Application Data' cifrados, em vez de texto claro HTTP."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você aprendeu a filtrar tráfego e identificar vulnerabilidades de texto claro usando o Wireshark. Esta é uma habilidade fundamental para qualquer analista de segurança.",
+      "successMessage": "Laboratório de Wireshark concluído!"
+    }
+  ]
+}

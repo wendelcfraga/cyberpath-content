@@ -1,0 +1,45 @@
+{
+  "labTitle": "Laboratório: Credenciais Hardcoded",
+  "introduction": "Muitos desenvolvedores deixam chaves de API, senhas ou tokens diretamente no código-fonte ou em arquivos de configuração do app (strings.xml, manifest). Se um atacante descompilar o APK, ele terá acesso total a esses segredos.",
+  "objective": "Seu objetivo é analisar um trecho de código recuperado de um APK e identificar a chave de API exposta.",
+  "xp": 40,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Engenharia Reversa",
+      "description": "Arquivos APK são apenas pacotes compactados. Usando ferramentas como JADX ou apktool, podemos recuperar o código Java/Kotlin e os arquivos de recursos originais. Veja este exemplo de uma classe de configuração encontrada:\n\n```java\npublic class Config {\n    public static final String BASE_URL = \"https://api.cyberpath.com\";\n    public static final String API_KEY = \"AIzaSyB-8u9X2J1_kL0mNnOpQrStUvW\";\n}\n```"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: Extração do Segredo",
+      "description": "Com base no código acima, qual é o valor da chave de API (`API_KEY`) que foi deixada exposta no código?",
+      "placeholder": "Insira a chave aqui",
+      "correctAnswer": "AIzaSyB-8u9X2J1_kL0mNnOpQrStUvW",
+      "successMessage": "Exato! Essa chave agora pode ser usada por qualquer pessoa para fazer requisições em nome do app, possivelmente gerando custos ou acessando dados privados.",
+      "failureMessage": "Copie exatamente o valor entre aspas da variável API_KEY."
+    },
+    {
+      "id": 3,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 3: Melhor Prática",
+      "description": "Qual é a forma correta de gerenciar chaves sensíveis em um aplicativo Android?",
+      "options": [
+        "Esconder a chave no arquivo strings.xml com um nome genérico.",
+        "Ofuscar o código usando ProGuard/R8.",
+        "Nunca armazenar segredos no cliente; usar um serviço de backend para intermediar chamadas ou usar o Android Keystore para chaves geradas no dispositivo.",
+        "Criptografar a chave e salvar o código de descriptografia no próprio app."
+      ],
+      "correctAnswer": "Nunca armazenar segredos no cliente; usar um serviço de backend para intermediar chamadas ou usar o Android Keystore para chaves geradas no dispositivo.",
+      "explanation": "A regra fundamental da segurança mobile é: nada no cliente é seguro. Se a chave estiver no código, ela pode ser extraída. O ideal é que o app se autentique em um backend seguro e este faça a chamada à API externa."
+    },
+    {
+      "id": 4,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Parabéns! Você aprendeu que segredos 'hardcoded' são um erro crítico. Sempre revise seu código em busca de tokens e use variáveis de ambiente ou cofres de segredos durante o build.",
+      "successMessage": "Laboratório de Credenciais Hardcoded concluído!"
+    }
+  ]
+}

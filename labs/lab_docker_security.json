@@ -1,0 +1,11 @@
+{
+  "id": "lab_docker_security",
+  "title": "Segurança em Containers Docker",
+  "steps": [
+    "Identifique containers rodando como root.",
+    "Analise configurações de rede inseguras.",
+    "Explore uma falha de 'container escape'.",
+    "Implemente políticas de 'read-only' no sistema de arquivos."
+  ],
+  "flag": "CP{d0cker_escap3_prevented}"
+}

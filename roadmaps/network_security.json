@@ -1,0 +1,85 @@
+{
+  "title": "Network Security Fundamentals",
+  "roadmap": [
+    {
+      "id": 11,
+      "title": "Fundamentos de Redes",
+      "description": "Modelo OSI, TCP/IP e protocolos básicos.",
+      "contentFile": "quizzes/network_fundamentals_quiz.json",
+      "status": "UNLOCKED",
+      "xp": 50
+    },
+    {
+      "id": 12,
+      "title": "Scanning e Enumeração",
+      "description": "Nmap, serviços e detecção de SO.",
+      "contentFile": "summaries/tools_summary.json",
+      "status": "LOCKED",
+      "xp": 50
+    },
+    {
+      "id": 13,
+      "title": "Laboratório Nmap",
+      "description": "Prática de varredura de rede com Nmap.",
+      "contentFile": "labs/lab_nmap.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 14,
+      "title": "Análise de Tráfego",
+      "description": "Wireshark e inspeção de pacotes.",
+      "contentFile": "labs/lab_wireshark_http.json",
+      "status": "LOCKED",
+      "xp": 100
+    },
+    {
+      "id": 15,
+      "title": "Ataques Man-in-the-Middle",
+      "description": "ARP Spoofing e interceptação.",
+      "contentFile": "quizzes/mitm_quiz.json",
+      "status": "LOCKED",
+      "xp": 75
+    },
+    {
+      "id": 16,
+      "title": "Ataques de DNS",
+      "description": "Entenda como o DNS pode ser manipulado.",
+      "contentFile": "quizzes/dns_attacks_quiz.json",
+      "status": "LOCKED",
+      "xp": 60
+    },
+    {
+      "id": 17,
+      "title": "Metasploit Fundamentals",
+      "description": "Exploração automatizada de serviços.",
+      "contentFile": "labs/lab_metasploit_basics.json",
+      "status": "LOCKED",
+      "xp": 120
+    },
+    {
+      "id": 18,
+      "title": "Configuração de Firewalls",
+      "description": "Regras de entrada e saída.",
+      "contentFile": "quizzes/firewall_basics_quiz.json",
+      "status": "LOCKED",
+      "xp": 50
+    },
+    {
+      "id": 19,
+      "title": "Sniffing em Redes Locais",
+      "description": "Capturando dados em trânsito.",
+      "contentFile": "labs/lab_sniffing.json",
+      "status": "LOCKED",
+      "xp": 110
+    },
+    {
+      "id": 20,
+      "title": "Protocolos de VPN",
+      "description": "Túneis seguros e criptografia.",
+      "contentFile": "quizzes/vpn_security_quiz.json",
+      "status": "LOCKED",
+      "xp": 70
+    }
+  ]
+}

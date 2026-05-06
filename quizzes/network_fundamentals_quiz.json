@@ -1,0 +1,64 @@
+{
+  "quiz": [
+    {
+      "id": 501,
+      "question": "Qual camada do modelo OSI é responsável pelo roteamento de pacotes?",
+      "options": [
+        "Camada de Enlace (Layer 2)",
+        "Camada de Rede (Layer 3)",
+        "Camada de Transporte (Layer 4)",
+        "Camada de Aplicação (Layer 7)"
+      ],
+      "correctAnswer": "Camada de Rede (Layer 3)",
+      "explanation": "A Camada de Rede (Layer 3) é responsável pelo endereçamento lógico e roteamento de pacotes através de diferentes redes, utilizando protocolos como o IP."
+    },
+    {
+      "id": 502,
+      "question": "Qual é a principal diferença entre os protocolos TCP e UDP?",
+      "options": [
+        "TCP é mais rápido que UDP.",
+        "TCP é orientado a conexão e garante a entrega, enquanto UDP é sem conexão e não garante a entrega.",
+        "UDP é usado apenas para transferir arquivos.",
+        "TCP não pode ser usado na internet."
+      ],
+      "correctAnswer": "TCP é orientado a conexão e garante a entrega, enquanto UDP é sem conexão e não garante a entrega.",
+      "explanation": "O TCP estabelece uma conexão (three-way handshake) e verifica se os dados chegaram corretamente. O UDP envia os dados sem essa verificação, sendo ideal para transmissões em tempo real."
+    },
+    {
+      "id": 503,
+      "question": "O que faz o protocolo ARP (Address Resolution Protocol)?",
+      "options": [
+        "Converte nomes de domínio em IPs.",
+        "Converte endereços IP em endereços físicos MAC.",
+        "Criptografa o tráfego da rede.",
+        "Atribui IPs automaticamente para dispositivos."
+      ],
+      "correctAnswer": "Converte endereços IP em endereços físicos MAC.",
+      "explanation": "O ARP é usado em redes locais para descobrir o endereço MAC de uma interface de rede a partir de um endereço IP conhecido."
+    },
+    {
+      "id": 504,
+      "question": "Qual é a máscara de sub-rede padrão para uma rede de Classe C (/24)?",
+      "options": [
+        "255.0.0.0",
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.255.255"
+      ],
+      "correctAnswer": "255.255.255.0",
+      "explanation": "Uma rede /24 utiliza 24 bits para a rede e 8 bits para hosts, resultando na máscara 255.255.255.0."
+    },
+    {
+      "id": 505,
+      "question": "O que significa a sigla ICMP?",
+      "options": [
+        "Internet Connection Message Protocol",
+        "Internet Control Message Protocol",
+        "Internal Computer Management Protocol",
+        "Information Control Main Protocol"
+      ],
+      "correctAnswer": "Internet Control Message Protocol",
+      "explanation": "ICMP é usado por dispositivos de rede para enviar mensagens de erro e informações operacionais (como o comando 'ping')."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dns_attacks_quiz",
+  "title": "Ataques de DNS",
+  "questions": [
+    {
+      "question": "O que é DNS Spoofing?",
+      "options": ["Ataque de negação de serviço", "Falsificação de registros DNS para redirecionar tráfego", "Criptografia de consultas DNS", "Varredura de portas DNS"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Qual porta o protocolo DNS utiliza por padrão?",
+      "options": ["80", "443", "53", "22"],
+      "correctIndex": 2
+    }
+  ]
+}

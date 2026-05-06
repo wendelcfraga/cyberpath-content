@@ -1,0 +1,16 @@
+{
+  "id": "ios_security_basics",
+  "title": "Segurança iOS",
+  "questions": [
+    {
+      "question": "Qual o processo de carregar apenas código assinado pela Apple no iOS?",
+      "options": ["Sandbox", "Code Signing", "Jailbreak", "ASLR"],
+      "correctIndex": 1
+    },
+    {
+      "question": "O que é o 'Secure Enclave'?",
+      "options": ["Uma pasta segura no iCloud", "Um coprocessador de hardware para operações criptográficas", "Um antivírus nativo", "Um modo de navegação privada"],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Wireless Security",
+  "roadmap": [
+    {
+      "id": 121,
+      "title": "WiFi Cracking",
+      "description": "Aircrack-ng e ataques WPA2.",
+      "contentFile": "labs/lab_wifi_crack.json",
+      "status": "UNLOCKED",
+      "xp": 100
+    }
+  ]
+}

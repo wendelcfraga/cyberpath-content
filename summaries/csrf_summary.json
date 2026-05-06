@@ -1,0 +1,484 @@
+{
+  "quiz": [
+    {
+      "id": 401,
+      "question": "O que significa a sigla CSRF?",
+      "options": [
+        "Client-Side Request Forgery",
+        "Cross-Site Resource Forgery",
+        "Cross-Site Request Forgery",
+        "Client-Server Request Forgery"
+      ],
+      "correctAnswer": "Cross-Site Request Forgery",
+      "explanation": "CSRF significa Cross-Site Request Forgery (Falsificação de Solicitação entre Sites), um ataque que engana um utilizador autenticado a executar uma ação indesejada."
+    },
+    {
+      "id": 402,
+      "question": "Qual é a principal pré-condição para que um ataque de CSRF seja bem-sucedido?",
+      "options": [
+        "A vítima precisa de ter JavaScript desativado.",
+        "O site vulnerável não pode usar HTTPS.",
+        "A vítima deve estar autenticada (logada) no site vulnerável no momento do ataque.",
+        "O atacante precisa de conhecer a password da vítima."
+      ],
+      "correctAnswer": "A vítima deve estar autenticada (logada) no site vulnerável no momento do ataque.",
+      "explanation": "O CSRF explora a sessão ativa da vítima. O navegador envia automaticamente os cookies de sessão com a requisição forjada, fazendo o servidor pensar que a ação é legítima."
+    },
+    {
+      "id": 403,
+      "question": "Como um ataque de CSRF é tipicamente entregue a uma vítima?",
+      "options": [
+        "Através de um anexo de email executável.",
+        "Através de uma vulnerabilidade de SQL Injection.",
+        "Enganando a vítima para que ela visite uma página maliciosa (ex: clicando num link ou vendo uma imagem).",
+        "Através de um ataque de negação de serviço (DDoS)."
+      ],
+      "correctAnswer": "Enganando a vítima para que ela visite uma página maliciosa (ex: clicando num link ou vendo uma imagem).",
+      "explanation": "O ataque é iniciado quando o navegador da vítima faz uma requisição para o site vulnerável a partir de um site controlado pelo atacante."
+    },
+    {
+      "id": 404,
+      "question": "Qual das seguintes ações um atacante PODE realizar com um ataque de CSRF bem-sucedido?",
+      "options": [
+        "Ler os emails da vítima ou ver informações na página.",
+        "Forçar a vítima a mudar a sua password, transferir fundos ou apagar dados.",
+        "Roubar todos os cookies do navegador da vítima.",
+        "Injetar e executar scripts no navegador da vítima."
+      ],
+      "correctAnswer": "Forçar a vítima a mudar a sua password, transferir fundos ou apagar dados.",
+      "explanation": "CSRF é sobre forçar a execução de ações que mudam o estado da aplicação (state-changing actions). Ele não permite ao atacante ver a resposta da requisição."
+    },
+    {
+      "id": 405,
+      "question": "Qual é a principal diferença entre CSRF e XSS?",
+      "options": [
+        "Não há diferença, são o mesmo ataque.",
+        "CSRF explora a confiança que um site tem no navegador do utilizador, enquanto XSS explora a confiança que um utilizador tem num site.",
+        "CSRF só funciona com requisições GET, enquanto XSS funciona com POST.",
+        "XSS é um ataque do lado do servidor, e CSRF é do lado do cliente."
+      ],
+      "correctAnswer": "CSRF explora a confiança que um site tem no navegador do utilizador, enquanto XSS explora a confiança que um utilizador tem num site.",
+      "explanation": "Com CSRF, o site alvo confia que a requisição é legítima porque ela vem com os cookies corretos. Com XSS, o utilizador confia no site e executa scripts maliciosos servidos por ele."
+    },
+    {
+      "id": 406,
+      "question": "Qual é a técnica de mitigação de CSRF mais robusta e recomendada?",
+      "options": [
+        "Verificar o header 'User-Agent'.",
+        "Usar o Synchronizer Token Pattern (Anti-CSRF Tokens).",
+        "Exigir que todas as requisições usem o método POST.",
+        "Bloquear endereços de IP de atacantes conhecidos."
+      ],
+      "correctAnswer": "Usar o Synchronizer Token Pattern (Anti-CSRF Tokens).",
+      "explanation": "Anti-CSRF tokens são valores únicos e imprevisíveis gerados pelo servidor para cada sessão. Eles são incluídos em formulários e verificados a cada requisição, garantindo que a requisição veio da própria aplicação."
+    },
+    {
+      "id": 407,
+      "question": "Como funciona o Synchronizer Token Pattern?",
+      "options": [
+        "O servidor envia um token num cookie e espera que o JavaScript do cliente o leia e o envie de volta num header.",
+        "O servidor embute um token único e secreto num campo escondido do formulário. Quando o formulário é submetido, o servidor verifica se o token recebido corresponde ao esperado para aquela sessão.",
+        "O servidor criptografa toda a requisição POST.",
+        "O servidor verifica se a requisição veio do mesmo endereço de IP."
+      ],
+      "correctAnswer": "O servidor embute um token único e secreto num campo escondido do formulário. Quando o formulário é submetido, o servidor verifica se o token recebido corresponde ao esperado para aquela sessão.",
+      "explanation": "Um atacante num site externo não consegue ler ou adivinhar este token secreto, então qualquer requisição forjada falhará na validação do servidor."
+    },
+    {
+      "id": 408,
+      "question": "O que especifica o atributo de cookie `SameSite=Strict`?",
+      "options": [
+        "O cookie só pode ser acedido pelo JavaScript do mesmo site.",
+        "O cookie nunca será enviado em requisições iniciadas por sites de terceiros (cross-site).",
+        "O cookie só será enviado com requisições POST.",
+        "O cookie é válido para todos os subdomínios."
+      ],
+      "correctAnswer": "O cookie nunca será enviado em requisições iniciadas por sites de terceiros (cross-site).",
+      "explanation": "`SameSite=Strict` é uma defesa muito eficaz contra CSRF porque impede que o navegador envie o cookie de sessão junto com a requisição forjada, que por definição vem de outro site."
+    },
+    {
+      "id": 409,
+      "question": "Por que `SameSite=Strict` pode quebrar algumas funcionalidades legítimas de um site?",
+      "options": [
+        "Porque não é suportado por todos os navegadores.",
+        "Porque ele também bloqueia o envio do cookie quando um utilizador clica num link legítimo de um site externo para o seu site, o que pode deslogá-lo.",
+        "Porque ele diminui a performance do site.",
+        "Porque ele entra em conflito com o HTTPS."
+      ],
+      "correctAnswer": "Porque ele também bloqueia o envio do cookie quando um utilizador clica num link legítimo de um site externo para o seu site, o que pode deslogá-lo.",
+      "explanation": "Se você está num site de notícias e clica num link para o seu email, com `SameSite=Strict`, o cookie de sessão do seu email não seria enviado, e você não estaria logado. `SameSite=Lax` resolve parcialmente isso."
+    },
+    {
+      "id": 410,
+      "question": "O que é a técnica 'Double Submit Cookie' para prevenção de CSRF?",
+      "options": [
+        "Exigir que o utilizador submeta o formulário duas vezes.",
+        "Enviar o mesmo cookie de sessão duas vezes.",
+        "O servidor envia um valor aleatório num cookie e o JavaScript do cliente lê este valor e o adiciona como um parâmetro na requisição. O servidor então verifica se ambos os valores coincidem.",
+        "Usar dois tokens anti-CSRF diferentes em cada formulário."
+      ],
+      "correctAnswer": "O servidor envia um valor aleatório num cookie e o JavaScript do cliente lê este valor e o adiciona como um parâmetro na requisição. O servidor então verifica se ambos os valores coincidem.",
+      "explanation": "Esta técnica é 'stateless' (não precisa de guardar o token no servidor), mas é considerada menos segura que o Synchronizer Token Pattern porque depende da premissa (nem sempre verdadeira) de que um atacante não pode ler ou escrever cookies de outro domínio."
+    },
+    {
+      "id": 411,
+      "question": "Por que verificar o header `Referer` não é uma defesa totalmente confiável contra CSRF?",
+      "options": [
+        "Porque o header `Referer` pode ser facilmente falsificado por um atacante.",
+        "Porque muitos utilizadores e proxies de privacidade removem o header `Referer` das requisições por questões de privacidade.",
+        "Porque este header não é enviado em requisições HTTPS.",
+        "Porque o header `Referer` não contém o nome do domínio."
+      ],
+      "correctAnswer": "Porque muitos utilizadores e proxies de privacidade removem o header `Referer` das requisições por questões de privacidade.",
+      "explanation": "Se a sua aplicação bloquear requisições sem o header `Referer`, você pode acabar por bloquear utilizadores legítimos, causando problemas de usabilidade."
+    },
+    {
+      "id": 412,
+      "question": "Qual é a principal limitação de usar CSRF para atacar uma funcionalidade que usa o método HTTP GET (ex: `site.com/delete?id=123`)?",
+      "options": [
+        "Ataques com GET não funcionam.",
+        "É trivialmente fácil de explorar; o atacante só precisa de enganar a vítima para que ela carregue uma tag `<img>` com o `src` malicioso.",
+        "Não é possível passar parâmetros em requisições GET.",
+        "Os navegadores bloqueiam requisições GET para outros sites."
+      ],
+      "correctAnswer": "É trivialmente fácil de explorar; o atacante só precisa de enganar a vítima para que ela carregue uma tag `<img>` com o `src` malicioso.",
+      "explanation": "O uso de GET para ações que mudam o estado é uma má prática de segurança justamente porque torna os ataques de CSRF muito simples de executar."
+    },
+    {
+      "id": 413,
+      "question": "Para uma requisição POST, como um atacante pode forçar o navegador da vítima a submetê-la?",
+      "options": [
+        "É impossível forçar uma requisição POST.",
+        "Usando um formulário HTML escondido na página do atacante com JavaScript para o submeter automaticamente.",
+        "Usando uma tag `<img>`.",
+        "Usando um ataque de SQL Injection."
+      ],
+      "correctAnswer": "Usando um formulário HTML escondido na página do atacante com JavaScript para o submeter automaticamente.",
+      "explanation": "O atacante cria um formulário que aponta para a ação vulnerável no site alvo, preenche os valores e usa JavaScript (`form.submit()`) para o enviar sem que a vítima perceba."
+    },
+    {
+      "id": 414,
+      "question": "Um 'Login CSRF' é um tipo de ataque onde:",
+      "options": [
+        "O atacante rouba as credenciais de login da vítima.",
+        "O atacante força a vítima a fazer login na conta do PRÓPRIO atacante.",
+        "O atacante consegue fazer login sem uma password.",
+        "O atacante força o logout da vítima."
+      ],
+      "correctAnswer": "O atacante força a vítima a fazer login na conta do PRÓPRIO atacante.",
+      "explanation": "O objetivo é fazer com que a vítima, sem saber, execute ações (como guardar um cartão de crédito) na conta do atacante, que ele pode depois aceder."
+    },
+    {
+      "id": 415,
+      "question": "Qual é uma boa prática para proteger APIs (especialmente RESTful) contra CSRF?",
+      "options": [
+        "APIs não são vulneráveis a CSRF.",
+        "Usar um token de autenticação (como um JWT) num header customizado (ex: `Authorization: Bearer ...`) em vez de depender de cookies de sessão.",
+        "Garantir que a API só responda com JSON.",
+        "Limitar o número de requisições por minuto (rate limiting)."
+      ],
+      "correctAnswer": "Usar um token de autenticação (como um JWT) num header customizado (ex: `Authorization: Bearer ...`) em vez de depender de cookies de sessão.",
+      "explanation": "Headers customizados não são enviados automaticamente pelo navegador em requisições cross-site, o que quebra o mecanismo do CSRF. O atacante não consegue adicionar este header à requisição forjada."
+    },
+    {
+      "id": 416,
+      "question": "O que significa dizer que uma requisição é 'state-changing'?",
+      "options": [
+        "Uma requisição que muda o estado de humor do utilizador.",
+        "Uma requisição que muda dados no servidor (ex: apagar um post, mudar um email, fazer uma compra).",
+        "Uma requisição que apenas lê dados (ex: ver um perfil).",
+        "Uma requisição que muda a cor de fundo do site."
+      ],
+      "correctAnswer": "Uma requisição que muda dados no servidor (ex: apagar um post, mudar um email, fazer uma compra).",
+      "explanation": "Estas são as ações que precisam de ser protegidas contra CSRF, pois são elas que causam impacto."
+    },
+    {
+      "id": 417,
+      "question": "Muitos frameworks web modernos (Django, Ruby on Rails, ASP.NET Core) oferecem proteção contra CSRF por padrão. Como eles geralmente fazem isso?",
+      "options": [
+        "Bloqueando todos os endereços de IP estrangeiros.",
+        "Forçando o uso de senhas mais complexas.",
+        "Implementando automaticamente o Synchronizer Token Pattern em todos os formulários gerados.",
+        "Exigindo que o utilizador resolva um CAPTCHA a cada ação."
+      ],
+      "correctAnswer": "Implementando automaticamente o Synchronizer Token Pattern em todos os formulários gerados.",
+      "explanation": "Os frameworks abstraem a complexidade, gerando e validando os tokens anti-CSRF automaticamente, o que aumenta muito a segurança das aplicações construídas sobre eles."
+    },
+    {
+      "id": 418,
+      "question": "Qual das seguintes ações NÃO é um bom local para armazenar um Anti-CSRF token no lado do servidor?",
+      "options": [
+        "Na sessão do utilizador.",
+        "Num cookie.",
+        "Numa tabela de base de dados associada à sessão.",
+        "Num ficheiro de log."
+      ],
+      "correctAnswer": "Num cookie.",
+      "explanation": "Guardar o token num cookie não faz sentido para o Synchronizer Token Pattern, pois os cookies são enviados automaticamente. O token precisa de ser guardado na sessão do servidor para ser comparado com o que vem do formulário."
+    },
+    {
+      "id": 419,
+      "question": "O atributo `SameSite=Lax` para cookies oferece qual nível de proteção?",
+      "options": [
+        "Nenhuma proteção.",
+        "Proteção total, igual ao `Strict`.",
+        "Impede o envio do cookie em requisições cross-site POST, mas permite em requisições GET de navegação de alto nível (ex: clicar num link).",
+        "Só funciona em modo anónimo."
+      ],
+      "correctAnswer": "Impede o envio do cookie em requisições cross-site POST, mas permite em requisições GET de navegação de alto nível (ex: clicar num link).",
+      "explanation": "`Lax` oferece um bom equilíbrio entre segurança e usabilidade, protegendo contra as formas mais comuns de CSRF sem quebrar a navegação normal entre sites."
+    },
+    {
+      "id": 420,
+      "question": "Por que re-autenticar o utilizador (pedir a password novamente) antes de uma ação crítica é uma defesa eficaz contra CSRF?",
+      "options": [
+        "Porque os atacantes nunca conseguem adivinhar a password.",
+        "Porque o atacante, numa requisição CSRF, não consegue fornecer a password da vítima.",
+        "Porque isso invalida o cookie de sessão.",
+        "Porque força o utilizador a usar HTTPS."
+      ],
+      "correctAnswer": "Porque o atacante, numa requisição CSRF, não consegue fornecer a password da vítima.",
+      "explanation": "Mesmo que o atacante consiga forjar a requisição, ele não consegue preencher o campo da password, e a ação falhará. É uma ótima defesa para operações muito sensíveis."
+    },
+    {
+      "id": 421,
+      "question": "Se uma aplicação não usa cookies para gerir sessões, mas sim tokens JWT no `localStorage`, ela está vulnerável a CSRF?",
+      "options": [
+        "Sim, da mesma forma que com cookies.",
+        "Não, porque o `localStorage` não é enviado automaticamente com as requisições, e o JavaScript de um site malicioso não pode ler o `localStorage` de outro domínio.",
+        "Sim, mas apenas se o JWT não for assinado.",
+        "Apenas se o utilizador estiver numa rede Wi-Fi pública."
+      ],
+      "correctAnswer": "Não, porque o `localStorage` não é enviado automaticamente com as requisições, e o JavaScript de um site malicioso não pode ler o `localStorage` de outro domínio.",
+      "explanation": "O CSRF depende do envio automático de credenciais (cookies) pelo navegador. Como o `localStorage` não é automático, o ataque falha."
+    },
+    {
+      "id": 422,
+      "question": "O que o header `Origin` indica numa requisição HTTP?",
+      "options": [
+        "O país de origem do utilizador.",
+        "O domínio que iniciou a requisição.",
+        "O tipo de navegador que fez a requisição.",
+        "A data e hora em que a requisição foi feita."
+      ],
+      "correctAnswer": "O domínio que iniciou a requisição.",
+      "explanation": "Verificar o header `Origin` (e `Referer`) é uma defesa adicional contra CSRF, onde o servidor pode verificar se a requisição se originou do seu próprio domínio."
+    },
+    {
+      "id": 423,
+      "question": "Qual das seguintes tags HTML pode ser usada para um ataque de CSRF que usa o método GET?",
+      "options": [
+        "`<p>`",
+        "`<div>`",
+        "`<script>`",
+        "`<img>`"
+      ],
+      "correctAnswer": "`<img>`",
+      "explanation": "O navegador tentará carregar a imagem fazendo uma requisição GET para a URL no atributo `src`. O atacante pode colocar a URL da ação vulnerável ali (ex: `<img src='http://banco.com/transfer?to=atacante&amount=1000'>`)."
+    },
+    {
+      "id": 424,
+      "question": "A proteção contra 'clickjacking' (usando o header X-Frame-Options) ajuda a prevenir CSRF?",
+      "options": [
+        "Sim, é a principal defesa contra CSRF.",
+        "Não, são vulnerabilidades diferentes. Clickjacking engana o utilizador a clicar em algo que ele não pretendia, enquanto CSRF falsifica uma requisição inteira.",
+        "Sim, mas apenas em requisições POST.",
+        "Apenas se o site usar HTTPS."
+      ],
+      "correctAnswer": "Não, são vulnerabilidades diferentes. Clickjacking engana o utilizador a clicar em algo que ele não pretendia, enquanto CSRF falsifica uma requisição inteira.",
+      "explanation": "Embora ambos sejam ataques de confusão do lado do cliente, os seus mecanismos e defesas são distintos. Proteger contra um não protege necessariamente contra o outro."
+    },
+    {
+      "id": 425,
+      "question": "Por que um Anti-CSRF token deve ser único por sessão de utilizador?",
+      "options": [
+        "Para ser mais fácil de adivinhar.",
+        "Para impedir que um atacante que roubou o token de um utilizador o reutilize para atacar outro utilizador.",
+        "Para que o token possa ser guardado num cookie.",
+        "Para melhorar a performance do site."
+      ],
+      "correctAnswer": "Para impedir que um atacante que roubou o token de um utilizador o reutilize para atacar outro utilizador.",
+      "explanation": "Ao ligar o token à sessão, o servidor garante que apenas o utilizador legítimo, naquela sessão específica, possa submeter requisições válidas."
+    },
+    {
+      "id": 426,
+      "question": "Numa Single Page Application (SPA), onde o JavaScript faz requisições a uma API, como o Anti-CSRF token é geralmente obtido?",
+      "options": [
+        "O token é fixo e vem no código JavaScript.",
+        "A aplicação faz uma requisição inicial a um endpoint (ex: /api/token) para obter o token e depois inclui-o num header customizado (ex: `X-CSRF-TOKEN`) em todas as requisições subsequentes.",
+        "O utilizador precisa de o inserir manualmente.",
+        "As SPAs não precisam de proteção contra CSRF."
+      ],
+      "correctAnswer": "A aplicação faz uma requisição inicial a um endpoint (ex: /api/token) para obter o token e depois inclui-o num header customizado (ex: `X-CSRF-TOKEN`) em todas as requisições subsequentes.",
+      "explanation": "Este fluxo garante que apenas o JavaScript que é executado a partir do domínio legítimo consiga obter o token e fazer requisições válidas."
+    },
+    {
+      "id": 427,
+      "question": "O que acontece se um Anti-CSRF token for transmitido num parâmetro da URL (requisição GET)?",
+      "options": [
+        "A segurança é melhorada.",
+        "Não faz diferença.",
+        "A segurança é comprometida, pois o token pode vazar através do histórico do navegador, logs do servidor ou do header `Referer`.",
+        "O servidor não consegue validar o token."
+      ],
+      "correctAnswer": "A segurança é comprometida, pois o token pode vazar através do histórico do navegador, logs do servidor ou do header `Referer`.",
+      "explanation": "Tokens de segurança nunca devem ser expostos na URL. Eles devem ser transmitidos no corpo de uma requisição POST ou num header HTTP."
+    },
+    {
+      "id": 428,
+      "question": "Qual é a principal fraqueza da defesa baseada na verificação do header `Referer`?",
+      "options": [
+        "É muito complexa de implementar.",
+        "Pode ser contornada em alguns cenários (ex: bugs em plugins de navegador) e pode ser ausente por razões de privacidade.",
+        "Consome muitos recursos do servidor.",
+        "Só funciona para utilizadores que não estão em modo anónimo."
+      ],
+      "correctAnswer": "Pode ser contornada em alguns cenários (ex: bugs em plugins de navegador) e pode ser ausente por razões de privacidade.",
+      "explanation": "Devido a estas fragilidades, a verificação do `Referer` (ou `Origin`) deve ser usada como uma defesa em profundidade, e não como a única proteção."
+    },
+    {
+      "id": 429,
+      "question": "É possível realizar um ataque de CSRF num serviço que está a ser executado localmente na máquina da vítima (ex: `http://localhost:8080`)?",
+      "options": [
+        "Não, os navegadores bloqueiam requisições para localhost a partir de sites externos.",
+        "Sim, um site na internet pode forçar o navegador da vítima a fazer requisições para serviços em localhost, explorando-os se não tiverem proteção.",
+        "Apenas se o serviço local não tiver uma password.",
+        "Apenas se o atacante estiver na mesma rede Wi-Fi."
+      ],
+      "correctAnswer": "Sim, um site na internet pode forçar o navegador da vítima a fazer requisições para serviços em localhost, explorando-os se não tiverem proteção.",
+      "explanation": "Isto é uma técnica de ataque conhecida como 'DNS Rebinding' ou simplesmente fazendo requisições diretas, e é por isso que aplicações locais também precisam de se proteger contra CSRF."
+    },
+    {
+      "id": 430,
+      "question": "Qual das seguintes afirmações sobre CSRF é FALSA?",
+      "options": [
+        "O ataque explora a confiança que um site tem num utilizador autenticado.",
+        "O atacante precisa de enganar a vítima para que ela interaja com conteúdo malicioso.",
+        "Uma defesa eficaz é usar tokens únicos e imprevisíveis em cada requisição.",
+        "Um ataque de CSRF bem-sucedido permite ao atacante ver os dados da conta da vítima."
+      ],
+      "correctAnswer": "Um ataque de CSRF bem-sucedido permite ao atacante ver os dados da conta da vítima.",
+      "explanation": "O CSRF é um ataque 'cego'. O atacante pode forçar uma ação, mas não consegue ler a resposta da requisição. Para ver os dados, ele precisaria de uma vulnerabilidade de XSS."
+    },
+    {
+      "id": 431,
+      "question": "O que o atributo de cookie `SameSite` controla?",
+      "options": [
+        "O domínio para o qual o cookie é válido.",
+        "Quando um cookie deve ser enviado com requisições iniciadas a partir de outros sites.",
+        "O tempo de vida de um cookie.",
+        "Se um cookie pode ser acedido por JavaScript."
+      ],
+      "correctAnswer": "Quando um cookie deve ser enviado com requisições iniciadas a partir de outros sites.",
+      "explanation": "Este atributo é uma instrução para o navegador sobre se deve ou não incluir o cookie em requisições cross-site, o que o torna uma defesa direta contra CSRF."
+    },
+    {
+      "id": 432,
+      "question": "Um formulário de logout é vulnerável a CSRF? Qual é o impacto?",
+      "options": [
+        "Não, porque o logout não é uma ação sensível.",
+        "Sim, e o impacto é um ataque de negação de serviço, onde o atacante pode forçar repetidamente o logout de um utilizador, impedindo-o de usar o site.",
+        "Sim, e o impacto é que o atacante consegue fazer login como a vítima.",
+        "Não, porque os formulários de logout não usam cookies."
+      ],
+      "correctAnswer": "Sim, e o impacto é um ataque de negação de serviço, onde o atacante pode forçar repetidamente o logout de um utilizador, impedindo-o de usar o site.",
+      "explanation": "Embora não seja tão crítico como transferir fundos, forçar o logout de um utilizador pode ser extremamente frustrante e é considerado uma vulnerabilidade válida."
+    },
+    {
+      "id": 433,
+      "question": "Qual das seguintes ações do lado do utilizador pode ajudar a mitigar o risco de CSRF?",
+      "options": [
+        "Usar o modo anónimo do navegador.",
+        "Limpar a cache do navegador regularmente.",
+        "Fazer logout dos sites quando terminar de os usar.",
+        "Usar uma VPN."
+      ],
+      "correctAnswer": "Fazer logout dos sites quando terminar de os usar.",
+      "explanation": "Como o CSRF depende de uma sessão ativa, fazer logout remove a pré-condição principal para o ataque."
+    },
+    {
+      "id": 434,
+      "question": "Por que é que requisições que usam `XMLHttpRequest` ou `Fetch` com headers customizados são geralmente imunes a CSRF?",
+      "options": [
+        "Porque estas requisições são sempre mais lentas.",
+        "Porque o navegador executa uma verificação de 'preflight' (com uma requisição OPTIONS) para requisições cross-site que não são simples, e o servidor pode rejeitá-las.",
+        "Porque o JavaScript não consegue fazer requisições para outros domínios.",
+        "Porque estas requisições não enviam cookies."
+      ],
+      "correctAnswer": "Porque o navegador executa uma verificação de 'preflight' (com uma requisição OPTIONS) para requisições cross-site que não são simples, e o servidor pode rejeitá-las.",
+      "explanation": "A política de mesma origem (Same-Origin Policy) dos navegadores, reforçada pelo CORS, impede que um site malicioso faça requisições complexas (com headers customizados) para outro domínio sem permissão explícita."
+    },
+    {
+      "id": 435,
+      "question": "Um Anti-CSRF token deve ser validado pelo servidor em qual momento?",
+      "options": [
+        "Apenas quando o utilizador faz login.",
+        "Apenas em requisições GET.",
+        "Em cada requisição que executa uma ação que muda o estado (ex: POST, PUT, DELETE).",
+        "Apenas se a requisição vier de um dispositivo móvel."
+      ],
+      "correctAnswer": "Em cada requisição que executa uma ação que muda o estado (ex: POST, PUT, DELETE).",
+      "explanation": "Qualquer ação que modifique dados no servidor deve ser protegida pela validação do token para garantir que a requisição foi intencionalmente iniciada pelo utilizador."
+    },
+    {
+      "id": 436,
+      "question": "Onde deve ser colocado um Anti-CSRF token num formulário HTML?",
+      "options": [
+        "Visível para o utilizador, para que ele o possa copiar e colar.",
+        "Num parâmetro da URL (query string).",
+        "Num campo de formulário escondido (`<input type='hidden'>`).",
+        "No header `User-Agent`."
+      ],
+      "correctAnswer": "Num campo de formulário escondido (`<input type='hidden'>`).",
+      "explanation": "Colocar o token num campo escondido garante que ele seja submetido com o formulário sem ser visível para o utilizador, e que não vaze na URL."
+    },
+    {
+      "id": 437,
+      "question": "O que acontece se um Anti-CSRF token for o mesmo para todos os utilizadores?",
+      "options": [
+        "A performance melhora.",
+        "A proteção é inútil, pois um atacante pode obter o token de uma sessão e reutilizá-lo para atacar qualquer outro utilizador.",
+        "A segurança não é afetada.",
+        "O token fica mais fácil de lembrar."
+      ],
+      "correctAnswer": "A proteção é inútil, pois um atacante pode obter o token de uma sessão e reutilizá-lo para atacar qualquer outro utilizador.",
+      "explanation": "A segurança do token depende da sua imprevisibilidade e da sua ligação a uma sessão de utilizador específica."
+    },
+    {
+      "id": 438,
+      "question": "A validação de um Anti-CSRF token deve comparar:",
+      "options": [
+        "O token recebido do formulário com o token guardado na sessão do utilizador no servidor.",
+        "O token recebido com uma lista de todos os tokens válidos.",
+        "O token recebido com a password do utilizador.",
+        "O token recebido com o cookie de sessão."
+      ],
+      "correctAnswer": "O token recebido do formulário com o token guardado na sessão do utilizador no servidor.",
+      "explanation": "Esta comparação garante que a requisição veio de um formulário que foi legitimamente gerado pelo servidor para aquele utilizador específico."
+    },
+    {
+      "id": 439,
+      "question": "Qual é um desafio ao implementar a proteção com Anti-CSRF token numa aplicação que usa muito AJAX?",
+      "options": [
+        "O AJAX não consegue enviar tokens.",
+        "É preciso garantir que cada requisição AJAX inclua o token (geralmente num header customizado), o que requer lógica adicional no JavaScript.",
+        "Os tokens expiram muito rápido com AJAX.",
+        "Não há desafios, é mais fácil com AJAX."
+      ],
+      "correctAnswer": "É preciso garantir que cada requisição AJAX inclua o token (geralmente num header customizado), o que requer lógica adicional no JavaScript.",
+      "explanation": "Enquanto os formulários HTML tradicionais submetem o token automaticamente, as requisições AJAX precisam de ser programadas para ler o token da página e adicioná-lo à requisição."
+    },
+    {
+      "id": 440,
+      "question": "Qual é a melhor abordagem de 'defesa em profundidade' contra CSRF?",
+      "options": [
+        "Usar apenas `SameSite=Strict`.",
+        "Usar apenas um WAF.",
+        "Combinar múltiplas defesas, como o Synchronizer Token Pattern e o uso de cookies `SameSite`.",
+        "Pedir sempre a password do utilizador."
+      ],
+      "correctAnswer": "Combinar múltiplas defesas, como o Synchronizer Token Pattern e o uso de cookies `SameSite`.",
+      "explanation": "A defesa em profundidade assume que nenhuma camada é perfeita. Combinar um token forte com a proteção a nível do navegador oferecida pelos cookies `SameSite` fornece a segurança mais robusta."
+    }
+  ]
+}
