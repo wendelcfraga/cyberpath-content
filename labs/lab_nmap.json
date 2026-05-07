@@ -3,6 +3,7 @@
   "introduction": "O Nmap (Network Mapper) é a ferramenta padrão da indústria para descoberta de rede e auditoria de segurança. Ele permite identificar hosts ativos, portas abertas, serviços em execução e até o sistema operacional de um alvo.",
   "objective": "Seu objetivo é simular uma varredura em um servidor alvo para identificar portas críticas e entender como o Nmap interpreta diferentes estados de porta.",
   "xp": 50,
+  "writeupFile": "writeups/lab_211_writeup.md",
   "steps": [
     {
       "id": 1,

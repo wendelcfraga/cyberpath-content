@@ -3,6 +3,7 @@
   "introduction": "Bem-vindo ao laboratório de Cross-Site Scripting (XSS). Aqui, você aprenderá como um atacante pode injetar scripts maliciosos em uma página web e como a falta de validação de saída pode levar a sérios riscos de segurança.",
   "objective": "Seu objetivo é explorar uma barra de pesquisa vulnerável para executar um script que exiba um alerta no navegador simulado, demonstrando uma falha de Reflected XSS.",
   "xp": 30,
+  "writeupFile": "writeups/lab_202_writeup.md",
   "steps": [
     {
       "id": 1,

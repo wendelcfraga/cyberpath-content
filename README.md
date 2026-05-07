@@ -23,7 +23,8 @@
   - [3. Quizzes (quizzes/)](#3-quizzes-quizzes)
   - [4. Laboratórios (labs/)](#4-laboratórios-labs)
   - [5. Resumos (summaries/)](#5-resumos-summaries)
-  - [6. Conquistas (index/achievements.json)](#6-conquistas-indexachievementsjson)
+  - [6. Write-ups (writeups/)](#6-write-ups-writeups)
+  - [7. Conquistas (index/achievements.json)](#7-conquistas-indexachievementsjson)
 - [Regras de Qualidade e Boas Práticas](#-regras-de-qualidade-e-boas-práticas)
 - [Convenções de Nomenclatura](#-convenções-de-nomenclatura)
 - [Validação de JSON](#-validação-de-json)
@@ -71,6 +72,9 @@ cyberpath-content/
 │
 ├── summaries/
 │   └── owasp_top10.json          # Exemplo: resumo do OWASP Top 10
+│
+├── writeups/
+│   └── lab_sqli_writeup.md       # Exemplo: tutorial de como resolveu o lab de SQLi
 │
 └── README.md
 ```
@@ -496,7 +500,45 @@ Resumos fornecem conteúdo teórico denso, geralmente acompanhado de perguntas d
 
 ---
 
-### 6. Conquistas (`index/achievements.json`)
+### 6. Write-ups (`writeups/`)
+
+Write-ups são guias em Markdown criados pela comunidade explicando o passo a passo da resolução de um laboratório ou desafio específico.
+
+#### Estrutura Recomendada do Arquivo MD:
+
+O arquivo deve ser nomeado seguindo o padrão `lab_[ID_DO_LAB]_writeup.md` ou `[NOME_DO_DESAFIO].md`.
+
+```markdown
+# Write-up: [Nome do Desafio]
+
+**Autor:** @seu_usuario_github  
+**Dificuldade:** [Fácil/Média/Difícil]  
+**Data:** [DD/MM/AAAA]
+
+## 🎯 Objetivo
+Descreva brevemente o que precisava ser alcançado.
+
+## 🔍 Reconhecimento
+Como você identificou a vulnerabilidade? Quais ferramentas usou? (Ex: Nmap, Burp Suite, F12).
+
+## 🚀 Exploração
+Explique o passo a passo do exploit.
+- Passo 1: ...
+- Passo 2: ...
+
+> [!TIP]
+> Use blocos de código para payloads:
+> ```sql
+> ' OR 1=1 --
+> ```
+
+## 🏁 Conclusão e Flag
+A flag encontrada e o que você aprendeu com este desafio.
+```
+
+---
+
+### 7. Conquistas (`index/achievements.json`)
 
 As conquistas são desbloqueadas automaticamente pelo app baseadas em **gatilhos (triggers)** que monitoram o progresso do usuário.
 

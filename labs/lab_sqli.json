@@ -3,6 +3,7 @@
   "introduction": "Bem-vindo ao laboratório de SQL Injection. O seu objetivo é explorar uma falha de autenticação num ecrã de login de um blog fictício. A aplicação utiliza uma consulta SQL vulnerável para verificar as credenciais do utilizador.",
   "objective": "Obtenha acesso à área administrativa sem saber o nome de utilizador ou a senha, explorando a consulta SQL.",
   "xp": 50,
+  "writeupFile": "writeups/lab_201_writeup.md",
   "steps": [
     {
       "id": 1,
