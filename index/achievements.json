@@ -71,6 +71,20 @@
     "triggerValue": 50
   },
   {
+    "id": "quiz_centurion",
+    "title": "Centurião do Quiz",
+    "description": "Acerte 100 perguntas em quizzes.",
+    "iconName": "ic_achievement_quiz",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 100,
+    "type": "INCREMENTAL",
+    "category": "QUIZ",
+    "triggerType": "TOTAL_CORRECT_ANSWERS",
+    "triggerValue": 100
+  },
+  {
     "id": "streak_3",
     "title": "Fogo no Código",
     "description": "Mantenha uma ofensiva de 3 dias.",
@@ -85,6 +99,20 @@
     "triggerValue": 3
   },
   {
+    "id": "streak_7",
+    "title": "Uma Semana de Fogo",
+    "description": "Mantenha uma ofensiva de 7 dias.",
+    "iconName": "ic_achievement_streak",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 7,
+    "type": "INCREMENTAL",
+    "category": "STREAK",
+    "triggerType": "STREAK_DAYS",
+    "triggerValue": 7
+  },
+  {
     "id": "quiz_perfect",
     "title": "Perfeccionista",
     "description": "Consiga 100% em 5 quizzes.",
@@ -97,6 +125,20 @@
     "category": "QUIZ",
     "triggerType": "PERFECT_QUIZZES",
     "triggerValue": 5
+  },
+  {
+    "id": "perfect_10",
+    "title": "Impecável",
+    "description": "Consiga 100% em 10 quizzes.",
+    "iconName": "ic_achievement_perfect",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 10,
+    "type": "INCREMENTAL",
+    "category": "QUIZ",
+    "triggerType": "PERFECT_QUIZZES",
+    "triggerValue": 10
   },
   {
     "id": "road_warrior",
@@ -124,6 +166,20 @@
     "category": "LEVEL",
     "triggerType": "LEVEL_REACHED",
     "triggerValue": 10
+  },
+  {
+    "id": "level_25",
+    "title": "Especialista",
+    "description": "Alcance o nível 25.",
+    "iconName": "ic_achievement_level",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 1,
+    "type": "SINGLE_UNLOCK",
+    "category": "LEVEL",
+    "triggerType": "LEVEL_REACHED",
+    "triggerValue": 25
   },
   {
     "id": "sql_ninja",
@@ -154,6 +210,20 @@
     "triggerTarget": "lab_xss"
   },
   {
+    "id": "idor_master",
+    "title": "Mestre do IDOR",
+    "description": "Conclua o laboratório de Quebra de Controlo de Acesso.",
+    "iconName": "ic_broken_access",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 1,
+    "type": "SINGLE_UNLOCK",
+    "category": "LAB",
+    "triggerType": "LAB_ID",
+    "triggerTarget": "lab_idor"
+  },
+  {
     "id": "linux_explorer",
     "title": "Explorador Linux",
     "description": "Conclua o laboratório de Permissões Linux.",
@@ -180,5 +250,47 @@
     "category": "LAB",
     "triggerType": "LAB_ID",
     "triggerTarget": "lab_nmap"
+  },
+  {
+    "id": "ssrf_expert",
+    "title": "Expert em SSRF",
+    "description": "Conclua o laboratório de Server-Side Request Forgery.",
+    "iconName": "ic_ssrf",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 1,
+    "type": "SINGLE_UNLOCK",
+    "category": "LAB",
+    "triggerType": "LAB_ID",
+    "triggerTarget": "lab_ssrf"
+  },
+  {
+    "id": "cloud_raider",
+    "title": "Invasor de Nuvem",
+    "description": "Conclua o laboratório de Exploração de S3 Buckets.",
+    "iconName": "ic_cloud",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 1,
+    "type": "SINGLE_UNLOCK",
+    "category": "LAB",
+    "triggerType": "LAB_ID",
+    "triggerTarget": "lab_cloud_s3"
+  },
+  {
+    "id": "crypto_decoder",
+    "title": "Decifrador",
+    "description": "Conclua o laboratório de Criptografia Moderna.",
+    "iconName": "ic_lock",
+    "unlocked": false,
+    "unlockedAtTimestamp": 0,
+    "progress": 0,
+    "maxProgress": 1,
+    "type": "SINGLE_UNLOCK",
+    "category": "LAB",
+    "triggerType": "LAB_ID",
+    "triggerTarget": "lab_crypto_modern"
   }
 ]
