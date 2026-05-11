@@ -22,6 +22,7 @@
       "title": "Laboratório Nmap",
       "description": "Prática de varredura de rede com Nmap.",
       "contentFile": "labs/lab_nmap.json",
+      "theoryFile": "writeups/lab_211_writeup.md",
       "status": "LOCKED",
       "xp": 100
     },

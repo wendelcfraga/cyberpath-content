@@ -22,6 +22,7 @@
       "title": "Injeções",
       "description": "SQL Injection, Command Injection e prevenção.",
       "contentFile": "quizzes/injections_quiz.json",
+      "theoryFile": "writeups/lab_201_writeup.md",
       "status": "LOCKED",
       "xp": 150
     },
@@ -30,6 +31,7 @@
       "title": "XSS (Cross-Site Scripting)",
       "description": "Tipos de XSS e como mitigar.",
       "contentFile": "quizzes/xss_quiz.json",
+      "theoryFile": "writeups/lab_202_writeup.md",
       "status": "LOCKED",
       "xp": 150
     },
