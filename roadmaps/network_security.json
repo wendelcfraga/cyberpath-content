@@ -6,6 +6,7 @@
       "title": "Fundamentos de Redes",
       "description": "Modelo OSI, TCP/IP e protocolos básicos.",
       "contentFile": "quizzes/network_fundamentals_quiz.json",
+      "theoryFile": "theory/network_fundamentals.md",
       "status": "UNLOCKED",
       "xp": 50
     },
@@ -14,6 +15,7 @@
       "title": "Scanning e Enumeração",
       "description": "Nmap, serviços e detecção de SO.",
       "contentFile": "summaries/tools_summary.json",
+      "theoryFile": "theory/network_scanning.md",
       "status": "LOCKED",
       "xp": 50
     },
@@ -22,7 +24,7 @@
       "title": "Laboratório Nmap",
       "description": "Prática de varredura de rede com Nmap.",
       "contentFile": "labs/lab_nmap.json",
-      "theoryFile": "writeups/lab_211_writeup.md",
+      "theoryFile": "theory/network_scanning.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -31,6 +33,7 @@
       "title": "Análise de Tráfego",
       "description": "Wireshark e inspeção de pacotes.",
       "contentFile": "labs/lab_wireshark_http.json",
+      "theoryFile": "theory/traffic_analysis.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -39,6 +42,7 @@
       "title": "Ataques Man-in-the-Middle",
       "description": "ARP Spoofing e interceptação.",
       "contentFile": "quizzes/mitm_quiz.json",
+      "theoryFile": "theory/mitm_attacks.md",
       "status": "LOCKED",
       "xp": 75
     },
@@ -47,6 +51,7 @@
       "title": "Ataques de DNS",
       "description": "Entenda como o DNS pode ser manipulado.",
       "contentFile": "quizzes/dns_attacks_quiz.json",
+      "theoryFile": "theory/dns_attacks.md",
       "status": "LOCKED",
       "xp": 60
     },
@@ -55,6 +60,7 @@
       "title": "Metasploit Fundamentals",
       "description": "Exploração automatizada de serviços.",
       "contentFile": "labs/lab_metasploit_basics.json",
+      "theoryFile": "theory/metasploit.md",
       "status": "LOCKED",
       "xp": 120
     },
@@ -63,6 +69,7 @@
       "title": "Configuração de Firewalls",
       "description": "Regras de entrada e saída.",
       "contentFile": "quizzes/firewall_basics_quiz.json",
+      "theoryFile": "theory/firewalls.md",
       "status": "LOCKED",
       "xp": 50
     },
@@ -71,6 +78,7 @@
       "title": "Sniffing em Redes Locais",
       "description": "Capturando dados em trânsito.",
       "contentFile": "labs/lab_sniffing.json",
+      "theoryFile": "theory/sniffing.md",
       "status": "LOCKED",
       "xp": 110
     },
@@ -79,6 +87,7 @@
       "title": "Protocolos de VPN",
       "description": "Túneis seguros e criptografia.",
       "contentFile": "quizzes/vpn_security_quiz.json",
+      "theoryFile": "theory/vpn_security.md",
       "status": "LOCKED",
       "xp": 70
     }

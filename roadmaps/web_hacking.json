@@ -6,6 +6,7 @@
       "title": "Fundamentos de Web",
       "description": "HTTP, HTTPS, cabeçalhos e cookies.",
       "contentFile": "quizzes/web_fundamentals_quiz.json",
+      "theoryFile": "theory/web_fundamentals.md",
       "status": "UNLOCKED",
       "xp": 50
     },
@@ -14,6 +15,7 @@
       "title": "OWASP Top 10",
       "description": "Principais vulnerabilidades da web segundo a OWASP.",
       "contentFile": "quizzes/owasp_quiz.json",
+      "theoryFile": "theory/owasp_top10.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -22,7 +24,7 @@
       "title": "Injeções",
       "description": "SQL Injection, Command Injection e prevenção.",
       "contentFile": "quizzes/injections_quiz.json",
-      "theoryFile": "writeups/lab_201_writeup.md",
+      "theoryFile": "theory/injections.md",
       "status": "LOCKED",
       "xp": 150
     },
@@ -31,7 +33,7 @@
       "title": "XSS (Cross-Site Scripting)",
       "description": "Tipos de XSS e como mitigar.",
       "contentFile": "quizzes/xss_quiz.json",
-      "theoryFile": "writeups/lab_202_writeup.md",
+      "theoryFile": "theory/xss.md",
       "status": "LOCKED",
       "xp": 150
     },
@@ -40,6 +42,7 @@
       "title": "CSRF (Cross-Site Request Forgery)",
       "description": "Entendendo e prevenindo CSRF.",
       "contentFile": "summaries/csrf_summary.json",
+      "theoryFile": "theory/csrf.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -48,6 +51,7 @@
       "title": "Quebra de Autenticação",
       "description": "Gerenciamento de sessão, senhas fracas e MFA.",
       "contentFile": "quizzes/auth_quiz.json",
+      "theoryFile": "theory/auth_failures.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -56,6 +60,7 @@
       "title": "Exposição de Dados Sensíveis",
       "description": "Criptografia em trânsito e em repouso.",
       "contentFile": "summaries/sensitive_data_summary.json",
+      "theoryFile": "theory/sensitive_data.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -64,6 +69,7 @@
       "title": "Má Configuração de Segurança",
       "description": "Servidores, frameworks e headers de segurança.",
       "contentFile": "quizzes/misconfiguration_quiz.json",
+      "theoryFile": "theory/security_misconfig.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -72,6 +78,7 @@
       "title": "Criptografia na Prática",
       "description": "TLS, hashing de senhas e JWT.",
       "contentFile": "summaries/crypto_summary.json",
+      "theoryFile": "theory/crypto_practice.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -80,6 +87,7 @@
       "title": "Ferramentas do Hacker Ético",
       "description": "Introdução a Burp Suite, Nmap e Metasploit.",
       "contentFile": "summaries/tools_summary.json",
+      "theoryFile": "theory/hacking_tools.md",
       "status": "LOCKED",
       "xp": 200
     },
@@ -88,6 +96,7 @@
       "title": "SQL Injection Cego (Blind)",
       "description": "Aprenda a extrair dados sem mensagens de erro.",
       "contentFile": "labs/lab_sql_injection_blind.json",
+      "theoryFile": "theory/sqli_blind.md",
       "status": "LOCKED",
       "xp": 150
     },
@@ -96,6 +105,7 @@
       "title": "Burp Suite: Interceptação",
       "description": "Dominando a ferramenta essencial.",
       "contentFile": "labs/lab_burp_suite.json",
+      "theoryFile": "theory/burp_suite.md",
       "status": "LOCKED",
       "xp": 140
     }
