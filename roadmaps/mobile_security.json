@@ -6,6 +6,7 @@
       "title": "Arquitetura Android",
       "description": "Sandbox, permissões e estrutura do APK.",
       "contentFile": "quizzes/mobile_fundamentals_quiz.json",
+      "theoryFile": "theory/mobile_fundamentals.md",
       "status": "UNLOCKED",
       "xp": 50
     },
@@ -14,6 +15,7 @@
       "title": "Armazenamento Inseguro",
       "description": "Laboratório de análise de SharedPrefs e SQLite.",
       "contentFile": "labs/lab_insecure_storage.json",
+      "theoryFile": "theory/mobile_storage.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -22,6 +24,7 @@
       "title": "Análise Estática (SAST)",
       "description": "Descompilação e busca por segredos no código.",
       "contentFile": "labs/lab_hardcoded.json",
+      "theoryFile": "theory/mobile_sast.md",
       "status": "LOCKED",
       "xp": 100
     },

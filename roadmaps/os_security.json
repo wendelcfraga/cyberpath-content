@@ -6,6 +6,7 @@
       "title": "Introdução ao Linux",
       "description": "Permissões, usuários e estrutura de diretórios.",
       "contentFile": "quizzes/os_security_quiz.json",
+      "theoryFile": "theory/linux_security.md",
       "status": "UNLOCKED",
       "xp": 50
     },
@@ -14,6 +15,7 @@
       "title": "Prática de Permissões",
       "description": "Laboratório prático de chmod e privilégios.",
       "contentFile": "labs/lab_linux_perms.json",
+      "theoryFile": "theory/linux_security.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -22,6 +24,7 @@
       "title": "Segurança em Windows",
       "description": "Active Directory, PowerShell e UAC.",
       "contentFile": "summaries/windows_security_summary.json",
+      "theoryFile": "theory/windows_security.md",
       "status": "LOCKED",
       "xp": 50
     },
@@ -30,6 +33,7 @@
       "title": "Escalação de Privilégios",
       "description": "Explorando SUID e vulnerabilidades de kernel.",
       "contentFile": "labs/lab_privesc_linux.json",
+      "theoryFile": "theory/linux_privesc.md",
       "status": "LOCKED",
       "xp": 150
     },
@@ -38,6 +42,7 @@
       "title": "Hardening de Sistemas",
       "description": "Configurações seguras para servidores.",
       "contentFile": "quizzes/os_hardening_quiz.json",
+      "theoryFile": "theory/os_hardening.md",
       "status": "LOCKED",
       "xp": 75
     },
@@ -46,6 +51,7 @@
       "title": "Persistência em Windows",
       "description": "Como manter acesso após a reinicialização.",
       "contentFile": "quizzes/windows_persistence_quiz.json",
+      "theoryFile": "theory/windows_security.md",
       "status": "LOCKED",
       "xp": 80
     },
@@ -54,6 +60,7 @@
       "title": "Segurança em Containers",
       "description": "Docker e isolamento de processos.",
       "contentFile": "labs/lab_docker_security.json",
+      "theoryFile": "theory/container_security.md",
       "status": "LOCKED",
       "xp": 110
     },
@@ -62,6 +69,7 @@
       "title": "Scripts PowerShell Seguros",
       "description": "Automatização e defesa em Windows.",
       "contentFile": "quizzes/powershell_security_quiz.json",
+      "theoryFile": "theory/windows_security.md",
       "status": "LOCKED",
       "xp": 60
     },
@@ -70,6 +78,7 @@
       "title": "Ataques em Active Directory",
       "description": "Explorando domínios Windows.",
       "contentFile": "quizzes/active_directory_quiz.json",
+      "theoryFile": "theory/windows_security.md",
       "status": "LOCKED",
       "xp": 100
     },
@@ -78,6 +87,7 @@
       "title": "Reverse Shell com Netcat",
       "description": "Técnicas de acesso remoto.",
       "contentFile": "labs/lab_reverse_shell.json",
+      "theoryFile": "theory/reverse_shells.md",
       "status": "LOCKED",
       "xp": 120
     }
