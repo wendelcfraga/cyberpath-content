@@ -1,16 +1,20 @@
-# OWASP Top 10
+# 🏆 OWASP Top 10: O Mapa da Mina da Segurança Web
 
-O OWASP Top 10 é um documento de conscientização padrão para desenvolvedores e segurança de aplicativos web. Ele representa um consenso amplo sobre os riscos de segurança de aplicativos web mais críticos.
+O OWASP Top 10 não é apenas uma lista, é o padrão global para segurança de aplicações. Se você quer ser um Pentester, este é o seu guia de sobrevivência.
 
-## Categorias Atuais (2021)
+## 🧐 O que é?
+É uma lista atualizada periodicamente que descreve os 10 riscos de segurança mais críticos para aplicações web, baseada em dados de milhares de empresas.
 
-1. **A01:2021-Broken Access Control**: Falhas no controle de acesso que permitem aos usuários acessar recursos fora de suas permissões pretendidas.
-2. **A02:2021-Cryptographic Failures**: Falhas relacionadas à criptografia (ou falta dela) que levam à exposição de dados sensíveis.
-3. **A03:2021-Injection**: Inclui SQL, NoSQL, injeção de comando de sistema operacional, entre outros.
-4. **A04:2021-Insecure Design**: Uma nova categoria focada em riscos relacionados a falhas de design.
-5. **A05:2021-Security Misconfiguration**: Configurações de segurança incorretas ou incompletas.
-6. **A06:2021-Vulnerable and Outdated Components**: Uso de componentes com vulnerabilidades conhecidas.
-7. **A07:2021-Identification and Authentication Failures**: Falhas na confirmação da identidade do usuário.
-8. **A08:2021-Software and Data Integrity Failures**: Falhas na integridade de atualizações de software e pipelines de CI/CD.
-9. **A09:2021-Security Logging and Monitoring Failures**: Falhas em detectar e responder a violações ativas.
-10. **A10:2021-Server-Side Request Forgery (SSRF)**: Ocorre quando um aplicativo web busca um recurso remoto sem validar o URL fornecido pelo usuário.
+## 🚩 Destaques do Top 10 (Versão Atual)
+
+1. **🔓 Broken Access Control**: O usuário 'João' consegue acessar as fotos da 'Maria' apenas mudando o ID na URL. Falha fatal na lógica de permissões.
+2. **🔐 Cryptographic Failures**: Senhas salvas em texto puro ou usando algoritmos antigos (como MD5). Se o banco vazar, todos estão expostos.
+3. **💉 Injection**: O clássico SQL Injection. O atacante envia comandos para o banco de dados através de campos de formulário.
+4. **🏗️ Insecure Design**: A falha está no desenho do sistema, não apenas no código. Ex: Recuperação de senha sem perguntas de segurança ou limite de tentativas.
+5. **⚙️ Security Misconfiguration**: Deixar senhas padrão (`admin/admin`), diretórios abertos ou mensagens de erro detalhadas que revelam versões de software.
+
+## 💡 Por que estudar isso?
+Empresas usam o OWASP como checklist. Se você encontrar uma vulnerabilidade que está no Top 10, ela é considerada de alta prioridade!
+
+---
+**Tags:** `OWASP`, `Web-Security`, `Vulnerability-Management`, `Best-Practices`, `Risk-Analysis`

