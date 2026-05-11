@@ -6,16 +6,28 @@ O scanning é a fase onde o atacante tenta identificar sistemas ativos, portas a
 O Nmap é a ferramenta padrão da indústria para descoberta de rede.
 
 ### 🛠️ Tipos de Scan Essenciais:
-1. **TCP SYN Scan (`-sS`)**: Conhecido como "Stealth Scan". Ele não completa a conexão TCP (não envia o ACK final), tornando-o mais silencioso.
-2. **TCP Connect Scan (`-sT`)**: Completa o handshake de 3 vias. Mais barulhento e fácil de detectar por firewalls.
-3. **UDP Scan (`-sU`)**: Verifica portas UDP (como DNS, DHCP, SNMP). É muito mais lento que o scan TCP.
-4. **Service Version Detection (`-sV`)**: Interroga as portas abertas para determinar qual software e versão estão rodando.
-5. **OS Detection (`-O`)**: Analisa as respostas da pilha TCP/IP para adivinhar o Sistema Operacional.
+1. **TCP SYN Scan (`-sS`)**: O padrão do Nmap. Ele envia um pacote SYN e espera o SYN/ACK. Se receber, ele sabe que a porta está aberta, mas envia um RST em vez de completar a conexão. Isso evita o log de conexão completa em muitos sistemas.
+2. **TCP Connect Scan (`-sT`)**: Usado quando o usuário não tem privilégios de root para enviar pacotes crus. Completa o handshake, sendo mais fácil de detectar.
+3. **UDP Scan (`-sU`)**: Crucial para encontrar serviços como DNS (53), SNMP (161) e DHCP. Como UDP não tem handshake, o Nmap espera por uma resposta ou por um erro ICMP "Port Unreachable".
+4. **Service Version Detection (`-sV`)**: Não confie apenas no número da porta. O `-sV` envia probes para determinar se na porta 80 está rodando um Apache 2.4.41 ou um Nginx.
+5. **OS Detection (`-O`)**: Identifica o sistema operacional analisando nuances como o TTL (Time to Live) e o tamanho da janela TCP.
 
-### 📜 Scripts Nmap (NSE):
-O `Nmap Scripting Engine` permite automatizar tarefas:
-- `nmap --script vuln <alvo>`: Verifica vulnerabilidades conhecidas nos serviços encontrados.
-- `nmap --script http-enum <alvo>`: Tenta enumerar diretórios e arquivos em servidores web.
+### 📜 Scripts Nmap (NSE) - O Poder da Automação:
+O `Nmap Scripting Engine` transforma o Nmap em um scanner de vulnerabilidades:
+- `nmap --script safe <alvo>`: Executa apenas scripts que não vão derrubar o serviço.
+- `nmap --script auth <alvo>`: Tenta bypassar ou testar autenticações comuns.
+- `nmap --script vuln <alvo>`: Procura por CVEs conhecidas nos serviços identificados.
+
+## 📖 Enumeração: Mergulhando nos Detalhes
+Enumeração é a arte de extrair nomes de usuários, grupos, compartilhamentos e configurações de serviços específicos.
+
+- **SMB (445)**:
+  - `enum4linux -a <IP>`: Uma ferramenta clássica para extrair tudo de sistemas Windows/Samba.
+  - `nmap --script smb-os-discovery <IP>`: Descobre a versão exata do Windows.
+- **HTTP/HTTPS (80/443)**:
+  - **Fuzzing**: Usar ferramentas como `ffuf`, `gobuster` ou `dirsearch` para encontrar diretórios como `/admin`, `/.git` ou `/config.php`.
+- **SNMP (161)**:
+  - Se a community string (senha) for `public`, use `snmp-check` para ler informações do sistema, processos rodando e interfaces de rede.
 
 ## 📖 Enumeração: O Detalhe que Faz a Diferença
 Diferente do scanning, a enumeração foca em extrair informações específicas de um serviço identificado.

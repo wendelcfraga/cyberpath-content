@@ -1,18 +1,44 @@
-# CSRF (Cross-Site Request Forgery)
+# 🌊 CSRF (Cross-Site Request Forgery): O Sequestro de Sessão
 
-O Cross-Site Request Forgery (CSRF) é um ataque que força um usuário autenticado a executar ações indesejadas em uma aplicação web na qual ele está atualmente autenticado.
+O Cross-Site Request Forgery (CSRF), também conhecido como "Sea-Surf", é um ataque que engana o navegador de uma vítima para que ele envie uma requisição indesejada para uma aplicação onde o usuário está autenticado.
 
-## Como funciona?
-Com um pouco de ajuda de engenharia social (como enviar um link por e-mail ou chat), um atacante pode induzir os usuários de uma aplicação web a executar ações de sua escolha. Se a vítima for um usuário comum, um ataque CSRF bem-sucedido pode comprometer os dados e as operações do usuário. Se a vítima tiver uma conta administrativa, o ataque CSRF pode comprometer toda a aplicação web.
+## 🕵️ Como o Ataque Explora o Navegador?
+O segredo do CSRF está no comportamento padrão dos navegadores: **eles enviam automaticamente os cookies de um site em todas as requisições feitas para aquele site**, mesmo que a requisição tenha partido de um site diferente (terceiro).
 
-## Exemplo de Cenário
-1. O usuário faz login no `bank.com`.
-2. O usuário visita um site malicioso enquanto ainda está logado no banco.
-3. O site malicioso envia uma requisição oculta para `bank.com/transfer?amount=1000&to=attacker`.
-4. O banco processa a requisição porque o navegador enviou automaticamente os cookies de sessão do usuário.
+## 🧪 Cenários de Ataque
 
-## Como Prevenir
-- **Tokens Anti-CSRF**: Um valor único, secreto e imprevisível gerado pela aplicação do lado do servidor para cada sessão do usuário ou requisição.
-- **Atributo SameSite em Cookies**: Define se os cookies devem ser enviados em requisições de sites de terceiros.
-- **Verificação de Referer e Origin**: Verificar de onde a requisição está vindo.
-- **Autenticação de Dois Fatores (2FA)**: Adiciona uma camada extra que o atacante não pode contornar facilmente via CSRF.
+### 1. CSRF via GET (O mais simples)
+Se uma aplicação permite ações sensíveis via GET, o ataque é trivial.
+- **URL Vulnerável**: `https://banco.com/transferir?conta=123&valor=1000`
+- **Payload**: O atacante coloca uma tag de imagem em seu próprio site: `<img src="https://banco.com/transferir?conta=hacker&valor=1000" style="display:none">`.
+- **Resultado**: Assim que a vítima visita o site do hacker, o navegador tenta "baixar a imagem", disparando a transferência bancária silenciosamente.
+
+### 2. CSRF via POST (Usando formulários ocultos)
+A maioria das aplicações modernas usa POST, mas isso não as protege sozinhas.
+- **Payload**: O hacker cria um formulário HTML que se auto-submete:
+```html
+<form id="csrf-form" action="https://site.com/perfil/update" method="POST">
+  <input type="hidden" name="email" value="hacker@evil.com">
+</form>
+<script>document.getElementById('csrf-form').submit();</script>
+```
+
+## 🛡️ Estratégias de Defesa Definitivas
+
+### 1. Tokens Anti-CSRF (Sincronizados)
+O servidor gera um token único e aleatório que deve ser enviado em cada requisição de modificação de estado.
+- **Como funciona**: O atacante não consegue ler a página da vítima (devido ao SOP), portanto ele não sabe qual é o token atual e não consegue forjar a requisição.
+
+### 2. Atributo Cookies SameSite
+Uma das defesas mais eficazes e modernas. Você instrui o navegador sobre quando enviar o cookie:
+- **SameSite=Strict**: O cookie só é enviado se a requisição partir do próprio site.
+- **SameSite=Lax**: O cookie é enviado em navegações "top-level" (como clicar em um link), mas não em requisições de subrecursos (como `<img>` ou `<iframe>`). **Este é o padrão atual do Chrome.**
+
+### 3. Verificação de Headers (Origin & Referer)
+O servidor verifica se a requisição partiu de um domínio confiável. Embora útil, esses headers podem ser omitidos ou, em casos raros, manipulados.
+
+### 4. Interação do Usuário
+Para ações críticas (trocar senha, deletar conta, transferir grandes valores), exija uma re-autenticação, senha ou um CAPTCHA.
+
+---
+**Tags:** `CSRF`, `Web-Security`, `Session-Management`, `SameSite`, `Tokens`, `Cookies`

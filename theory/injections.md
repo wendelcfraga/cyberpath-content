@@ -5,23 +5,32 @@ A injeção ocorre quando você consegue "enganar" um sistema para executar coma
 ## 🗄️ SQL Injection (SQLi): Dominando o Banco de Dados
 A aplicação espera um nome, mas você envia um comando.
 
-### 🚩 Tipos de SQLi:
-1. **In-Band (Classic)**: Os resultados são exibidos diretamente na página.
-2. **Inferential (Blind)**: O site não mostra o erro, mas você percebe mudanças no tempo de resposta ou no conteúdo da página (Verdadeiro vs Falso).
-3. **Out-of-Band**: Os dados são enviados para um servidor externo controlado pelo atacante (ex: via DNS ou HTTP).
+### 🚩 Tipos de SQLi Detalhados:
+1. **In-Band (Classic)**: A forma mais fácil. Os resultados são exibidos diretamente na página ou em erros.
+   - **Union-Based**: Usa o operador `UNION` para combinar resultados de tabelas diferentes. Ex: `' UNION SELECT username, password FROM users --`
+   - **Error-Based**: Força o banco a gerar um erro que contém a informação desejada.
+2. **Inferential (Blind)**: O site não mostra o erro.
+   - **Boolean-Based**: Você faz perguntas de Sim/Não. Ex: `' AND (SELECT SUBSTR(user,1,1) FROM users)='a`
+   - **Time-Based**: Você faz o banco "dormir" se a condição for verdadeira. Ex: `' AND IF(1=1, SLEEP(5), 0) --`
+3. **Out-of-Band**: Os dados são enviados para um servidor externo (DNS loggers) quando as outras técnicas falham.
 
-### 🧪 Exemplo Prático:
-- **Cenário de Login**: 
-  - O que o site faz: `SELECT * FROM usuarios WHERE user = 'admin' AND pass = '123'`
-  - O seu truque: No campo de senha, você digita `' OR 1=1 --`
-  - O resultado final: `SELECT * FROM usuarios WHERE user = 'admin' AND pass = '' OR 1=1 --'`
-  - **O que aconteceu?** O `--` comenta o resto da query, e `1=1` é sempre verdade. Você logou sem senha!
+### 🧪 Exemplo Prático de Bypass de Login:
+- **Cenário**: `SELECT * FROM usuarios WHERE user = '$user' AND pass = '$pass'`
+- **Payload**: `admin' #` (O `#` ou `--` anula a verificação da senha no MySQL).
 
 ## 💻 Command Injection: Assumindo o Servidor
-Ocorre quando o site chama o sistema operacional de forma insegura.
-- **Exemplo**: Um site que testa se um IP está online usando `ping`.
-- **Ataque**: No campo de IP, você digita `8.8.8.8 ; cat /etc/passwd`
-- **O desastre**: O servidor executa o ping e logo em seguida mostra todos os usuários do sistema para você.
+Ocorre quando o site chama o sistema operacional de forma insegura, geralmente usando funções como `exec()`, `system()` ou `shell_exec()`.
+
+### 🚩 Como identificar:
+Procure por campos que pareçam interagir com o sistema: geradores de PDF, ferramentas de rede (ping/traceroute), redimensionadores de imagem.
+
+### 🧪 Operadores de Encadeamento:
+- `;` ou `\n`: Executa o segundo comando após o primeiro.
+- `&&`: Executa o segundo apenas se o primeiro tiver sucesso.
+- `||`: Executa o segundo apenas se o primeiro falhar.
+- `|` (Pipe): Passa a saída do primeiro para o segundo.
+
+**Ataque Real**: `8.8.8.8 && whoami && hostname && ip a` (Revela usuário, nome da máquina e endereços IP).
 
 ## 🛠️ Outras Variantes:
 - **NoSQL Injection**: Ataques similares contra bancos como MongoDB usando operadores `$gt`, `$ne`.

