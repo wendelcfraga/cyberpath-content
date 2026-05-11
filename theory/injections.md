@@ -1,20 +1,25 @@
-# Injeções (Injections)
+# 💉 Injeções: Onde o Código vira Arma
 
-Injeção é uma das vulnerabilidades mais comuns e perigosas na web. Ocorre quando dados não confiáveis são enviados para um intérprete como parte de um comando ou consulta.
+A injeção ocorre quando você consegue "enganar" um sistema para executar comandos que ele não deveria. É como convencer o segurança de um prédio que você é o dono, apenas mudando a forma como você fala.
 
-## SQL Injection (SQLi)
-Ocorre quando um atacante insere comandos SQL em campos de entrada, manipulando a consulta original ao banco de dados.
+## 🗄️ SQL Injection (SQLi): Dominando o Banco de Dados
+A aplicação espera um nome, mas você envia um comando.
+- **Cenário de Login**: 
+  - O que o site faz: `SELECT * FROM usuarios WHERE user = 'admin' AND pass = '123'`
+  - O seu truque: No campo de senha, você digita `' OR 1=1 --`
+  - O resultado final: `SELECT * FROM usuarios WHERE user = 'admin' AND pass = '' OR 1=1 --'`
+  - **O que aconteceu?** O `--` comenta o resto da query, e `1=1` é sempre verdade. Você logou sem senha!
 
-### Exemplo:
-Consulta original: `SELECT * FROM users WHERE id = '` + id + `'`
-Entrada maliciosa: `1' OR '1'='1`
-Resultado: `SELECT * FROM users WHERE id = '1' OR '1'='1'`
+## 💻 Command Injection: Assumindo o Servidor
+Ocorre quando o site chama o sistema operacional.
+- **Exemplo**: Um site que testa se um IP está online usando `ping`.
+- **Ataque**: No campo de IP, você digita `8.8.8.8 ; cat /etc/passwd`
+- **O desastre**: O servidor executa o ping e logo em seguida mostra todos os usuários do sistema para você.
 
-## Command Injection
-Ocorre quando o aplicativo executa comandos do sistema operacional com entrada fornecida pelo usuário sem a devida validação.
+## 🛡️ Como se Proteger?
+1. **Prepared Statements**: O comando e os dados viajam separados. O banco sabe que o que vem do usuário é *apenas* um texto, nunca um comando.
+2. **Never Trust, Always Verify**: Valide tudo. Se espera um número, não aceite letras ou símbolos.
+3. **WAF (Web Application Firewall)**: Um filtro que bloqueia tentativas óbvias de injeção antes de chegarem ao servidor.
 
-## Como Prevenir
-1. **Prepared Statements (Parametrização)**: A melhor forma de prevenir SQLi.
-2. **Validação de Entrada**: Usar "allow-lists".
-3. **Escaping**: Sanitizar caracteres especiais.
-4. **Princípio do Menor Privilégio**: O banco de dados deve ter permissões limitadas.
+---
+**Tags:** `SQLi`, `RCE`, `Database`, `Sanitização`, `Backend`, `Payloads`
