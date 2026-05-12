@@ -14,12 +14,12 @@
     {
       "id": 2,
       "type": "INPUT_CHALLENGE",
-      "title": "Passo 2: O Ataque",
-      "description": "Agora é a sua vez. O navegador irá interpretar qualquer tag HTML que você inserir no campo de pesquisa. Para provar a vulnerabilidade, insira uma payload que execute um alerta JavaScript com a mensagem 'XSS'.",
-      "placeholder": "Digite sua payload aqui...",
+      "title": "Passo 2: O Desafio de Injeção",
+      "description": "Como vimos na teoria, o navegador interpretará qualquer dado que você inserir como código HTML. Seu objetivo é provar que pode executar código arbitrário. Tente injetar um pequeno script que dispare uma janela de alerta (pop-up) no navegador. Pense em qual tag HTML é usada especificamente para carregar e executar blocos de código JavaScript.",
+      "placeholder": "Insira sua tentativa de injeção...",
       "correctAnswer": "<script>alert('XSS')</script>",
-      "successMessage": "Parabéns! O alerta foi executado. Você explorou com sucesso a falha de Reflected XSS. O navegador interpretou a sua entrada como código em vez de texto.",
-      "failureMessage": "Payload incorreta. Tente usar a tag `<script>` para executar a função `alert()`."
+      "successMessage": "Excelente! O navegador executou seu script. Você provou que a entrada do usuário pode 'escapar' do contexto de texto e se tornar código executável.",
+      "failureMessage": "Não funcionou. Lembre-se: você precisa abrir uma tag que o navegador entenda como um bloco de execução de script. Verifique a sintaxe básica do JavaScript para alertas."
     },
     {
       "id": 3,

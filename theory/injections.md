@@ -1,47 +1,41 @@
 # 💉 Injeções: Onde o Código vira Arma
 
-A injeção ocorre quando você consegue "enganar" um sistema para executar comandos que ele não deveria. É como convencer o segurança de um prédio que você é o dono, apenas mudando a forma como você fala.
+A injeção ocorre quando uma aplicação falha ao filtrar a entrada do usuário, permitindo que caracteres de controle (como `'`, `;`, `--`) mudem a lógica do comando original que o servidor pretendia executar.
 
-## 🗄️ SQL Injection (SQLi): Dominando o Banco de Dados
-A aplicação espera um nome, mas você envia um comando.
+## 🗄️ SQL Injection (SQLi): Manipulando a Lógica do Banco
+A aplicação espera um dado (ex: um nome), mas você envia um fragmento de código SQL.
 
-### 🚩 Tipos de SQLi Detalhados:
-1. **In-Band (Classic)**: A forma mais fácil. Os resultados são exibidos diretamente na página ou em erros.
-   - **Union-Based**: Usa o operador `UNION` para combinar resultados de tabelas diferentes. Ex: `' UNION SELECT username, password FROM users --`
-   - **Error-Based**: Força o banco a gerar um erro que contém a informação desejada.
-2. **Inferential (Blind)**: O site não mostra o erro.
-   - **Boolean-Based**: Você faz perguntas de Sim/Não. Ex: `' AND (SELECT SUBSTR(user,1,1) FROM users)='a`
-   - **Time-Based**: Você faz o banco "dormir" se a condição for verdadeira. Ex: `' AND IF(1=1, SLEEP(5), 0) --`
-3. **Out-of-Band**: Os dados são enviados para um servidor externo (DNS loggers) quando as outras técnicas falham.
+### 🚩 Tipos de SQLi e sua Lógica:
+1. **In-Band (Classic)**: A forma direta.
+   - **Union-Based**: Explora o comando `UNION` para anexar resultados de tabelas que não deveriam estar expostas. Requer que você descubra o número de colunas primeiro.
+   - **Error-Based**: Força o banco a exibir mensagens de erro técnicas. Essas mensagens muitas vezes revelam versões do banco ou nomes de tabelas.
+2. **Inferential (Blind)**: O site não mostra dados nem erros.
+   - **Boolean-Based**: Você testa condições. Se a página carrega normalmente, a resposta é "Sim"; se der erro ou mudar o conteúdo, é "Não".
+   - **Time-Based**: Você pede ao banco para pausar (delay) se uma condição for verdade. Se a resposta demorar, você confirmou a informação.
 
-### 🧪 Exemplo Prático de Bypass de Login:
-- **Cenário**: `SELECT * FROM usuarios WHERE user = '$user' AND pass = '$pass'`
-- **Payload**: `admin' #` (O `#` ou `--` anula a verificação da senha no MySQL).
+### 🧪 A Lógica do Bypass de Login
+Imagine a consulta: `SELECT * FROM users WHERE username = '$user' AND password = '$pass'`
+Se você conseguir fechar a aspa do `$user` precocemente e inserir uma condição lógica que resulte sempre em **VERDADEIRO** (ex: `1=1`), o banco pode ignorar o restante da verificação.
 
-## 💻 Command Injection: Assumindo o Servidor
-Ocorre quando o site chama o sistema operacional de forma insegura, geralmente usando funções como `exec()`, `system()` ou `shell_exec()`.
+## 💻 Command Injection: Execução no Sistema Operacional
+Ocorre quando o servidor passa dados do usuário diretamente para uma shell do sistema (bash, cmd).
 
-### 🚩 Como identificar:
-Procure por campos que pareçam interagir com o sistema: geradores de PDF, ferramentas de rede (ping/traceroute), redimensionadores de imagem.
+### 🚩 Como Identificar Vetores:
+Procure por funcionalidades que pareçam fazer tarefas de sistema:
+- Ferramentas de diagnóstico de rede (ping, nslookup).
+- Conversores de arquivos ou redimensionadores de imagem.
+- Visualizadores de logs.
 
-### 🧪 Operadores de Encadeamento:
-- `;` ou `\n`: Executa o segundo comando após o primeiro.
-- `&&`: Executa o segundo apenas se o primeiro tiver sucesso.
-- `||`: Executa o segundo apenas se o primeiro falhar.
-- `|` (Pipe): Passa a saída do primeiro para o segundo.
+### 🧪 Operadores de Encadeamento
+Para injetar comandos, você precisa usar operadores que o sistema operacional entenda para separar instruções:
+- `;` ou `\n`: Executa o próximo comando independente do anterior.
+- `&&`: Executa o próximo apenas se o primeiro funcionar.
+- `||`: Executa o próximo apenas se o primeiro falhar.
 
-**Ataque Real**: `8.8.8.8 && whoami && hostname && ip a` (Revela usuário, nome da máquina e endereços IP).
-
-## 🛠️ Outras Variantes:
-- **NoSQL Injection**: Ataques similares contra bancos como MongoDB usando operadores `$gt`, `$ne`.
-- **LDAP Injection**: Manipulação de consultas de diretório (comum em redes corporativas).
-- **Template Injection (SSTI)**: Injetar código em motores de template como Jinja2 ou Thymeleaf para obter RCE.
-
-## 🛡️ Como se Proteger? (Defesa em Profundidade)
-1. **Consultas Parametrizadas (Prepared Statements)**: Essencial. O comando e os dados viajam separados.
-2. **Princípio do Menor Privilégio**: O banco de dados da aplicação não deve ter permissões de `root` ou `sysadmin`.
-3. **Escaping/Sanitização**: Limpar caracteres especiais (como `'`, `;`, `--`) de todo input.
-4. **WAF (Web Application Firewall)**: Uma camada extra para filtrar payloads conhecidos.
+## 🛡️ Como se Proteger?
+1. **Queries Parametrizadas (Prepared Statements)**: A defesa definitiva. O motor do banco de dados é avisado: "Isto é o comando, e isto são APENAS dados". Mesmo que os dados contenham `'`, eles nunca serão executados.
+2. **Princípio do Menor Privilégio**: O usuário do banco de dados nunca deve ser o 'root'.
+3. **Allow-listing**: Em vez de tentar bloquear caracteres ruins, permita apenas o que é conhecido como bom (ex: apenas números em um campo de ID).
 
 ---
-**Tags:** `SQLi`, `RCE`, `SSTI`, `Database-Security`, `Backend`, `Payloads`, `Sanitization`
+**Tags:** `SQLi`, `RCE`, `Injection-Theory`, `Backend-Security`, `Prepared-Statements`

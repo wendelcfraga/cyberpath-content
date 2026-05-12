@@ -14,12 +14,12 @@
     {
       "id": 2,
       "type": "INPUT_CHALLENGE",
-      "title": "O Ataque",
-      "description": "Para contornar a verificação, você pode injetar uma condição que sempre seja verdadeira. No campo de 'username', insira uma payload que comente o resto da consulta e torne a condição `WHERE` verdadeira.",
-      "placeholder": "Insira a sua payload aqui",
+      "title": "Exploração: Quebrando a Lógica",
+      "description": "Agora que você entende como a consulta é montada, seu objetivo é injetar uma payload no campo 'username' que manipule a lógica booleana do `WHERE`. Você precisa que a expressão final seja sempre verdadeira, independentemente da senha. Pense em como usar o operador `OR` e como 'anular' o resto da consulta original usando caracteres de comentário SQL.",
+      "placeholder": "Insira sua payload estratégica...",
       "correctAnswer": "' OR '1'='1' --",
-      "successMessage": "Perfeito! A payload `' OR '1'='1' --` tornou a consulta `SELECT * FROM users WHERE username = '' OR '1'='1' --' AND password = '...'`, que é sempre verdadeira. Acesso concedido!",
-      "failureMessage": "Tente novamente. Lembre-se de usar uma condição sempre verdadeira e comentar o resto da linha."
+      "successMessage": "Fantástico! Você subverteu a lógica da aplicação. Ao injetar `' OR '1'='1' --`, a verificação da senha foi ignorada porque a condição '1'='1' é universalmente verdadeira e o restante da query foi transformado em um comentário.",
+      "failureMessage": "Acesso negado. Dica: Tente fechar a aspa simples e criar uma condição de curto-circuito (OR True). Não esqueça de comentar o resto da linha."
     },
     {
       "id": 3,
