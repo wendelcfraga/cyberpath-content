@@ -20,11 +20,11 @@
       "id": 3,
       "type": "INPUT_CHALLENGE",
       "title": "Passo 3: Manipulação de Dados",
-      "description": "Modifique o corpo da requisição acima para que o preço seja alterado para R$ 1,00 antes de clicar em 'Forward'. Como ficaria a linha de parâmetros?",
-      "placeholder": "product_id=123&price=...",
+      "description": "Você capturou a requisição de compra acima. O servidor parece confiar cegamente no parâmetro de preço enviado pelo cliente. Como você modificaria a linha de parâmetros para tentar adquirir o produto por um valor simbólico de '1', mantendo os outros dados intactos?",
+      "placeholder": "Modifique os parâmetros...",
       "correctAnswer": "product_id=123&price=1&quantity=1",
-      "successMessage": "Perfeito! Se o servidor não validar o preço no banco de dados e confiar apenas no que vem da requisição, você conseguirá comprar o produto por 1 real.",
-      "failureMessage": "Mantenha o product_id e a quantity, mas altere o valor do price para 1."
+      "successMessage": "Excelente! Você manipulou o parâmetro de preço. Isso demonstra uma falha grave de lógica de negócio onde o servidor não valida o preço no seu próprio banco de dados.",
+      "failureMessage": "A requisição não surtiu o efeito desejado. Verifique se você alterou o parâmetro correto para o valor sugerido."
     },
     {
       "id": 4,

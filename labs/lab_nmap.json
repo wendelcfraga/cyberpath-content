@@ -15,11 +15,11 @@
       "id": 2,
       "type": "INPUT_CHALLENGE",
       "title": "Passo 2: Varredura Agressiva",
-      "description": "Qual comando Nmap você usaria para realizar uma varredura agressiva (detecção de SO, versão e scripts) no IP alvo `192.168.1.10`?",
-      "placeholder": "nmap ...",
+      "description": "Com base no que aprendeu na teoria sobre varreduras completas que incluem detecção de sistema operacional e enumeração de serviços, qual comando você executaria para obter o máximo de informações do IP `192.168.1.10` em um único passo?",
+      "placeholder": "Digite o comando completo...",
       "correctAnswer": "nmap -A 192.168.1.10",
-      "successMessage": "Excelente! A flag -A é extremamente útil, embora barulhenta nos logs de segurança.",
-      "failureMessage": "Dica: Use a flag -A para o modo agressivo."
+      "successMessage": "Excelente! Você utilizou a flag de 'Agressive Scan', que combina diversos testes em uma única execução.",
+      "failureMessage": "Não é isso. Lembre-se da flag que ativa o modo 'Agressivo' descrito no material de apoio."
     },
     {
       "id": 3,
@@ -39,11 +39,11 @@
       "id": 4,
       "type": "INPUT_CHALLENGE",
       "title": "Passo 4: Verificação de Versão",
-      "description": "Após a varredura, você descobriu que a porta 8080 está aberta. Qual flag específica você usaria para tentar descobrir a versão exata do serviço que está rodando nela?",
-      "placeholder": "-s...",
+      "description": "Você identificou a porta 8080 como aberta, mas quer saber se o que está rodando lá é um servidor Tomcat, JBoss ou outra tecnologia. Qual flag do Nmap é especializada em interrogar o serviço para descobrir sua versão?",
+      "placeholder": "Insira a flag de versão...",
       "correctAnswer": "-sV",
-      "successMessage": "Correto! O scan de versão (-sV) interage com a porta aberta para determinar qual software e versão estão ativos.",
-      "failureMessage": "A flag para 'Version detection' começa com -s."
+      "successMessage": "Correto! O 'Version Detection' (-sV) envia probes específicos para identificar o software por trás da porta.",
+      "failureMessage": "Tente novamente. A flag correta está relacionada à palavra 'Version'."
     },
     {
       "id": 5,
